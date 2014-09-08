@@ -233,7 +233,7 @@ class Generator {
 	def void generate(Screen screen, String fileName) {
 		filename = fileName
 		navigatorControllerFile = new File(
-			"/Users/f/Dropbox/Skole/workspace/JavaFX Test/src/application/ScreenNavigatorController" + fileName +
+			Constants.FXML_DIRECTORY + "ScreenNavigatorController" + fileName +
 				".xtend");
 		navigatorControllerFile.createNewFile()
 		writer = new BufferedWriter(new FileWriter(navigatorControllerFile));
@@ -1057,19 +1057,25 @@ class Generator {
 	def static void main(String[] args) {
 		
 		// Delete all generated files
-		val directory = new File(Constants.PROJECT_DIR  + Constants.SUB_PROJECT_NAME)
-		for (File fileEntry : directory.listFiles()) {
-			if (!fileEntry.isDirectory()) {
-				if (fileEntry.name.endsWith(".ecore")) {
-					if (!fileEntry.delete) println("Error: Failed to delete generated file " + fileEntry.name + " in " + directory)
-				} 
-				if (fileEntry.name.endsWith(".xmi")) {
-					if (!fileEntry.delete) println("Error: Failed to delete generated file " + fileEntry.name + " in " + directory)
-				}
-				if (fileEntry.name.endsWith(".screendecorator")) {
-					if (!fileEntry.delete) println("Error: Failed to delete generated file " + fileEntry.name + " in " + directory)
+		try {
+			val directory = new File(Constants.PROJECT_DIR  + Constants.SUB_PROJECT_NAME)
+			for (File fileEntry : directory.listFiles()) {
+				if (!fileEntry.isDirectory()) {
+					if (fileEntry.name.endsWith(".ecore")) {
+						if (!fileEntry.delete) println("Error: Failed to delete generated file " + fileEntry.name + " in " + directory)
+					} 
+					if (fileEntry.name.endsWith(".xmi")) {
+						if (!fileEntry.delete) println("Error: Failed to delete generated file " + fileEntry.name + " in " + directory)
+					}
+					if (fileEntry.name.endsWith(".screendecorator")) {
+						if (!fileEntry.delete) println("Error: Failed to delete generated file " + fileEntry.name + " in " + directory)
+					}
 				}
 			}
+		} catch (Exception e){
+			println("Error: Could not find project directory. Check PROJECT_DIR and SUB_PROJECT_NAME")
+			e.printStackTrace
+			return
 		}
 		
 		// Create a resource set and populate it with all relevant files.
