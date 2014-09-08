@@ -327,7 +327,7 @@ class ResourceSetHandler {
 			]
 		]
 
-		return decoratorMap
+		decoratorMap
 	}
 
 }
