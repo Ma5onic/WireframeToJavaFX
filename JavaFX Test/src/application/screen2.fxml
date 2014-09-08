@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?import java.lang.*?><?import javafx.scene.control.*?><?import javafx.scene.layout.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.geometry.*?><GridPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" hgap="0" id="gridPane1" minHeight="534" minWidth="343" vgap="0">
+    <padding>
+        <Insets bottom="25" left="25" right="25" top="25"/>
+    </padding>
+    <children>
+        <Label GridPane.columnIndex="9" GridPane.columnSpan="12" GridPane.rowIndex="1" GridPane.rowSpan="3" id="68" rotate="0" text="Muniapp" textFill="black">
+            <font>
+                <Font name="System Bold" size="18"/>
+            </font>
+        </Label>
+        <Button GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="34" GridPane.rowSpan="1" id="69" onAction="#handleButtonAction69" style="-fx-base:white;" text="Day"/>
+        <Label GridPane.columnIndex="2" GridPane.columnSpan="5" GridPane.rowIndex="6" GridPane.rowSpan="3" id="70" rotate="0" text="This week" textFill="black">
+            <font>
+                <Font name="System Regular" size="18"/>
+            </font>
+        </Label>
+        <Button GridPane.columnIndex="4" GridPane.columnSpan="7" GridPane.rowIndex="34" GridPane.rowSpan="1" id="71" onAction="#handleButtonAction71" style="-fx-base:white;" text="Week"/>
+        <Separator GridPane.columnIndex="2" GridPane.columnSpan="29" GridPane.rowIndex="10" GridPane.rowSpan="1" id="72" prefWidth="294"/>
+        <Separator GridPane.columnIndex="2" GridPane.columnSpan="29" GridPane.rowIndex="24" GridPane.rowSpan="1" id="73" prefWidth="294"/>
+        <Label GridPane.columnIndex="2" GridPane.columnSpan="6" GridPane.rowIndex="20" GridPane.rowSpan="3" id="74" rotate="0" text="Next week" textFill="black">
+            <font>
+                <Font name="System Regular" size="18"/>
+            </font>
+        </Label>
+        <Label GridPane.columnIndex="2" GridPane.columnSpan="12" GridPane.rowIndex="12" GridPane.rowSpan="2" id="75" rotate="0" text="Meeting with John" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="13" GridPane.rowSpan="3" id="76" rotate="0" text="Water plants" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label GridPane.columnIndex="2" GridPane.columnSpan="16" GridPane.rowIndex="15" GridPane.rowSpan="3" id="77" rotate="0" text="Order parts for the laptop" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label GridPane.columnIndex="2" GridPane.columnSpan="8" GridPane.rowIndex="17" GridPane.rowSpan="2" id="78" rotate="0" text="Dinner with Jane" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Button GridPane.columnIndex="28" GridPane.columnSpan="3" GridPane.rowIndex="2" GridPane.rowSpan="1" id="79" onAction="#handleButtonAction79" style="-fx-base:white;" text="+"/>
+        <Label GridPane.columnIndex="17" GridPane.columnSpan="2" GridPane.rowIndex="7" GridPane.rowSpan="1" id="80" rotate="0" text="24" textFill="black">
+            <font>
+                <Font name="System Italic" size="12"/>
+            </font>
+        </Label>
+        <Label GridPane.columnIndex="17" GridPane.columnSpan="2" GridPane.rowIndex="21" GridPane.rowSpan="1" id="81" rotate="0" text="25" textFill="black">
+            <font>
+                <Font name="System Italic" size="12"/>
+            </font>
+        </Label>
+        <Label GridPane.columnIndex="13" GridPane.columnSpan="7" GridPane.rowIndex="3" GridPane.rowSpan="2" id="82" rotate="0" text="June 2014" textFill="black">
+            <font>
+                <Font name="System Italic" size="12"/>
+            </font>
+        </Label>
+        <Label GridPane.columnIndex="24" GridPane.columnSpan="5" GridPane.rowIndex="7" GridPane.rowSpan="1" id="83" rotate="0" text="9 Jun 2014" textFill="black">
+            <font>
+                <Font name="System Italic" size="12"/>
+            </font>
+        </Label>
+        <Label GridPane.columnIndex="24" GridPane.columnSpan="7" GridPane.rowIndex="21" GridPane.rowSpan="1" id="84" rotate="0" text="16 Jun 2014" textFill="black">
+            <font>
+                <Font name="System Italic" size="12"/>
+            </font>
+        </Label>
+        <Label GridPane.columnIndex="23" GridPane.columnSpan="8" GridPane.rowIndex="12" GridPane.rowSpan="2" id="85" rotate="0" text="10:10 - 12:00" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label GridPane.columnIndex="27" GridPane.columnSpan="4" GridPane.rowIndex="13" GridPane.rowSpan="3" id="86" rotate="0" text="all day" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label GridPane.columnIndex="27" GridPane.columnSpan="4" GridPane.rowIndex="15" GridPane.rowSpan="3" id="87" rotate="0" text="all day" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label GridPane.columnIndex="27" GridPane.columnSpan="3" GridPane.rowIndex="17" GridPane.rowSpan="2" id="88" rotate="0" text="20:00" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label GridPane.columnIndex="2" GridPane.columnSpan="11" GridPane.rowIndex="26" GridPane.rowSpan="1" id="90" rotate="0" text="Movies after work" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label GridPane.columnIndex="26" GridPane.columnSpan="4" GridPane.rowIndex="26" GridPane.rowSpan="1" id="91" rotate="0" text="all day" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="28" GridPane.rowSpan="1" id="94" rotate="0" text="loggedIn = " textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label GridPane.columnIndex="16" GridPane.columnSpan="6" GridPane.rowIndex="28" GridPane.rowSpan="1" id="95" rotate="0" text="\${loggedIn}" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label GridPane.columnIndex="1" GridPane.columnSpan="11" GridPane.rowIndex="30" GridPane.rowSpan="1" id="96" rotate="0" text="newItemString1 = " textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label GridPane.columnIndex="15" GridPane.columnSpan="10" GridPane.rowIndex="30" GridPane.rowSpan="1" id="97" rotate="0" text="\${newItemString1}" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label GridPane.columnIndex="1" GridPane.columnSpan="11" GridPane.rowIndex="32" GridPane.rowSpan="1" id="98" rotate="0" text="newItemString2 = " textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label GridPane.columnIndex="15" GridPane.columnSpan="10" GridPane.rowIndex="32" GridPane.rowSpan="1" id="99" rotate="0" text="\${newItemString2}" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+    </children>
+    <columnConstraints>
+        <ColumnConstraints minWidth="16"/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+        <ColumnConstraints minWidth="10"/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+        <ColumnConstraints minWidth="3"/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+        <ColumnConstraints minWidth="16"/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+        <ColumnConstraints minWidth="4"/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+        <ColumnConstraints minWidth="7"/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="7"/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints minHeight="30"/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints minHeight="7"/>
+        <RowConstraints/>
+        <RowConstraints minHeight="14"/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints minHeight="21"/>
+        <RowConstraints/>
+        <RowConstraints minHeight="21"/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints minHeight="31"/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints minHeight="11"/>
+        <RowConstraints/>
+        <RowConstraints minHeight="10"/>
+        <RowConstraints/>
+        <RowConstraints minHeight="41"/>
+        <RowConstraints/>
+        <RowConstraints minHeight="3"/>
+        <RowConstraints/>
+        <RowConstraints minHeight="4"/>
+        <RowConstraints/>
+        <RowConstraints minHeight="20"/>
+        <RowConstraints/>
+    </rowConstraints>
+</GridPane>

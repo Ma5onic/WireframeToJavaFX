@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Button" id="1" x="96" y="216" text="Til start" measuredWidth="59" measuredHeight="24" link="Start.screen" style="pointleft">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="2" x="88" y="96" text="This is the third screen. " measuredWidth="304" measuredHeight="42">
+    <font size="28px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="3" x="88" y="144" text="All work and no play makes Jack a dull boy" measuredWidth="239" measuredHeight="22">
+    <font italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="4" x="208" y="216" text="Update login attempt" measuredWidth="133" measuredHeight="24">
+    <font/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font name="Helvetica" size="12px"/>
+</model:Screen>

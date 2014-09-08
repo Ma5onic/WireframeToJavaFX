@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Button" id="1" x="128" y="304" text="Tilbake til start" measuredWidth="109" measuredHeight="25" link="Start.screen">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="2" x="120" y="128" text="Dette er screen nummer 4" measuredWidth="553" measuredHeight="59">
+    <font size="43px"/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="3" x="236" y="232" text="Ja, her" measuredWidth="48" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="4" x="120" y="232" text="Skriv noe her:" measuredWidth="87" measuredHeight="23">
+    <font/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

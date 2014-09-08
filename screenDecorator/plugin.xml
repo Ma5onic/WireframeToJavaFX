@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated screenDecorator -->
+      <package
+            uri="no.hal.screenDecorator"
+            class="no.fhl.screenDecorator.ScreenDecoratorPackage"
+            genModel="model/screenDecorator.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated javafxTypes -->
+      <package
+            uri="javafx.types"
+            class="no.fhl.javafxTypes.JavafxTypesPackage"
+            genModel="model/javafxTypes.genmodel"/>
+   </extension>
+
+</plugin>

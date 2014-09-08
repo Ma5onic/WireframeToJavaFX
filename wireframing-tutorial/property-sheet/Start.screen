@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" theme="clean">
+  <widgets xsi:type="model:Label" id="17" x="112" y="88" text="Navn" measuredWidth="55" measuredHeight="32" foreground="#ff0000">
+    <font size="20px" bold="true" italic="true" underline="false"/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="18" x="416" y="80" text="Ola Nordmann" measuredWidth="91" measuredHeight="22">
+    <font size="12px" bold="false"/>
+  </widgets>
+  <widgets xsi:type="model:List" id="21" x="416" y="214" text="(o) Mann&#xA;( ) Kvinne&#xA;" measuredWidth="68" measuredHeight="48" border="false" alpha="0">
+    <font/>
+    <items x="0" y="2" width="68" height="22" text="(o) Mann"/>
+    <items x="0" y="24" width="68" height="22" text="( ) Kvinne"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="22" x="112" y="223" text="Kjønn" measuredWidth="54" measuredHeight="30">
+    <font size="18px" underline="false"/>
+  </widgets>
+  <widgets xsi:type="model:DateField" id="23" x="416" y="336" text=" 22/06/88  " measuredWidth="87" measuredHeight="22"/>
+  <widgets xsi:type="model:Label" id="24" x="112" y="328" text="Fødselsdato" measuredWidth="106" measuredHeight="30">
+    <font size="18px" italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Image" id="25" x="416" y="423" measuredWidth="48" measuredHeight="45" src="../assets/logo.png"/>
+  <widgets xsi:type="model:Label" id="26" x="112" y="431" text="Bilde" measuredWidth="51" measuredHeight="30">
+    <font size="18px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Checkbox" id="27" x="416" y="532" text="Er medlem" measuredWidth="80" measuredHeight="22">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="28" x="112" y="528" text="Medlem" measuredWidth="71" measuredHeight="30">
+    <font size="18px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="29" x="256" y="688" text="Til screen 2" measuredWidth="83" measuredHeight="24" state="disabled" link="screen2.screen">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="30" x="416" y="688" text="Til screen 3" measuredWidth="83" measuredHeight="24" link="screen3.screen">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="31" x="368" y="136" width="137" text="#hidden-status0" measuredWidth="137" measuredHeight="20" foreground="#00ff00">
+    <font size="10px" bold="true" italic="true" underline="false"/>
+  </widgets>
+  <widgets xsi:type="model:List" id="32" x="416" y="584" text="(o) Valg 1&#xA;( ) Valg 2&#xA;( ) Valg 3" measuredWidth="65" measuredHeight="70" border="false" alpha="0">
+    <font/>
+    <items x="0" y="2" width="65" height="22" text="(o) Valg 1"/>
+    <items x="0" y="24" width="65" height="22" text="( ) Valg 2"/>
+    <items x="0" y="46" width="65" height="22" text="( ) Valg 3"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="34" x="439" y="168" text="Logg inn" measuredWidth="68" measuredHeight="24">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="35" x="416" y="106" width="91" text="passord1234" measuredWidth="91" measuredHeight="22">
+    <font size="12px" bold="false"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="36" x="368" y="80" text="Navn" measuredWidth="35" measuredHeight="22">
+    <font size="12px" bold="false" italic="false" underline="false"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="37" x="352" y="106" text="Passord" measuredWidth="51" measuredHeight="22">
+    <font size="12px" bold="false" italic="false" underline="false"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="38" x="112" y="32" width="395" text="#hidden-welcome" measuredWidth="395" measuredHeight="32">
+    <font size="20px" bold="true" italic="false" underline="false"/>
+  </widgets>
+  <hRuler>
+    <guides position="702"/>
+  </hRuler>
+  <vRuler>
+    <guides position="759"/>
+  </vRuler>
+  <font name="Helvetica" size="12px"/>
+</model:Screen>

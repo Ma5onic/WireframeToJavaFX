@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:TabbedPane" id="1" x="72" y="72" width="513" height="409" text="Properties,Links,Scripting" measuredWidth="513" measuredHeight="409" selection="2">
+    <items x="10" y="0" width="80" height="27" text="Properties"/>
+    <items x="90" y="0" width="52" height="27" text="Links"/>
+    <items x="142" y="0" width="73" height="27" text="Scripting"/>
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:HLine" id="2" x="88" y="135" width="481" measuredWidth="481" measuredHeight="6"/>
+  <widgets xsi:type="model:Label" id="3" x="89" y="160" text="Widget:" measuredWidth="50" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Group" id="7" x="88" y="332" width="480" height="136" text="Attribute" measuredWidth="480" measuredHeight="136">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="8" x="112" y="355" text="Name" measuredWidth="40" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="9" x="112" y="387" text="Type" measuredWidth="35" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="10" x="169" y="355" width="376" text="newItemString1" measuredWidth="376" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="11" x="169" y="387" width="376" text="EString" measuredWidth="376" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="12" x="536" y="159" text="+" measuredWidth="30" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="13" x="112" y="427" text="Delete" measuredWidth="58" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="14" x="89" y="109" text="Data      |" measuredWidth="63" measuredHeight="23">
+    <font bold="true" italic="false"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="15" x="216" y="109" text="|    Actions" measuredWidth="69" measuredHeight="23" link="actions.screen">
+    <font bold="false" italic="false"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="16" x="164" y="109" text="Styles" measuredWidth="40" measuredHeight="23" link="styles.screen">
+    <font bold="false" italic="false"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="17" x="151" y="160" text="Button #Save" measuredWidth="82" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Table" id="18" x="89" y="192" width="477" height="129" text="Name,Type&#xA;newItemHidden,EBoolean&#xA;(bg:lightBlue).newItemString1,(bg:lightBlue).EString&#xA;newItemString2,EString" measuredWidth="477" measuredHeight="129" alternative="#eeeeee">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:VSlider" id="22" x="555" y="215" height="98" measuredWidth="17" measuredHeight="98" value="5" background="#999999"/>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

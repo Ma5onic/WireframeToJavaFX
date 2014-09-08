@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" minVersion="4.2.0">
+  <widgets xsi:type="model:WidgetGroup" id="1" x="64" y="56" measuredWidth="97" measuredHeight="81" name="Data">
+    <widgets xsi:type="model:Note" id="1" width="97" height="81" text="Data" measuredWidth="97" measuredHeight="81" annotation="true" background="#72aaff">
+      <font/>
+    </widgets>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="2" x="208" y="56" measuredWidth="97" measuredHeight="81" name="Actions">
+    <widgets xsi:type="model:Note" id="2" width="97" height="81" text="Actions" measuredWidth="97" measuredHeight="81" annotation="true" background="#f05253">
+      <font/>
+    </widgets>
+  </widgets>
+  <widgets xsi:type="model:WidgetGroup" id="3" x="376" y="56" measuredWidth="97" measuredHeight="81" name="Styles">
+    <widgets xsi:type="model:Note" id="3" width="97" height="81" text="Style" measuredWidth="97" measuredHeight="81" annotation="true" background="#cc66cc">
+      <font/>
+    </widgets>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

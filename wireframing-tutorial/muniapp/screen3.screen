@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Button" id="11" x="25" y="9" text="&lt; Back" measuredWidth="67" measuredHeight="27" link="screen1.screen">
+    <font size="14px" bold="false"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="12" x="129" y="7" text="Muniapp" measuredWidth="87" measuredHeight="29">
+    <font size="18px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="27" x="102" y="64" text="Add new event" measuredWidth="121" measuredHeight="26">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="44" x="263" y="8" text="Save" measuredWidth="51" measuredHeight="27" link="screen1.screen">
+    <font size="14px" bold="false"/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="46" x="156" y="120" width="163" text="=${eventName}" measuredWidth="163" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="47" x="25" y="120" text="Event name:" measuredWidth="77" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="48" x="25" y="183" text="Time:" measuredWidth="39" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="52" x="25" y="152" text="Date:" measuredWidth="37" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:HLine" id="56" x="25" y="240" width="294" measuredWidth="294" measuredHeight="6"/>
+  <widgets xsi:type="model:TextField" id="57" x="241" y="183" width="33" text="11" measuredWidth="33" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="58" x="286" y="183" width="33" text="03" measuredWidth="33" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="62" x="223" y="152" width="96" text="11/06/14" measuredWidth="96" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="64" x="117" y="272" width="99" text="Delete task" measuredWidth="99" measuredHeight="27" background="#ff0000">
+    <font size="14px" bold="false"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="69" x="15" y="351" text="loggeIn =" measuredWidth="63" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="70" x="150" y="351" text="${loggedIn}" measuredWidth="73" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="71" x="832" y="36" measuredWidth="174" measuredHeight="81">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Data"/>
+    <overrides>
+      <widgets ref="1" width="174" text="string screen3string"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Label" id="72" x="15" y="392" text="screen3string = " measuredWidth="103" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="73" x="150" y="392" text="${screen3string}" measuredWidth="101" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="74" x="440" y="40" measuredWidth="279" measuredHeight="50">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Actions"/>
+    <overrides>
+      <widgets ref="2" width="279" height="50" text="newItemString1 = ${eventName}&#xA;screen3string = ${eventName}"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Arrow" id="75" x="313" y="32" width="136" height="33" measuredWidth="136" measuredHeight="33" annotation="true"/>
+  <hRuler>
+    <guides position="343"/>
+  </hRuler>
+  <vRuler>
+    <guides position="534"/>
+  </vRuler>
+  <font size="12px"/>
+</model:Screen>

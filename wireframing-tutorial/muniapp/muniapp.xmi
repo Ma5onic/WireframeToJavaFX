@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ASCII"?>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:muniapp="File:///Users/f/Dropbox/Skole/workspace/wireframing-tutorial/muniapp/muniapp.ecore" xmlns:screen2="File:///Users/f/Dropbox/Skole/workspace/wireframing-tutorial/muniapp/screen2.ecore" xmlns:screen3="File:///Users/f/Dropbox/Skole/workspace/wireframing-tutorial/muniapp/screen3.ecore">
+  <muniapp:muniapp username="Fredrik" password="secret" newItemString1="default" newItemString2="default" newItemHidden="true"/>
+  <screen2:screen2/>
+  <screen3:screen3 screen3string="default"/>
+</xmi:XMI>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Label" id="68" x="125" y="7" text="Muniapp" measuredWidth="87" measuredHeight="29">
+    <font size="18px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="69" x="16" y="480" text="Day" measuredWidth="48" measuredHeight="27" link="screen1.screen">
+    <font size="14px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="70" x="24" y="88" text="This week" measuredWidth="94" measuredHeight="29">
+    <font size="18px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="71" x="74" y="480" text="Week" measuredWidth="56" measuredHeight="27">
+    <font size="14px" bold="false"/>
+  </widgets>
+  <widgets xsi:type="model:HLine" id="72" x="24" y="124" width="294" measuredWidth="294" measuredHeight="6"/>
+  <widgets xsi:type="model:HLine" id="73" x="24" y="304" width="294" measuredWidth="294" measuredHeight="6"/>
+  <widgets xsi:type="model:Label" id="74" x="24" y="264" text="Next week" measuredWidth="98" measuredHeight="29">
+    <font size="18px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="75" x="24" y="144" text="Meeting with John" measuredWidth="111" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="76" x="24" y="166" text="Water plants" measuredWidth="79" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="77" x="24" y="188" text="Order parts for the laptop" measuredWidth="157" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="78" x="24" y="210" text="Dinner with Jane" measuredWidth="102" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="79" x="286" y="8" text="+" measuredWidth="32" measuredHeight="27" link="screen3.screen">
+    <font size="14px" bold="false"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="80" x="164" y="91" text="24" measuredWidth="22" measuredHeight="23">
+    <font size="12px" italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="81" x="164" y="267" text="25" measuredWidth="22" measuredHeight="23">
+    <font size="12px" italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="82" x="134" y="35" text="June 2014" measuredWidth="66" measuredHeight="23">
+    <font size="12px" italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="83" x="240" y="91" text="9 Jun 2014" measuredWidth="71" measuredHeight="23">
+    <font size="12px" italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="84" x="240" y="267" text="16 Jun 2014" measuredWidth="78" measuredHeight="23">
+    <font size="12px" italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="85" x="229" y="144" text="10:10 - 12:00" measuredWidth="89" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="86" x="274" y="166" text="all day" measuredWidth="44" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="87" x="274" y="188" text="all day" measuredWidth="44" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="88" x="274" y="210" text="20:00" measuredWidth="41" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="90" x="24" y="320" text="Movies after work" measuredWidth="110" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="91" x="271" y="320" text="all day" measuredWidth="44" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="94" x="16" y="384" text="loggedIn = " measuredWidth="75" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="95" x="152" y="384" text="${loggedIn}" measuredWidth="73" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="96" x="16" y="410" text="newItemString1 = " measuredWidth="115" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="97" x="151" y="410" text="${newItemString1}" measuredWidth="113" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="98" x="16" y="437" text="newItemString2 = " measuredWidth="115" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="99" x="151" y="437" text="${newItemString2}" measuredWidth="113" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="100" x="448" y="35" measuredWidth="97" measuredHeight="81">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Data"/>
+    <overrides>
+      <widgets ref="1" text="bool loggedIn"/>
+    </overrides>
+  </widgets>
+  <hRuler>
+    <guides position="343"/>
+  </hRuler>
+  <vRuler>
+    <guides position="534"/>
+  </vRuler>
+  <font size="12px"/>
+</model:Screen>

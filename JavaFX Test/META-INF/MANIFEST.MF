@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: JavaFX_Test
+Bundle-SymbolicName: JavaFX_Test
+Bundle-Version: 1.0.0.qualifier
+Export-Package: application
+Require-Bundle: com.wireframesketcher.model;bundle-version="4.2.3",
+ org.eclipse.xtend.lib;bundle-version="2.5.2",
+ org.eclipse.emf.common,
+ org.junit
+Import-Package: org.eclipse.core.runtime

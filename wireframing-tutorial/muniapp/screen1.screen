@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Label" id="12" x="125" y="7" text="Muniapp" measuredWidth="87" measuredHeight="29">
+    <font size="18px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="24" x="16" y="480" text="Day" measuredWidth="48" measuredHeight="27">
+    <font size="14px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="27" x="24" y="88" text="Today" measuredWidth="60" measuredHeight="29">
+    <font size="18px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="32" x="74" y="480" text="Week" measuredWidth="56" measuredHeight="27" link="screen2.screen">
+    <font size="14px" bold="false"/>
+  </widgets>
+  <widgets xsi:type="model:HLine" id="34" x="24" y="124" width="294" measuredWidth="294" measuredHeight="6"/>
+  <widgets xsi:type="model:HLine" id="35" x="24" y="280" width="294" measuredWidth="294" measuredHeight="6"/>
+  <widgets xsi:type="model:Label" id="37" x="24" y="240" text="Tomorrow" measuredWidth="96" measuredHeight="29">
+    <font size="18px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="39" x="24" y="144" text="Meeting with John" measuredWidth="111" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="41" x="24" y="166" text="Water plants" measuredWidth="79" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="42" x="24" y="188" text="Order parts for the laptop" measuredWidth="157" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="43" x="24" y="304" text="Dinner with Jane" measuredWidth="102" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="44" x="283" y="8" text="+" measuredWidth="32" measuredHeight="27" link="screen3.screen">
+    <font size="14px" bold="false"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="46" x="134" y="91" text="Wednesday" measuredWidth="72" measuredHeight="23">
+    <font size="12px" italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="47" x="144" y="243" text="Thursday" measuredWidth="60" measuredHeight="23">
+    <font size="12px" italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="48" x="134" y="35" text="June 2014" measuredWidth="66" measuredHeight="23">
+    <font size="12px" italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="51" x="240" y="91" text="11 Jun 2014" measuredWidth="78" measuredHeight="23">
+    <font size="12px" italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="52" x="240" y="243" text="12 Jun 2014" measuredWidth="78" measuredHeight="23">
+    <font size="12px" italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="53" x="229" y="144" text="10:10 - 12:00" measuredWidth="89" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="54" x="274" y="166" text="all day" measuredWidth="44" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="55" x="274" y="188" text="all day" measuredWidth="44" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="56" x="274" y="304" text="20:00" measuredWidth="41" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="57" x="24" y="35" text="Week 24" measuredWidth="56" measuredHeight="23">
+    <font size="12px" italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="58" x="24" y="210" text="${newItemString1}" measuredWidth="113" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="59" x="274" y="210" width="41" text="${newItemString2}" measuredWidth="41" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="60" x="93" y="370" text="${newItemHidden}" measuredWidth="113" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="109" x="24" y="336" text="I am visible because newItemHidden is false" measuredWidth="262" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="114" x="383" y="6" width="282" measuredWidth="282" measuredHeight="81">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Actions"/>
+    <overrides>
+      <widgets ref="2" width="282" text="newItemHidden = true&#xA;newItemString1 = Plussknappen trykket på"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Master" id="115" x="383" y="109" measuredWidth="249" measuredHeight="58">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Styles"/>
+    <overrides>
+      <widgets ref="3" width="249" height="58" text="if newItemHidden is true&#xA;set visible to false&#xA;"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Arrow" id="131" x="314" y="24" width="70" height="8" measuredWidth="70" measuredHeight="8" annotation="true" foreground="#cccccc"/>
+  <widgets xsi:type="model:Arrow" id="137" x="229" y="144" width="155" height="201" measuredWidth="155" measuredHeight="201" annotation="true" foreground="#cccccc" direction="bottom"/>
+  <widgets xsi:type="model:Master" id="138" x="383" y="176" measuredWidth="249" measuredHeight="57">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Styles"/>
+    <overrides>
+      <widgets ref="3" width="249" height="57" text="if newItemHidden is false&#xA;set visible to true&#xA;"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Arrow" id="139" x="256" y="193" width="128" height="152" measuredWidth="128" measuredHeight="152" annotation="true" foreground="#cccccc" direction="bottom"/>
+  <widgets xsi:type="model:Master" id="140" x="368" y="454" width="177" height="43" measuredWidth="177" measuredHeight="43">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Actions"/>
+    <overrides>
+      <widgets ref="2" width="177" height="43" text="newItemHidden = bool"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Arrow" id="141" x="41" y="394" width="328" height="69" measuredWidth="328" measuredHeight="69" annotation="true" foreground="#cccccc"/>
+  <widgets xsi:type="model:Button" id="142" x="27" y="368" text="Show" measuredWidth="59" measuredHeight="27">
+    <font size="14px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="146" x="368" y="304" measuredWidth="249" measuredHeight="57">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Styles"/>
+    <overrides>
+      <widgets ref="3" width="249" height="57" text="if newItemHidden is false&#xA;set text to Hide&#xA;"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Master" id="147" x="368" y="375" measuredWidth="249" measuredHeight="57">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Styles"/>
+    <overrides>
+      <widgets ref="3" width="249" height="57" text="if newItemHidden is true&#xA;set text to Show&#xA;"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Arrow" id="150" x="74" y="377" width="295" height="31" measuredWidth="295" measuredHeight="31" annotation="true" foreground="#cccccc"/>
+  <widgets xsi:type="model:Arrow" id="151" x="41" y="336" width="328" height="40" measuredWidth="328" measuredHeight="40" annotation="true" foreground="#cccccc" direction="bottom"/>
+  <widgets xsi:type="model:Label" id="152" x="199" y="480" text="${username}" measuredWidth="79" measuredHeight="23">
+    <font size="12px" italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="153" x="800" y="16" measuredWidth="166" measuredHeight="122">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Data"/>
+    <overrides>
+      <widgets ref="1" width="166" height="122" text="app&#xA;string username&#xA;string password&#xA;string newItemString1&#xA;string newItemString2&#xA;bool newItemHidden&#xA;int newItemInt&#xA;"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Label" id="155" x="160" y="480" text="User:" measuredWidth="36" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <hRuler>
+    <guides position="343"/>
+  </hRuler>
+  <vRuler>
+    <guides position="534"/>
+  </vRuler>
+  <font size="12px"/>
+</model:Screen>

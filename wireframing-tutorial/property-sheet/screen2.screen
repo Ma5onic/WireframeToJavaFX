@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" theme="clean">
+  <widgets xsi:type="model:Label" id="17" x="288" y="192" text="This is screen 2 " measuredWidth="193" measuredHeight="34">
+    <font size="22px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="19" x="184" y="296" text="Til start" measuredWidth="65" measuredHeight="25" link="Start.screen" style="pointleft">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Image" id="20" x="184" y="176" width="89" height="81" measuredWidth="89" measuredHeight="81" src="../assets/logo.png"/>
+  <widgets xsi:type="model:Button" id="21" x="304" y="296" text="Hopp til screen 4" measuredWidth="120" measuredHeight="25" link="screen4.screen">
+    <font/>
+  </widgets>
+  <hRuler>
+    <guides position="601"/>
+  </hRuler>
+  <vRuler>
+    <guides position="505"/>
+  </vRuler>
+  <font size="12px"/>
+</model:Screen>

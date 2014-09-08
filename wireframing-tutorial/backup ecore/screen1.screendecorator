@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="ASCII"?>
+<screenDecorator:DecoratorModel
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:model="http://wireframesketcher.com/1.0/model.ecore"
+    xmlns:screenDecorator="no.hal.screenDecorator">
+  <decorators
+      xsi:type="screenDecorator:WidgetDecorator">
+    <viewRules
+        stateFeatureValue="true"
+        viewProperty="disable"
+        viewPropertyValue="false">
+      <stateFeature
+          href="screen1.ecore#//screen/loggedIn"/>
+      <viewPropertyType
+          href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </viewRules>
+    <viewRules
+        stateFeatureValue="*"
+        viewProperty="style"
+        viewPropertyValue="">
+      <stateFeature
+          href="muniapp.ecore#//Muniapp/newItemString1"/>
+      <viewPropertyType
+          href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </viewRules>
+    <viewRules
+        stateFeatureValue="asd"
+        viewProperty="style"
+        viewPropertyValue="-fx-base: blue">
+      <stateFeature
+          href="muniapp.ecore#//Muniapp/newItemString1"/>
+      <viewPropertyType
+          href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </viewRules>
+    <widget
+        xsi:type="model:Button"
+        href="screen1.screen#44"/>
+  </decorators>
+  <decorators
+      xsi:type="screenDecorator:WidgetDecorator">
+    <viewRules
+        stateFeatureValue="true"
+        viewProperty="text"
+        viewPropertyValue="Logged in!">
+      <stateFeature
+          href="screen1.ecore#//screen/loggedIn"/>
+      <viewPropertyType
+          href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </viewRules>
+    <widget
+        xsi:type="model:Label"
+        href="screen1.screen#47"/>
+  </decorators>
+  <decorators
+      xsi:type="screenDecorator:WidgetContainerDecorator">
+    <model href="screen1.ecore#//screen1"/>
+    <widgetContainer
+        xsi:type="model:Screen"
+        href="screen1.screen#/"/>
+  </decorators>
+</screenDecorator:DecoratorModel>

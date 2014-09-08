@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ASCII"?>
+<screenDecorator:DecoratorModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" xmlns:screenDecorator="no.hal.screenDecorator">
+  <decorators xsi:type="screenDecorator:WidgetDecorator">
+    <actions xsi:type="screenDecorator:ScriptAction" script="newItemHidden = true"/>
+    <actions xsi:type="screenDecorator:ScriptAction" script="newItemString1 = Plussknappen trykket p&#xe5;"/>
+    <widget xsi:type="model:Button" href="screen1.screen#44"/>
+  </decorators>
+  <decorators xsi:type="screenDecorator:StoryboardDecorator">
+    <model href="muniapp.ecore#//muniapp"/>
+    <storyboard href="muniapp.story#/"/>
+  </decorators>
+  <decorators xsi:type="screenDecorator:WidgetContainerDecorator">
+    <widgetContainer xsi:type="model:Screen" href="screen1.screen#/"/>
+  </decorators>
+  <decorators xsi:type="screenDecorator:WidgetDecorator">
+    <viewRules stateFeatureValue="true" viewProperty="visible" viewPropertyValue="false">
+      <stateFeature href="muniapp.ecore#//muniapp/newItemHidden"/>
+      <viewPropertyType href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </viewRules>
+    <viewRules stateFeatureValue="false" viewProperty="visible" viewPropertyValue="true">
+      <stateFeature href="muniapp.ecore#//muniapp/newItemHidden"/>
+      <viewPropertyType href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </viewRules>
+    <widget xsi:type="model:Label" href="screen1.screen#109"/>
+  </decorators>
+  <decorators xsi:type="screenDecorator:WidgetDecorator">
+    <actions xsi:type="screenDecorator:ScriptAction" script="newItemHidden = bool"/>
+    <viewRules stateFeatureValue="false" viewProperty="text" viewPropertyValue="Hide">
+      <stateFeature href="muniapp.ecore#//muniapp/newItemHidden"/>
+      <viewPropertyType href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </viewRules>
+    <viewRules stateFeatureValue="true" viewProperty="text" viewPropertyValue="Show">
+      <stateFeature href="muniapp.ecore#//muniapp/newItemHidden"/>
+      <viewPropertyType href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </viewRules>
+    <widget xsi:type="model:Button" href="screen1.screen#142"/>
+  </decorators>
+</screenDecorator:DecoratorModel>

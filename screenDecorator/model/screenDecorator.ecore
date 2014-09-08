@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    name="screenDecorator"
+    nsURI="screenDecorator"
+    nsPrefix="screenDecorator">
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="AbstractDecorator"
+      abstract="true"
+      eSuperTypes="#//BehaviorProperties #//DataProperties #//ViewProperties #//WidgetData"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="WidgetDecorator"
+      eSuperTypes="#//AbstractDecorator">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="widget"
+        eType="ecore:EClass ../../com.wireframesketcher.model/model/model.ecore#//Widget"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="WidgetContainerDecorator"
+      eSuperTypes="#//AbstractDecorator">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="widgetContainer"
+        eType="ecore:EClass ../../com.wireframesketcher.model/model/model.ecore#//WidgetContainer"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="StoryboardDecorator"
+      eSuperTypes="#//AbstractDecorator">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="storyboard"
+        eType="ecore:EClass ../../com.wireframesketcher.model/model/model.ecore#//story/Storyboard"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="Action"
+      abstract="true"/>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="StateAction">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="stateMutators"
+        upperBound="-1"
+        eType="#//StateMutator"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="StateMutator">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="stateFeature"
+        eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EAttribute"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="stateFeatureValue"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="ScriptAction"
+      eSuperTypes="#//Action">
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="script"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="EventScriptAction"
+      eSuperTypes="#//ScriptAction">
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="eventName"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="BehaviorProperties">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="actions"
+        upperBound="-1"
+        eType="#//Action"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="ViewRule">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="stateFeature"
+        eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EAttribute"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="stateFeatureValue"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="viewProperty"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="viewPropertyType"
+        eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EDataType"/>
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="viewPropertyValue"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="ViewProperties">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="viewRules"
+        upperBound="-1"
+        eType="#//ViewRule"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="DataProperties">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="model"
+        eType="ecore:EClass ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EClass"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="DecoratorModel">
+    <eStructuralFeatures
+        xsi:type="ecore:EReference"
+        name="decorators"
+        upperBound="-1"
+        eType="#//AbstractDecorator"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers
+      xsi:type="ecore:EClass"
+      name="WidgetData">
+    <eStructuralFeatures
+        xsi:type="ecore:EAttribute"
+        name="widgetId"
+        eType="ecore:EDataType ../../org.eclipse.emf.ecore/model/Ecore.ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

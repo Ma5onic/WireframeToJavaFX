@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/screenDecorator/src" modelPluginID="screenDecorator"
+    modelName="ScreenDecorator" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="7.0" copyrightFields="false"
+    usedGenPackages="../../org.eclipse.emf.ecore/model/Ecore.genmodel#//ecore ../../com.wireframesketcher.model/model/model.genmodel#//model"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>screenDecorator.ecore</foreignModel>
+  <genPackages prefix="ScreenDecorator" basePackage="no.fhl" disposableProviderFactory="true"
+      ecorePackage="screenDecorator.ecore#/">
+    <genClasses ecoreClass="screenDecorator.ecore#//AbstractDecorator"/>
+    <genClasses ecoreClass="screenDecorator.ecore#//WidgetDecorator">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference screenDecorator.ecore#//WidgetDecorator/widget"/>
+    </genClasses>
+    <genClasses ecoreClass="screenDecorator.ecore#//WidgetContainerDecorator">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference screenDecorator.ecore#//WidgetContainerDecorator/widgetContainer"/>
+    </genClasses>
+    <genClasses ecoreClass="screenDecorator.ecore#//StoryboardDecorator">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference screenDecorator.ecore#//StoryboardDecorator/storyboard"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="screenDecorator.ecore#//Action"/>
+    <genClasses ecoreClass="screenDecorator.ecore#//StateAction">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenDecorator.ecore#//StateAction/stateMutators"/>
+    </genClasses>
+    <genClasses ecoreClass="screenDecorator.ecore#//StateMutator">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference screenDecorator.ecore#//StateMutator/stateFeature"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute screenDecorator.ecore#//StateMutator/stateFeatureValue"/>
+    </genClasses>
+    <genClasses ecoreClass="screenDecorator.ecore#//ScriptAction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute screenDecorator.ecore#//ScriptAction/script"/>
+    </genClasses>
+    <genClasses ecoreClass="screenDecorator.ecore#//EventScriptAction">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute screenDecorator.ecore#//EventScriptAction/eventName"/>
+    </genClasses>
+    <genClasses ecoreClass="screenDecorator.ecore#//BehaviorProperties">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenDecorator.ecore#//BehaviorProperties/actions"/>
+    </genClasses>
+    <genClasses ecoreClass="screenDecorator.ecore#//ViewRule">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference screenDecorator.ecore#//ViewRule/stateFeature"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute screenDecorator.ecore#//ViewRule/stateFeatureValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute screenDecorator.ecore#//ViewRule/viewProperty"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference screenDecorator.ecore#//ViewRule/viewPropertyType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute screenDecorator.ecore#//ViewRule/viewPropertyValue"/>
+    </genClasses>
+    <genClasses ecoreClass="screenDecorator.ecore#//ViewProperties">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenDecorator.ecore#//ViewProperties/viewRules"/>
+    </genClasses>
+    <genClasses ecoreClass="screenDecorator.ecore#//DataProperties">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference screenDecorator.ecore#//DataProperties/model"/>
+    </genClasses>
+    <genClasses ecoreClass="screenDecorator.ecore#//DecoratorModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference screenDecorator.ecore#//DecoratorModel/decorators"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
