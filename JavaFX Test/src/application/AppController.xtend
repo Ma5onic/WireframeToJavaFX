@@ -27,7 +27,7 @@ import org.eclipse.emf.ecore.EPackage
 class AppController extends Application {
 
 	/* The name of the initial fxml file */
-	String fileName = "login"
+	String fileName =  "screen1" // "login" //
 
 	/** A resource set with all loaded resources */
 	ResourceSet resourceSet
@@ -105,6 +105,7 @@ class AppController extends Application {
 			val name = FilenameUtils.getBaseName(it.URI.path)
 			if (name + "." + it.URI.fileExtension == fileName + ".screen") {
 				it.contents.filter(Screen).forEach [
+					
 					map.put("navigatorMap", fxmlGenerator.generateNavigatorMap(it))
 				]
 			}
@@ -163,7 +164,7 @@ class AppController extends Application {
 		scene = new Scene(getRoot)
 
 		// Save the scene in the map along with the screen file checksum
-		val fxmlFile = new File("/Users/f/Dropbox/Skole/workspace/JavaFX Test/src/application/" + fileName + ".fxml")
+		val fxmlFile = new File(Constants.FXML_DIRECTORY + fileName + ".fxml")
 		if (!fxmlFile.exists) {
 			throw new FileNotFoundException(
 				"Generate should have created the file " + fxmlFile + ".fxml - Check write permissions")
@@ -180,12 +181,11 @@ class AppController extends Application {
 
 		// Use reflection and invoke the evaluteRules method for this controller
 		val fileResources = resourceSetHandler.resourceSet.resources
-		val resourceList = fileResources.filter[FilenameUtils.getName(it.URI.path) == fileName + ".screen"]
-
+		val resource = fileResources.filter[FilenameUtils.getName(it.URI.path) == fileName + ".screen"].get(0)
 		val finalConstructor = screenNavigatorController
 		class.methods.forEach [
 			if (it.name == "evaluateRules") {
-				it.invoke(finalConstructor, resourceList)
+				it.invoke(finalConstructor, resource)
 			}
 		]
 

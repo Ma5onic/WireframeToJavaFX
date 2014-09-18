@@ -24,6 +24,7 @@ import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.xmi.XMLResource
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl
+import no.fhl.screenDecorator.WidgetContainerDecorator
 
 /** A singleton class that parse and generate screendecorator models */
 class ScreenDecoratorGenerator {
@@ -112,14 +113,9 @@ class ScreenDecoratorGenerator {
 		}
 	}
 
-
+	/**  Generates styles (view rules) for the master. Supports several styles. */
 	def void generateDecoratorStyle(String[] dataString, Master master, HashMap<Master, Pair<Arrow, Widget>> masterMap) {
-			
-		/*
-		 * 		if newItemHidden is true
-		 * 		set visable to true
-		 */
-				 
+
 		var String feature = null
 		var String featureValue = null
 		var String property = null
@@ -127,41 +123,67 @@ class ScreenDecoratorGenerator {
 
 		val widget = masterMap.get(master)?.value
 		try {
-			for (string : dataString) {
+			var scriptStringList = newArrayList(dataString)
 
-				val splitString = string.split(" is ")
-				if (splitString.get(0).startsWith("if")) {
-					feature = splitString.get(0).split(" ").get(1).trim
-					featureValue = splitString.get(1).trim
-				} else if (splitString.get(0).startsWith("set")) {
-					property = splitString.get(0).split(" ").get(1)
-					propertyValue = splitString.get(0).split(" ").get(3)
+			// Remove any blank lines
+			for (i : 0 ..< scriptStringList.size) {
+				if (scriptStringList.get(i).trim.empty == true) {
+
+					// Remove the empty line
+					scriptStringList.remove(i.intValue)
 				}
 			}
-//			println("feature      : " + feature)
-//			println("featureValue : " + featureValue)
-//			println("property     : " + property)
-//			println("propertyValue: " + propertyValue)
-		
-			if (widget != null) {
-				// This is a widget style (viewRule for the widget)
-				
-				createViewRuleForWidget(widget, feature, featureValue, property, propertyValue)
 
+			var scriptPairList = newArrayList
+
+			// If there's an odd number of scripts, do not parse anything.
+			if ((scriptStringList.size % 2) != 0) {
+				println("Error: Unable to parse decorator style for widget \"" + widget.text + 
+					"\". Odd number of lines. ")
+				return
 			} else {
-				// This is a screen style (viewRule for the screen)
-				
-				
-				
+
+				// Add the pairs to a list
+				for (var i = 0; i < scriptStringList.size; i += 2) {
+					var scriptPair = scriptStringList.get(i) -> scriptStringList.get(i + 1)
+					scriptPairList.add(scriptPair)
+				}
+
 			}
+			// For each pair, parse the values.
+			for (scriptPair : scriptPairList) {
+				
+				val ifString = scriptPair.key.split(" is ")
+				feature = ifString.get(0).split(" ", 4).get(1).trim
+				featureValue = ifString.get(1).trim
+			
+				val setString = scriptPair.value.split(" is ")
+				property = setString.get(0).split(" ").get(1)
+				propertyValue = setString.get(0).split(" ", 4).get(3)
+				// Convert double quotes and empty to an empty string 
+				if (featureValue == "\"\"" || featureValue == "empty") {
+					featureValue = ""
+				} else if (featureValue == "\" \"") {
+					// Whitespace
+					featureValue = " "
+				}
+
+				if (widget != null) {
+					// This is a widget style (viewRule for the widget)
+					createViewRuleForWidget(widget, feature, featureValue, property, propertyValue)
+
+				} else {
+					// This is a screen style (viewRule for the screen)
+					val screen = master.eContainer as Screen
+					createViewRuleForScreen(screen, feature, featureValue, property, propertyValue)
+				}
+			}
+
 		} catch (Exception e) {
-			e.printStackTrace
-
-			// array out of bounds most likely.
 			println("Error parsing Style (view rule)")
+			e.printStackTrace
+			// array out of bounds from failed parsing, most likely.
 		}
-
-
 	}
 
 	def getStateFeatureFromNameUsingScreen(String featureName, Screen screen){
@@ -183,6 +205,7 @@ class ScreenDecoratorGenerator {
 		return result as EAttribute
 	}
 	
+		
 	def getStateFeatureFromNameUsingWidget(String featureName, Widget widget){
 		val screen = widget.eContainer as Screen
 		val screenResourcePath = widget.eContainer.eResource.URI.path
@@ -223,7 +246,76 @@ class ScreenDecoratorGenerator {
 		String propertyValue){
 		val screenResourcePath = screen.eResource.URI.path
 		val screenName = FilenameUtils.getBaseName(screenResourcePath).toLowerCase
-		// TODO: finish
+		val factory = ScreenDecoratorFactory.eINSTANCE
+		var foundWidgetContainerDecorator = false
+		
+		val decoratorResource = getDecoratorResourceForScreenName(screenName)
+		if (decoratorResource != null) {
+
+			val stateFeature = getStateFeatureFromNameUsingScreen(feature, screen)
+			if (stateFeature == null) {
+				println("Unable to find state feature " + feature + " for view rule. Screen: " + screen)
+				return null
+			}
+			val decoratorModel = decoratorResource.contents.get(0) as DecoratorModel
+			for (widgetContainerDecorator : decoratorModel.decorators) {
+				if (widgetContainerDecorator instanceof WidgetContainerDecorator) {
+					if (widgetContainerDecorator.widgetContainer == screen) {
+						foundWidgetContainerDecorator = true
+
+						// Check if the view rule exist.
+						var viewRuleAlreadyExist = false
+						for (viewRule : widgetContainerDecorator.viewRules) {
+							if (viewRule.stateFeature == feature && viewRule.stateFeatureValue == featureValue &&
+								viewRule.viewProperty == property && viewRule.viewPropertyValue == propertyValue) {
+								viewRuleAlreadyExist = true
+							}
+						}
+						if (viewRuleAlreadyExist == false) {
+							val viewRule = factory.createViewRule
+							viewRule.viewProperty = property
+							viewRule.viewPropertyValue = propertyValue
+							viewRule.stateFeature = stateFeature
+							viewRule.stateFeatureValue = featureValue
+							// TODO: Støtt flere typer
+							if (propertyValue == "true" || propertyValue == "false"){
+								viewRule.viewPropertyType = EcorePackage.Literals.EBOOLEAN
+							} else {
+								viewRule.viewPropertyType = EcorePackage.Literals.ESTRING
+							}
+							widgetContainerDecorator.viewRules.add(viewRule)
+
+						}
+					}
+				}
+
+			}
+			if (foundWidgetContainerDecorator == false) {
+
+				// Create the widget
+				val widgetContainerDecorator = factory.createWidgetContainerDecorator
+				widgetContainerDecorator.widgetContainer = screen
+				if (ecoreModelForScreenExist(screen) == false) {
+					widgetContainerDecorator.model = getEcoreModelForScreen(screen)
+				}
+
+				val viewRule = factory.createViewRule
+				viewRule.viewProperty = property
+				viewRule.viewPropertyValue = propertyValue
+				viewRule.stateFeature = stateFeature
+				viewRule.stateFeatureValue = featureValue
+				// TODO: Støtt flere typer
+				if (propertyValue == "true" || propertyValue == "false"){
+					viewRule.viewPropertyType = EcorePackage.Literals.EBOOLEAN
+				} else {
+					viewRule.viewPropertyType = EcorePackage.Literals.ESTRING
+				}
+
+				widgetContainerDecorator.viewRules.add(viewRule)
+				decoratorModel.decorators.add(widgetContainerDecorator)
+			}
+			decoratorResource.save(null)
+		}
 	}
 	
 	def createViewRuleForWidget(Widget widget, String feature, String featureValue, String property,
@@ -411,6 +503,13 @@ class ScreenDecoratorGenerator {
 		}
 	}
 	
+	def getEcoreModelForScreen(Screen screen){
+		val resource = getEcoreResourceForScreen(screen)
+		if (resource != null){
+			return resource.contents?.get(0) as EClass
+		}
+		return null
+	}
 	
 	def getEcoreModelForWidget(Widget widget){
 		val resource = getEcoreResourceForWidget(widget)
@@ -419,6 +518,15 @@ class ScreenDecoratorGenerator {
 		}
 		return null
 	}
+	
+	def getEcoreResourceForScreen(Screen screen){
+		val screenResourcePath = screen.eResource.URI.path
+		val screenName = FilenameUtils.getBaseName(screenResourcePath).toLowerCase
+		var ecoreFilePath = Constants.PROJECT_DIR + Constants.SUB_PROJECT_NAME 
+			+ "/"+ screenName + ".ecore"
+		return getEcoreResourceForPath(ecoreFilePath)
+	}
+	
 	def getEcoreResourceForWidget(Widget widget){
 		val screenResourcePath = widget.eContainer.eResource.URI.path
 		val screenName = FilenameUtils.getBaseName(screenResourcePath).toLowerCase
@@ -435,6 +543,15 @@ class ScreenDecoratorGenerator {
 			return resources.get(0)
 		}
 		return null
+	}
+	
+	private def ecoreModelForScreenExist(Screen screen){
+		val screenResourcePath = screen.eResource.URI.path
+		val screenName = FilenameUtils.getBaseName(screenResourcePath).toLowerCase
+		var ecoreFilePath = Constants.PROJECT_DIR + Constants.SUB_PROJECT_NAME 
+			+ "/"+ screenName + ".ecore"
+			
+		return ecoreDataFileExist(ecoreFilePath)
 	}
 	
 	private def ecoreModelForWidgetExist(Widget widget){
@@ -547,9 +664,7 @@ class ScreenDecoratorGenerator {
 		val rootPackage = ecoreFactory.createEPackage
 		rootPackage.name = name
 		rootPackage.nsPrefix = name 
-		// TODO:  fix the nsURI   
-		rootPackage.nsURI = "wireframing-tutorial." + name
-
+		rootPackage.nsURI = Constants.SUB_PROJECT_NAME + "." + name
 		return rootPackage
 	}
 	

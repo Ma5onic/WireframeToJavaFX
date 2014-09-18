@@ -4,62 +4,42 @@
         <Insets bottom="25" left="25" right="25" top="25"/>
     </padding>
     <children>
-        <Button GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="3" GridPane.rowSpan="2" id="11" onAction="#handleButtonAction11" style="-fx-base:white;" text="&lt; Back"/>
-        <Label GridPane.columnIndex="10" GridPane.columnSpan="3" GridPane.rowIndex="1" GridPane.rowSpan="4" id="12" rotate="0" text="Muniapp" textFill="black">
+        <Button GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="3" GridPane.rowSpan="2" id="11" onAction="#handleActionEvent11" style="-fx-base:white;" text="&lt; Back"/>
+        <Label GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="4" id="12" onMousePressed="#handleMouseEvent12" rotate="0" text="Muniapp" textFill="black">
             <font>
                 <Font name="System Bold" size="18"/>
             </font>
         </Label>
-        <Label GridPane.columnIndex="7" GridPane.columnSpan="7" GridPane.rowIndex="6" GridPane.rowSpan="1" id="27" rotate="0" text="Add new event" textFill="black">
+        <Label GridPane.columnIndex="5" GridPane.columnSpan="5" GridPane.rowIndex="6" GridPane.rowSpan="1" id="27" onMousePressed="#handleMouseEvent27" rotate="0" text="Add new event" textFill="black">
             <font>
                 <Font name="System Regular" size="16"/>
             </font>
         </Label>
-        <Button GridPane.columnIndex="17" GridPane.columnSpan="3" GridPane.rowIndex="2" GridPane.rowSpan="2" id="44" onAction="#handleButtonAction44" style="-fx-base:white;" text="Save"/>
-        <TextField GridPane.columnIndex="12" GridPane.columnSpan="9" GridPane.rowIndex="8" GridPane.rowSpan="1" id="46" prefWidth="163" text="=${eventName}"/>
-        <Label GridPane.columnIndex="2" GridPane.columnSpan="5" GridPane.rowIndex="8" GridPane.rowSpan="1" id="47" rotate="0" text="Event name:" textFill="black">
+        <Button GridPane.columnIndex="12" GridPane.columnSpan="3" GridPane.rowIndex="2" GridPane.rowSpan="2" id="44" onAction="#handleActionEvent44" style="-fx-base:white;" text="Save"/>
+        <TextField GridPane.columnIndex="8" GridPane.columnSpan="8" GridPane.rowIndex="8" GridPane.rowSpan="1" id="46" onAction="#handleActionEvent46" prefWidth="163" text="=${eventName}"/>
+        <Label GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="8" GridPane.rowSpan="1" id="47" onMousePressed="#handleMouseEvent47" rotate="0" text="Event name:" textFill="black">
             <font>
                 <Font name="System Regular" size="12"/>
             </font>
         </Label>
-        <Label GridPane.columnIndex="2" GridPane.columnSpan="2" GridPane.rowIndex="12" GridPane.rowSpan="1" id="48" rotate="0" text="Time:" textFill="black">
+        <Label GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="12" GridPane.rowSpan="1" id="48" onMousePressed="#handleMouseEvent48" rotate="0" text="Time:" textFill="black">
             <font>
                 <Font name="System Regular" size="12"/>
             </font>
         </Label>
-        <Label GridPane.columnIndex="2" GridPane.columnSpan="1" GridPane.rowIndex="10" GridPane.rowSpan="1" id="52" rotate="0" text="Date:" textFill="black">
+        <Label GridPane.columnIndex="1" GridPane.columnSpan="1" GridPane.rowIndex="10" GridPane.rowSpan="1" id="52" onMousePressed="#handleMouseEvent52" rotate="0" text="Date:" textFill="black">
             <font>
                 <Font name="System Regular" size="12"/>
             </font>
         </Label>
-        <Separator GridPane.columnIndex="2" GridPane.columnSpan="19" GridPane.rowIndex="14" GridPane.rowSpan="1" id="56" prefWidth="294"/>
-        <TextField GridPane.columnIndex="15" GridPane.columnSpan="3" GridPane.rowIndex="12" GridPane.rowSpan="1" id="57" prefWidth="33" text="11"/>
-        <TextField GridPane.columnIndex="19" GridPane.columnSpan="2" GridPane.rowIndex="12" GridPane.rowSpan="1" id="58" prefWidth="33" text="03"/>
-        <TextField GridPane.columnIndex="14" GridPane.columnSpan="7" GridPane.rowIndex="10" GridPane.rowSpan="1" id="62" prefWidth="96" text="11/06/14"/>
-        <Button GridPane.columnIndex="8" GridPane.columnSpan="5" GridPane.rowIndex="16" GridPane.rowSpan="1" id="64" onAction="#handleButtonAction64" style="-fx-base:#ff0000;" text="Delete task"/>
-        <Label GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="18" GridPane.rowSpan="1" id="69" rotate="0" text="loggeIn =" textFill="black">
-            <font>
-                <Font name="System Regular" size="12"/>
-            </font>
-        </Label>
-        <Label GridPane.columnIndex="11" GridPane.columnSpan="3" GridPane.rowIndex="18" GridPane.rowSpan="1" id="70" rotate="0" text="\${loggedIn}" textFill="black">
-            <font>
-                <Font name="System Regular" size="12"/>
-            </font>
-        </Label>
-        <Label GridPane.columnIndex="1" GridPane.columnSpan="8" GridPane.rowIndex="20" GridPane.rowSpan="1" id="72" rotate="0" text="screen3string = " textFill="black">
-            <font>
-                <Font name="System Regular" size="12"/>
-            </font>
-        </Label>
-        <Label GridPane.columnIndex="11" GridPane.columnSpan="5" GridPane.rowIndex="20" GridPane.rowSpan="1" id="73" rotate="0" text="\${screen3string}" textFill="black">
-            <font>
-                <Font name="System Regular" size="12"/>
-            </font>
-        </Label>
+        <Separator GridPane.columnIndex="1" GridPane.columnSpan="15" GridPane.rowIndex="14" GridPane.rowSpan="1" id="56" prefWidth="294"/>
+        <TextField GridPane.columnIndex="11" GridPane.columnSpan="2" GridPane.rowIndex="12" GridPane.rowSpan="1" id="57" onAction="#handleActionEvent57" prefWidth="33" text="11"/>
+        <TextField GridPane.columnIndex="14" GridPane.columnSpan="2" GridPane.rowIndex="12" GridPane.rowSpan="1" id="58" onAction="#handleActionEvent58" prefWidth="33" text="03"/>
+        <TextField GridPane.columnIndex="10" GridPane.columnSpan="6" GridPane.rowIndex="10" GridPane.rowSpan="1" id="62" onAction="#handleActionEvent62" prefWidth="96" text="11/06/14"/>
+        <Button GridPane.columnIndex="6" GridPane.columnSpan="3" GridPane.rowIndex="16" GridPane.rowSpan="1" id="64" onAction="#handleActionEvent64" style="-fx-base:#ff0000;" text="Delete task"/>
     </children>
     <columnConstraints>
-        <ColumnConstraints minWidth="15"/>
+        <ColumnConstraints minWidth="25"/>
         <ColumnConstraints/>
         <ColumnConstraints/>
         <ColumnConstraints/>
@@ -68,14 +48,9 @@
         <ColumnConstraints/>
         <ColumnConstraints/>
         <ColumnConstraints/>
-        <ColumnConstraints minWidth="11"/>
         <ColumnConstraints/>
         <ColumnConstraints/>
         <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints minWidth="12"/>
         <ColumnConstraints/>
         <ColumnConstraints minWidth="12"/>
         <ColumnConstraints/>
@@ -98,10 +73,6 @@
         <RowConstraints minHeight="34"/>
         <RowConstraints/>
         <RowConstraints minHeight="26"/>
-        <RowConstraints/>
-        <RowConstraints minHeight="52"/>
-        <RowConstraints/>
-        <RowConstraints minHeight="18"/>
         <RowConstraints/>
     </rowConstraints>
 </GridPane>

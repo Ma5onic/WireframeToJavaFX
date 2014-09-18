@@ -8,18 +8,16 @@ import java.io.FileNotFoundException
 import java.lang.reflect.Method
 import java.nio.file.Paths
 import java.util.HashMap
-import javafx.event.ActionEvent
+import javafx.event.Event
 import javafx.fxml.FXMLLoader
 import javafx.scene.Node
 import javafx.scene.Parent
 import javafx.scene.Scene
-import javafx.scene.control.Button
-import javafx.scene.control.Label
-import javafx.scene.control.TextField
 import javafx.stage.Stage
 import no.fhl.screenDecorator.AbstractDecorator
 import no.fhl.screenDecorator.EventScriptAction
 import no.fhl.screenDecorator.ScriptAction
+import no.fhl.screenDecorator.WidgetContainerDecorator
 import no.fhl.screenDecorator.WidgetDecorator
 import org.apache.commons.io.FilenameUtils
 import org.eclipse.emf.common.util.URI
@@ -53,40 +51,48 @@ abstract class AbstractNavigatorController {
 	/**  Populates the statically generated navigator map */
 	abstract def void initNavigatorMap()
 
-	def performActionForWidgetId(Iterable<Resource> resourceList, String widgetId) {
-		resourceList.forEach [
-			it.contents.filter(Screen).forEach [
-				it.widgets.filter[it.id == Long.parseLong(widgetId)].forEach [ widget |
-					// This is the widget we are looking for
-					val decorator = appController.decoratorMap.get(widget) as WidgetDecorator
-					if (decorator != null) { // There is a decorator for the widget
-						decorator.actions.forEach [
-							if (it instanceof EventScriptAction) {
-								setScriptFeatureForWidget(script, widget)
-							} else if (it instanceof ScriptAction) {
-								setScriptFeatureForWidget(it.script, widget)
-							}
-						]
+	def performActionForWidgetId(Resource resource, String widgetId) {
+		if (widgetId == "-1" || widgetId == null) {
+			return
+		}
+		resource.contents.filter(Screen).forEach [
+			it.widgets.filter[it.id == Long.parseLong(widgetId)].forEach [ widget |
+				// This is the widget we are looking for
+				val decorator = appController.decoratorMap.get(widget) as WidgetDecorator
+				if (decorator != null) { // There is a decorator for the widget
+					decorator.actions.forEach [
+						if (it instanceof EventScriptAction) {
+							setScriptFeatureForWidget(script, widget)
+						} else if (it instanceof ScriptAction) {
+							setScriptFeatureForWidget(it.script, widget)
+						}
+					]
 
-					}
-				]
+				}
 			]
 		]
 	}
-
+	
+	
 	/** Returns the invoked value of <code>propertyName</code> on <code>node</code><br>
 	 * Returns <code>PropertyResult.NO_SUCH_METHOD</code> if the method does not exist. */
 	def getPropertyForNode(Node node, String propertyName) {
-		val method = node.class.getMethod("get" + propertyName.toFirstUpper)
-		var Object result
 		try {
+			val method = node.class.getMethod("get" + propertyName.toFirstUpper)
+			var Object result
+			try {
 
-			result = method.invoke(node)
-		} catch (Exception e) {
-			println("getProperty() No such method: " + "get" + propertyName + e.stackTrace)
+				result = method.invoke(node)
+			} catch (Exception e) {
+				println("getProperty() No such method: " + "get" + propertyName + e.stackTrace)
+				return PropertyResult.NO_SUCH_METHOD
+			}
+			return result
+
+		} catch (NoSuchMethodException e) {
 			return PropertyResult.NO_SUCH_METHOD
 		}
-		return result
+
 	}
 
 	/** Invokes the method <code>propertyName</code> on <code>node</code> using <code>propertyValue</code><br>
@@ -112,7 +118,6 @@ abstract class AbstractNavigatorController {
 			println("Could not find the method " + "set" + propertyName.toFirstUpper + "(" + argClass + " arg)")
 			return null
 		}
-
 		result = method.invoke(node, viewValue)
 			
 		} catch (NoSuchMethodException e) {
@@ -144,81 +149,102 @@ abstract class AbstractNavigatorController {
 		return true
 	}
 
-	def evaluateRules(Iterable<Resource> resourceList) {
+	def evaluateRules(Resource resource) {
 
-		resourceList.forEach [
-			it.contents.filter(Screen).forEach [
-				it.widgets.forEach [ widget |
-					// If the widget has text in the format =${value}
-					// then blank it out
-					if (widget.text.startsWith("=${") && widget.text.endsWith("}")) {
-						val node = appController.root.lookup("#" + widget.id)
-						val propertyName = "text"
-						if (node != null) {
-							setPropertyForNode(node, propertyName, EcorePackage.eINSTANCE.EString, "")
+		resource.contents.filter(Screen).forEach [
+				evaluateWidgetDecoratorForScreen(it)
+				evaluateWidgetContainerDecoratorForScreen(it)
+			]
+		
+	}
+
+	def evaluateWidgetContainerDecoratorForScreen(Screen screen){
+		val decorator = appController.decoratorMap.get(screen) as WidgetContainerDecorator
+		if (decorator != null) {
+
+			// There is a decorator for the screen
+			decorator.viewRules.forEach [
+				val value = resolveValueForFeature(it.stateFeature.name, screen)
+				// If this rule is relevant, or its value is wildcard
+				if (value == it.stateFeatureValue || it.stateFeatureValue == "*") {
+
+					// Wildcard value means it should be performed regardless of the stateFeatureValue
+					// It can be used together with another specific value.
+					// E.g if textFeature = "password", set style="green".
+					// Adding textFeature = "*", set style = "" before the rule will reset the style 
+
+					val node = appController.root.lookup("#gridPane1" )
+					if (node != null) {
+
+						val result = setPropertyForNode(node, it.viewProperty, it.viewPropertyType,
+							it.viewPropertyValue)
+						if (result == PropertyResult.NO_SUCH_METHOD) {
+							println(
+								"No such method: " + "set" + it.viewProperty.toFirstUpper + " for " + node)
+						} else if (result == PropertyResult.SUCCESS) {
+							println(
+								"Found the method: " + "set" + it.viewProperty.toFirstUpper + " for " + node)
 						}
 					}
-					val decorator = appController.decoratorMap.get(widget) as WidgetDecorator
-					if (decorator != null) { // There is a decorator for the widget
-						decorator.viewRules.forEach [
-							val value = resolveValueForFeature(it.stateFeature.name, widget)
-							// If this rule is relevant, or its value is wildcard
-							if (value == it.stateFeatureValue || it.stateFeatureValue == "*") {
-								// Wildcard value means it should be performed regardless of the stateFeatureValue
-								// It can be used together with another specific value.
-								// E.g if textFeature = "password", set style="green".
-								// Adding textFeature = "*", set style = "" before the rule will reset the style 
-								
-								// Find the javafx object
-								val node = appController.root.lookup("#" + decorator.widget.id)
-								if (node != null) {
+				}
+			]
+		} 
+	}
+	def evaluateWidgetDecoratorForScreen(Screen screen) {
+		screen.widgets.forEach [ widget |
+			// If the widget has text in the format =${value}
+			// then blank it out
+			if (widget.text.startsWith("=${") && widget.text.endsWith("}")) {
+				val node = appController.root.lookup("#" + widget.id)
+				val propertyName = "text"
+				if (node != null) {
+					setPropertyForNode(node, propertyName, EcorePackage.eINSTANCE.EString, "")
+				}
+			}
+			val decorator = appController.decoratorMap.get(widget) as WidgetDecorator
+			if (decorator != null) {
 
-									val result = setPropertyForNode(node, it.viewProperty, it.viewPropertyType,
-										it.viewPropertyValue)
-									if (result == PropertyResult.NO_SUCH_METHOD) {
-										println(
-											"No such method: " + "set" + it.viewProperty.toFirstUpper + " for " + node)
-									} else if (result == PropertyResult.SUCCESS) {
-										println(
-											"Found the method: " + "set" + it.viewProperty.toFirstUpper + " for " + node)
-									}
+				// There is a decorator for the widget
+				decorator.viewRules.forEach [
+					val value = resolveValueForFeature(it.stateFeature.name, widget)
+					// If this rule is relevant, or its value is wildcard
+					if (value == it.stateFeatureValue || it.stateFeatureValue == "*") {
 
-
-								}
-
-							}
-						]
-						
-					} if (widget.text.resolvable) {
-						// There is no decorator for this widget, but it has a special text format
-						// go through the scope (handled automatically by resolveValueForFeature)
-						//  and look for the feature text (e.g newItemString2)
-
-						// The JavaFX representation of the widget
-						val node = appController.root.lookup("#" + widget.id)
+						// Wildcard value means it should be performed regardless of the stateFeatureValue
+						// It can be used together with another specific value.
+						// E.g if textFeature = "password", set style="green".
+						// Adding textFeature = "*", set style = "" before the rule will reset the style 
+						// Find the javafx object
+						val node = appController.root.lookup("#" + decorator.widget.id)
 						if (node != null) {
-							val text = resolveValueForFeature(widget.text, widget)
-							setPropertyForNode(node, "text", EcorePackage.eINSTANCE.EString, text)
+
+							val result = setPropertyForNode(node, it.viewProperty, it.viewPropertyType,
+								it.viewPropertyValue)
+							if (result == PropertyResult.NO_SUCH_METHOD) {
+								println(
+									"No such method: " + "set" + it.viewProperty.toFirstUpper + " for " + node)
+							} else if (result == PropertyResult.SUCCESS) {
+								println(
+									"Found the method: " + "set" + it.viewProperty.toFirstUpper + " for " + node)
+							}
 						}
 					}
 				]
-			]
+			}
+			if (widget.text.resolvable) {
+
+				// There is no decorator for this widget, but it has a special text format
+				// go through the scope (handled automatically by resolveValueForFeature)
+				//  and look for the feature text (e.g newItemString2)
+				// The JavaFX representation of the widget
+				val node = appController.root.lookup("#" + widget.id)
+				if (node != null) {
+					val text = resolveValueForFeature(widget.text, widget)
+					setPropertyForNode(node, "text", EcorePackage.eINSTANCE.EString, text)
+				}
+			}
 		]
 	}
-
-//	/** Returns the resource matching the ecore model */
-//	def Resource getResourceForXMIUsingModel(EClass model) {
-//		val ecorePathFileList = appController.resourceSetHandler.ecorePathFileList
-//		val fullPath = "/" + FilenameUtils.getPath(ecorePathFileList.get(0))
-//
-//		// Get the resource. The model name is capitalized so force lower case.
-//		var resources = appController.resourceSetHandler.resourceSet.resources.filter[
-//			it.URI == URI::createFileURI(fullPath + model.name.toLowerCase + "." + "xmi")]
-//		if (resources.length > 0) {
-//			return resources.get(0)
-//		}
-//		return null
-//	}
 
 	/** Returns the XMI resource for the application as defined in <code>Constants.SUB_PROJECT_NAME</code> */
 	def getXMIResource() {
@@ -349,12 +375,26 @@ abstract class AbstractNavigatorController {
 					}
 				}
 			}
-			if (scriptValue == "bool"){
-				// This is a special boolean value which flip its value each time.
+			if (scriptValue == "bool" || scriptValue == "toggle"){
+				// bool as value sets the variable's value to the opposite boolean value. 
+				// If variable is false, then it is set to true and vice versa.
 				val returnString = resolveValueForModelUsingResource(scriptFeature, model, resource)
 					
 				if (returnString == "false") resolvedScriptValue = "true"
 				if (returnString == "true") resolvedScriptValue = "false"
+			}
+			// Allow simple integer increments
+			if (scriptValue == "increment" || scriptValue == "count" || scriptValue == "inc"){
+				
+				val returnString = resolveValueForModelUsingResource(scriptFeature, model, resource)
+				try {
+					var integer = Integer.parseInt(returnString)
+					integer += 1
+					resolvedScriptValue = integer.toString
+					println("Incrementing... " + resolvedScriptValue)
+				} catch (Exception e){
+					println("Unable to increment integer value: " + returnString)
+				}
 			}
 			val feature = model.getEStructuralFeature(scriptFeature)
 			if (feature != null) {
@@ -362,6 +402,10 @@ abstract class AbstractNavigatorController {
 
 					// This is a boolean
 					eObject.eSet(feature, Boolean.valueOf(resolvedScriptValue))
+				} else if (feature.EType == EcorePackage.eINSTANCE.EInt) {
+
+					// This is an int
+					eObject.eSet(feature, Integer.valueOf(resolvedScriptValue))
 				} else if (feature.EType == EcorePackage.eINSTANCE.EString) {
 
 					// This is a String (or something else)
@@ -389,6 +433,38 @@ abstract class AbstractNavigatorController {
 	/** If the string is a structural feature than resolve it, else return the string.
 	 * The format is '${nameOfStructuralFeature}', but it will also parse 'nameOfStructuralFeature'
 	 */
+	 def String resolveValueForFeature(String string, Screen screen) {
+	 		var model = getModelForScreen(screen, null)
+		var returnString = string
+		if (string == null) {
+			println("resolveValueForFeature: String is null")
+			return null
+		}
+
+		val resource = getXMIResource
+		if (resource == null) {
+			println("Resource is null")
+			return string
+		}
+
+		// Check the whole scope starting with the widget->screen->storyboard
+		do {
+			returnString = resolveValueForModelUsingResource(string, model, resource)
+			// If the strings are different the variable has been resolved
+			if (returnString != string) { // returnString != null && 
+				return returnString
+			}
+
+			// The strings are equal so we check one level up the scope
+			model = getModelForScreen(screen, model)
+
+		// If model is null, then there are no more models in the scope to check
+		} while (model != null)
+
+		// This is not a feature inside the scope. Return the unresolved string
+		return string
+	 }
+	 
 	def String resolveValueForFeature(String string, Widget widget) {
 		var model = getModelForWidget(widget, null)
 		var returnString = string
@@ -457,11 +533,12 @@ abstract class AbstractNavigatorController {
 			try {
 				var value = eObject.eGet(feature)
 				if (feature.EType == EcorePackage.eINSTANCE.EBoolean) {
-
 					// Convert boolean to string
 					return String.valueOf(value)
 				} else if (feature.EType == EcorePackage.eINSTANCE.EString) {
 					return value as String
+				} else if (feature.EType == EcorePackage.eINSTANCE.EInt) {
+					return value.toString
 				}
 
 			} catch (Exception e) {
@@ -470,15 +547,12 @@ abstract class AbstractNavigatorController {
 		}
 		return string
 	}
-
-	def getModelForWidget(Widget widget, EClass model){
-		
+	
+	def getModelForScreen(Screen screen, EClass model){
 		val xmiResource = XMIResource
-		val screenName = FilenameUtils.getBaseName(widget.eContainer.eResource.URI.path).toLowerCase
-		val widgetClassName = screenName + "Id" + widget.id 
+		val screenName = FilenameUtils.getBaseName(screen.eResource.URI.path).toLowerCase
 		var EClass eClass = null
 		var EClass screenClass = null
-		var EClass widgetClass = null
 		var EClass storyboardClass = null
 		
 		// Find the storyboard / app class
@@ -504,6 +578,51 @@ abstract class AbstractNavigatorController {
 		if (model == screenClass){
 			return storyboardClass
 		}
+
+		if (screenClass == null) {
+			if (storyboardClass == null) {
+				return null
+			} else {
+				return storyboardClass
+			}
+		} else {
+			return screenClass
+		}
+	}
+	/** Returns the model for the widget. If the same model is found as the one provied, null is returned. */
+	def getModelForWidget(Widget widget, EClass model){
+		
+		val xmiResource = XMIResource
+		val screenName = FilenameUtils.getBaseName(widget.eContainer.eResource.URI.path).toLowerCase
+		val widgetClassName = screenName + "Id" + widget.id 
+		var EClass eClass = null
+		var EClass screenClass = null
+		var EClass widgetClass = null
+		var EClass storyboardClass = null
+		
+		// Find the storyboard / app class
+		val appName = Constants.SUB_PROJECT_NAME.toLowerCase
+		for (i : 0..< xmiResource.contents.size){
+			eClass = xmiResource.contents.get(i).eClass
+			if (eClass.name == appName){
+				storyboardClass = eClass
+			}
+		}
+		// This is the same class as we received
+		if (model != null && model == storyboardClass){
+			return null
+		}
+		// look for screen class
+		for (i : 0..< xmiResource.contents.size){
+			eClass = xmiResource.contents.get(i).eClass
+			if (eClass.name == screenName){
+				screenClass = eClass
+			}
+		}
+		// This is the same class as we received
+		if (model != null && model == screenClass){
+			return storyboardClass
+		}
 		// Look for widget class
 		for (i : 0..< xmiResource.contents.size){
 			eClass = xmiResource.contents.get(i).eClass
@@ -512,10 +631,9 @@ abstract class AbstractNavigatorController {
 			}
 		}
 		// This is the same class as we received
-		if (model == widgetClass){
+		if (model != null && model == widgetClass){
 			return screenClass
 		}
-
 		if (widgetClass == null){
 			if (screenClass == null){
 				if (storyboardClass == null){
@@ -533,7 +651,15 @@ abstract class AbstractNavigatorController {
 		
 	}
 
-
+	def getResourceForScreenFile(String screenFile){
+		val fileResources = appController.resourceSetHandler.resourceSet.resources
+		val resourceList = fileResources.filter[FilenameUtils.getName(it.URI.path) == screenFile]
+		if (resourceList.size > 0){
+			return resourceList.get(0)
+		}
+		return null	
+	}
+	
 	def getResourceForModel(Iterable<Resource> fileList, EClass model) {
 		if(model == null) return null
 		if (fileList != null) {
@@ -550,31 +676,21 @@ abstract class AbstractNavigatorController {
 		return null
 	}
 
-	def performActionForEvent(ActionEvent event){
-		val fileResources = appController.resourceSetHandler.resourceSet.resources
-		var resourceList = fileResources.filter[FilenameUtils.getName(it.URI.path) == screenName + ".screen"]
-	
-		var String id 
-		if (event.source instanceof Button){
-			id = (event.source as Button).id
-		} else if (event.source instanceof Label){
-			id = (event.source as Label).id
-		} else if (event.source instanceof TextField){
-			id = (event.source as TextField).id
-		} else {
-			println("Warning: event.source is of unknown type")
-			id = "0"
+	def performActionForEvent(Event event){
+		val resource = getResourceForScreenFile(screenName + ".screen")
+		
+		val id = getPropertyForNode(event.source as Node, "id")
+		if (id != null && id != PropertyResult.NO_SUCH_METHOD){
+			resource.performActionForWidgetId(id as String)
 		}
-		resourceList.performActionForWidgetId(id)
 	}
 	
 	def evaluateRulesForScreen(String screen){
-		val fileResources = appController.resourceSetHandler.resourceSet.resources
-		var resourceList = fileResources.filter[FilenameUtils.getName(it.URI.path) == screen + ".screen"]
-		
-		resourceList.evaluateRules
+		val resource = getResourceForScreenFile(screen + ".screen")
+		resource.evaluateRules
 	}
-	def loadNewFXMLForScreen (ActionEvent event, String nextScreen){
+	
+	def loadNewFXMLForScreen (Event event, String nextScreen){
 		var Parent root = null 
 		var Stage stage = null 
 		var Scene scene = null
@@ -584,7 +700,7 @@ abstract class AbstractNavigatorController {
 		event.performActionForEvent
 		
 		var fxmlFile = new File(
-		"/Users/f/Dropbox/Skole/workspace/JavaFX Test/src/application/" + nextScreen + ".fxml" )
+		Constants.FXML_DIRECTORY + nextScreen + ".fxml" )
 		if (fxmlFile.exists) {
 			checksum = MD5Checksum.checkSum(fxmlFile.absolutePath)
 		}

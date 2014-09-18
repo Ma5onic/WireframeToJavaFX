@@ -197,13 +197,7 @@ public class FXMLBuilder {
 		children = doc.createElement("children");
 		rootElement.appendChild(children);
 
-		// This is just for testing and development
-
-		// Element button = doc.createElement("Button");
-		// button.setAttribute("text", "Go to next screen");
-		// button.setAttribute("onAction", "#handleButtonAction");
-		//
-		// children.appendChild(button);
+		
 
 	}
 

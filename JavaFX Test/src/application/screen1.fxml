@@ -1,202 +1,99 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<?import java.lang.*?><?import javafx.scene.control.*?><?import javafx.scene.layout.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.geometry.*?><GridPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" hgap="0" id="gridPane1" minHeight="534" minWidth="343" vgap="0">
+<?import java.lang.*?><?import javafx.scene.control.*?><?import javafx.scene.layout.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.geometry.*?><GridPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" hgap="0" id="gridPane1" minHeight="536" minWidth="346" vgap="0">
     <padding>
         <Insets bottom="25" left="25" right="25" top="25"/>
     </padding>
     <children>
-        <Label GridPane.columnIndex="12" GridPane.columnSpan="14" GridPane.rowIndex="1" GridPane.rowSpan="3" id="12" rotate="0" text="Muniapp" textFill="black">
+        <Label GridPane.columnIndex="5" GridPane.columnSpan="12" GridPane.rowIndex="1" GridPane.rowSpan="4" id="2" onMousePressed="#handleMouseEvent2" rotate="0" text="Mine oppgaver" textFill="black">
             <font>
-                <Font name="System Bold" size="18"/>
+                <Font name="System Regular" size="22"/>
             </font>
         </Label>
-        <Button GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="34" GridPane.rowSpan="2" id="24" onAction="#handleButtonAction24" style="-fx-base:white;" text="Day"/>
-        <Label GridPane.columnIndex="2" GridPane.columnSpan="5" GridPane.rowIndex="6" GridPane.rowSpan="3" id="27" rotate="0" text="Today" textFill="black">
+        <Button GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.rowIndex="23" GridPane.rowSpan="1" id="4" onAction="#handleActionEvent4" style="-fx-base:white;" text="Mine &#10;Oppgave"/>
+        <Separator GridPane.columnIndex="7" GridPane.columnSpan="1" GridPane.rowIndex="22" GridPane.rowSpan="3" id="5" orientation="VERTICAL" prefWidth="6"/>
+        <Button GridPane.columnIndex="9" GridPane.columnSpan="6" GridPane.rowIndex="23" GridPane.rowSpan="1" id="6" onAction="#handleActionEvent6" style="-fx-base:white;" text="Delegerte &#10;Oppgave"/>
+        <Separator GridPane.columnIndex="16" GridPane.columnSpan="1" GridPane.rowIndex="22" GridPane.rowSpan="3" id="7" orientation="VERTICAL" prefWidth="6"/>
+        <CheckBox GridPane.columnIndex="2" GridPane.columnSpan="1" GridPane.rowIndex="12" GridPane.rowSpan="1" id="8" onAction="#handleActionEvent8" selected="no" text=""/>
+        <Button GridPane.columnIndex="20" GridPane.columnSpan="3" GridPane.rowIndex="2" GridPane.rowSpan="1" id="9" onAction="#handleActionEvent9" style="-fx-base:white;" text="+"/>
+        <Button GridPane.columnIndex="2" GridPane.columnSpan="8" GridPane.rowIndex="7" GridPane.rowSpan="1" id="12" onAction="#handleActionEvent12" style="-fx-base:white;" text="Aktive"/>
+        <Button GridPane.columnIndex="11" GridPane.columnSpan="14" GridPane.rowIndex="7" GridPane.rowSpan="1" id="13" onAction="#handleActionEvent13" style="-fx-base:white;" text="Fullførte"/>
+        <CheckBox GridPane.columnIndex="2" GridPane.columnSpan="11" GridPane.rowIndex="15" GridPane.rowSpan="1" id="14" onAction="#handleActionEvent14" selected="no" text="Reperasjon av vaskemaskin"/>
+        <Separator GridPane.columnIndex="1" GridPane.columnSpan="25" GridPane.rowIndex="4" GridPane.rowSpan="2" id="15" prefWidth="329"/>
+        <Separator GridPane.columnIndex="1" GridPane.columnSpan="25" GridPane.rowIndex="9" GridPane.rowSpan="1" id="16" prefWidth="329"/>
+        <Label GridPane.columnIndex="4" GridPane.columnSpan="8" GridPane.rowIndex="11" GridPane.rowSpan="3" id="18" onMousePressed="#handleMouseEvent18" rotate="0" text="Bestille kokkeluer" textFill="black">
             <font>
-                <Font name="System Regular" size="18"/>
+                <Font name="System Regular" size="14"/>
             </font>
         </Label>
-        <Button GridPane.columnIndex="5" GridPane.columnSpan="9" GridPane.rowIndex="34" GridPane.rowSpan="2" id="32" onAction="#handleButtonAction32" style="-fx-base:white;" text="Week"/>
-        <Separator GridPane.columnIndex="2" GridPane.columnSpan="32" GridPane.rowIndex="10" GridPane.rowSpan="1" id="34" prefWidth="294"/>
-        <Separator GridPane.columnIndex="2" GridPane.columnSpan="32" GridPane.rowIndex="24" GridPane.rowSpan="1" id="35" prefWidth="294"/>
-        <Label GridPane.columnIndex="2" GridPane.columnSpan="9" GridPane.rowIndex="20" GridPane.rowSpan="3" id="37" rotate="0" text="Tomorrow" textFill="black">
-            <font>
-                <Font name="System Regular" size="18"/>
-            </font>
-        </Label>
-        <Label GridPane.columnIndex="2" GridPane.columnSpan="14" GridPane.rowIndex="12" GridPane.rowSpan="2" id="39" rotate="0" text="Meeting with John" textFill="black">
-            <font>
-                <Font name="System Regular" size="12"/>
-            </font>
-        </Label>
-        <Label GridPane.columnIndex="2" GridPane.columnSpan="8" GridPane.rowIndex="13" GridPane.rowSpan="3" id="41" rotate="0" text="Water plants" textFill="black">
+        <Label GridPane.columnIndex="14" GridPane.columnSpan="7" GridPane.rowIndex="17" GridPane.rowSpan="1" id="20" onMousePressed="#handleMouseEvent20" rotate="0" text="increment" textFill="black">
             <font>
                 <Font name="System Regular" size="12"/>
             </font>
         </Label>
-        <Label GridPane.columnIndex="2" GridPane.columnSpan="18" GridPane.rowIndex="15" GridPane.rowSpan="3" id="42" rotate="0" text="Order parts for the laptop" textFill="black">
+        <Label GridPane.columnIndex="14" GridPane.columnSpan="5" GridPane.rowIndex="20" GridPane.rowSpan="1" id="24" onMousePressed="#handleMouseEvent24" rotate="0" text="\${value}" textFill="black">
             <font>
                 <Font name="System Regular" size="12"/>
             </font>
         </Label>
-        <Label GridPane.columnIndex="2" GridPane.columnSpan="11" GridPane.rowIndex="26" GridPane.rowSpan="1" id="43" rotate="0" text="Dinner with Jane" textFill="black">
-            <font>
-                <Font name="System Regular" size="12"/>
-            </font>
-        </Label>
-        <Button GridPane.columnIndex="31" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="1" id="44" onAction="#handleButtonAction44" style="-fx-base:white;" text="+"/>
-        <Label GridPane.columnIndex="15" GridPane.columnSpan="10" GridPane.rowIndex="7" GridPane.rowSpan="1" id="46" rotate="0" text="Wednesday" textFill="black">
-            <font>
-                <Font name="System Italic" size="12"/>
-            </font>
-        </Label>
-        <Label GridPane.columnIndex="18" GridPane.columnSpan="6" GridPane.rowIndex="21" GridPane.rowSpan="1" id="47" rotate="0" text="Thursday" textFill="black">
-            <font>
-                <Font name="System Italic" size="12"/>
-            </font>
-        </Label>
-        <Label GridPane.columnIndex="15" GridPane.columnSpan="8" GridPane.rowIndex="3" GridPane.rowSpan="2" id="48" rotate="0" text="June 2014" textFill="black">
-            <font>
-                <Font name="System Italic" size="12"/>
-            </font>
-        </Label>
-        <Label GridPane.columnIndex="28" GridPane.columnSpan="6" GridPane.rowIndex="7" GridPane.rowSpan="1" id="51" rotate="0" text="11 Jun 2014" textFill="black">
-            <font>
-                <Font name="System Italic" size="12"/>
-            </font>
-        </Label>
-        <Label GridPane.columnIndex="28" GridPane.columnSpan="6" GridPane.rowIndex="21" GridPane.rowSpan="1" id="52" rotate="0" text="12 Jun 2014" textFill="black">
-            <font>
-                <Font name="System Italic" size="12"/>
-            </font>
-        </Label>
-        <Label GridPane.columnIndex="27" GridPane.columnSpan="7" GridPane.rowIndex="12" GridPane.rowSpan="2" id="53" rotate="0" text="10:10 - 12:00" textFill="black">
-            <font>
-                <Font name="System Regular" size="12"/>
-            </font>
-        </Label>
-        <Label GridPane.columnIndex="29" GridPane.columnSpan="5" GridPane.rowIndex="13" GridPane.rowSpan="3" id="54" rotate="0" text="all day" textFill="black">
-            <font>
-                <Font name="System Regular" size="12"/>
-            </font>
-        </Label>
-        <Label GridPane.columnIndex="29" GridPane.columnSpan="5" GridPane.rowIndex="15" GridPane.rowSpan="3" id="55" rotate="0" text="all day" textFill="black">
-            <font>
-                <Font name="System Regular" size="12"/>
-            </font>
-        </Label>
-        <Label GridPane.columnIndex="29" GridPane.columnSpan="4" GridPane.rowIndex="26" GridPane.rowSpan="1" id="56" rotate="0" text="20:00" textFill="black">
-            <font>
-                <Font name="System Regular" size="12"/>
-            </font>
-        </Label>
-        <Label GridPane.columnIndex="2" GridPane.columnSpan="4" GridPane.rowIndex="3" GridPane.rowSpan="2" id="57" rotate="0" text="Week 24" textFill="black">
-            <font>
-                <Font name="System Italic" size="12"/>
-            </font>
-        </Label>
-        <Label GridPane.columnIndex="2" GridPane.columnSpan="15" GridPane.rowIndex="17" GridPane.rowSpan="2" id="58" rotate="0" text="\${newItemString1}" textFill="black">
-            <font>
-                <Font name="System Regular" size="12"/>
-            </font>
-        </Label>
-        <Label GridPane.columnIndex="29" GridPane.columnSpan="4" GridPane.rowIndex="17" GridPane.rowSpan="2" id="59" rotate="0" text="\${newItemString2}" textFill="black">
-            <font>
-                <Font name="System Regular" size="12"/>
-            </font>
-        </Label>
-        <Label GridPane.columnIndex="9" GridPane.columnSpan="16" GridPane.rowIndex="31" GridPane.rowSpan="1" id="60" rotate="0" text="\${newItemHidden}" textFill="black">
-            <font>
-                <Font name="System Regular" size="12"/>
-            </font>
-        </Label>
-        <Label GridPane.columnIndex="2" GridPane.columnSpan="30" GridPane.rowIndex="28" GridPane.rowSpan="1" id="109" rotate="0" text="I am visible because newItemHidden is false" textFill="black">
-            <font>
-                <Font name="System Regular" size="12"/>
-            </font>
-        </Label>
-        <Button GridPane.columnIndex="3" GridPane.columnSpan="5" GridPane.rowIndex="30" GridPane.rowSpan="3" id="142" onAction="#handleButtonAction142" style="-fx-base:white;" text="Show"/>
-        <Label GridPane.columnIndex="22" GridPane.columnSpan="8" GridPane.rowIndex="34" GridPane.rowSpan="1" id="152" rotate="0" text="\${username}" textFill="black">
-            <font>
-                <Font name="System Italic" size="12"/>
-            </font>
-        </Label>
-        <Label GridPane.columnIndex="19" GridPane.columnSpan="2" GridPane.rowIndex="34" GridPane.rowSpan="1" id="155" rotate="0" text="User:" textFill="black">
+        <Button GridPane.columnIndex="18" GridPane.columnSpan="6" GridPane.rowIndex="19" GridPane.rowSpan="2" id="27" onAction="#handleActionEvent27" style="-fx-base:white;" text="Reset"/>
+        <Label GridPane.columnIndex="14" GridPane.columnSpan="8" GridPane.rowIndex="12" GridPane.rowSpan="1" id="34" onMousePressed="#handleMouseEvent34" rotate="0" text="\${checked}" textFill="black">
             <font>
                 <Font name="System Regular" size="12"/>
             </font>
         </Label>
     </children>
     <columnConstraints>
-        <ColumnConstraints minWidth="16"/>
+        <ColumnConstraints minWidth="8"/>
         <ColumnConstraints/>
         <ColumnConstraints/>
+        <ColumnConstraints minWidth="11"/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+        <ColumnConstraints minWidth="7"/>
         <ColumnConstraints/>
         <ColumnConstraints minWidth="10"/>
         <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints/>
         <ColumnConstraints minWidth="7"/>
         <ColumnConstraints/>
         <ColumnConstraints/>
-        <ColumnConstraints minWidth="5"/>
+        <ColumnConstraints minWidth="27"/>
         <ColumnConstraints/>
+        <ColumnConstraints minWidth="13"/>
         <ColumnConstraints/>
-        <ColumnConstraints minWidth="4"/>
+        <ColumnConstraints minWidth="31"/>
         <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints minWidth="7"/>
-        <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints minWidth="3"/>
+        <ColumnConstraints minWidth="12"/>
         <ColumnConstraints/>
         <ColumnConstraints/>
         <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints minWidth="17"/>
-        <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints minWidth="5"/>
         <ColumnConstraints/>
         <ColumnConstraints/>
         <ColumnConstraints/>
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints minHeight="7"/>
+        <RowConstraints minHeight="24"/>
         <RowConstraints/>
         <RowConstraints/>
+        <RowConstraints minHeight="4"/>
         <RowConstraints/>
-        <RowConstraints/>
-        <RowConstraints minHeight="30"/>
-        <RowConstraints/>
-        <RowConstraints/>
-        <RowConstraints/>
-        <RowConstraints minHeight="7"/>
-        <RowConstraints/>
-        <RowConstraints minHeight="14"/>
-        <RowConstraints/>
-        <RowConstraints/>
-        <RowConstraints minHeight="21"/>
-        <RowConstraints/>
-        <RowConstraints minHeight="21"/>
-        <RowConstraints/>
-        <RowConstraints/>
-        <RowConstraints minHeight="7"/>
-        <RowConstraints/>
-        <RowConstraints/>
-        <RowConstraints/>
-        <RowConstraints minHeight="11"/>
-        <RowConstraints/>
-        <RowConstraints minHeight="18"/>
         <RowConstraints/>
         <RowConstraints minHeight="9"/>
         <RowConstraints/>
-        <RowConstraints minHeight="9"/>
+        <RowConstraints minHeight="7"/>
+        <RowConstraints/>
+        <RowConstraints minHeight="25"/>
         <RowConstraints/>
         <RowConstraints/>
         <RowConstraints/>
-        <RowConstraints minHeight="85"/>
+        <RowConstraints minHeight="24"/>
+        <RowConstraints/>
+        <RowConstraints minHeight="57"/>
+        <RowConstraints/>
+        <RowConstraints minHeight="15"/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints minHeight="129"/>
+        <RowConstraints/>
         <RowConstraints/>
         <RowConstraints/>
     </rowConstraints>

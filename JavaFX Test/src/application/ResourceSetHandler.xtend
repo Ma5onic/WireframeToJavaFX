@@ -113,10 +113,6 @@ class ResourceSetHandler {
 			saveOptions.put(XMLResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE) 
 			
 			xmiResource.save(saveOptions)
-			println("saving")
-			
-			
-			
 	}
 	
 	def createXMIInstanceForDecorator(AbstractDecorator decorator){

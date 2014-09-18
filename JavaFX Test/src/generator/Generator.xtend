@@ -35,6 +35,11 @@ import org.apache.commons.io.FilenameUtils
 import org.eclipse.emf.ecore.util.EcoreUtil
 import org.w3c.dom.Element
 import com.wireframesketcher.model.Position
+import com.wireframesketcher.model.VLine
+import com.wireframesketcher.model.TextArea
+import application.PropertyResult
+import org.eclipse.emf.common.util.URI
+import javafx.scene.Node
 
 /**
  * Retrieves the EMF model data from a screen file and generates a corresponding FXML file.
@@ -254,12 +259,12 @@ class Generator {
 
 		import java.util.HashMap
 		import javafx.event.ActionEvent
+		import javafx.scene.input.MouseEvent
 		import javafx.fxml.FXML
-		import javafx.scene.control.Button
-		import javafx.scene.control.Label
-		import javafx.scene.control.TextField
+		import javafx.scene.Node
 		import org.apache.commons.io.FilenameUtils
-				
+		import javafx.scene.input.MouseButton
+		
 		/* Generated */
 		class ScreenNavigatorController«safeFileName» extends AbstractNavigatorController {
 		
@@ -476,32 +481,18 @@ class Generator {
 	}
 
 
-	/** CheckBox */
+	/** Button */
 	def dispatch void generateFxml(Button widget) {
-
-		// Get the decorator for this widget
-//		val decorator = decoratorMap.get(widget)
-//		if (decorator != null) {
-//				
-//			println("--> The Button widget with id "+ widget.id + " has a decorator")
-////			println(decorator)
-//		}
-		
 		if (builder.getLayoutType == "AnchorPane") {
 
-			if (widget.link != null) {
-				val fxml = widget.link.trimFileExtension
-				navigatorMap.put(widget.id, fxml.toString);
-			}
-
 			(builder += "Button" ) => [
-				it += "text" -> escapeText(widget.text)
+				it += "text" -> escapeText(widget.text.replace("\\n", "\n"))
 				it += "layoutX" -> widget.x
 				it += "layoutY" -> widget.y
 				it += "style" -> "-fx-base:" + widget.background + ";"
 				it += "id" -> widget.id
 				if(widget.state == State.DISABLED) it += "disable" -> "true"
-				it += "onAction" -> "#handleButtonAction" + widget.id
+				it += "onAction" -> "#handleActionEvent" + widget.id
 			]
 
 			checkPaneDimensionsAndExpandForXY(widget.x + widget.measuredWidth, widget.y + widget.measuredHeight,
@@ -512,11 +503,6 @@ class Generator {
 
 		} else if (builder.getLayoutType == "GridPane") {
 
-			// This is a button with a special link property
-			if (widget.link != null) {
-				val fxml = widget.link.trimFileExtension
-				navigatorMap.put(widget.id, fxml.toString);
-			}
 
 			val col1 = columns.keySet.indexOf(widget.x)
 			val col2 = columns.keySet.indexOf(widget.x + widget.measuredWidth)
@@ -527,10 +513,10 @@ class Generator {
 			val rowSpan = row2 - row1;
 
 			(builder += "Button" ) => [
-				it += "text" -> escapeText(widget.text)
+				it += "text" -> escapeText(widget.text.replace("\\n", "\n"))
 				it += "id" -> widget.id
 				if(widget.state == State.DISABLED) it += "disable" -> "true"
-				it += "onAction" -> "#handleButtonAction" + widget.id
+				it += "onAction" -> "#handleActionEvent" + widget.id
 				it += "style" -> "-fx-base:" + widget.background + ";" //+ "-fx-font: 22 helvetica;"
 				it += "GridPane.columnIndex" -> col1
 				it += "GridPane.rowIndex" -> row1
@@ -540,16 +526,57 @@ class Generator {
 
 		}
 
-		// This is a navigation button to a new screen 
-		if (widget.link != null) {
+		generateActionCode(widget)
 
+	} // end Button
+
+	/** Returns the invoked value of <code>propertyName</code> on <code>widget</code><br>
+	 * Returns <code>PropertyResult.NO_SUCH_METHOD</code> if the method does not exist. */
+	def getPropertyForWidget(Widget widget, String propertyName) {
+		
+		try {
+			val method = widget.class.getMethod("get" + propertyName.toFirstUpper)
+			var Object result = null
+			try {
+	
+				result = method.invoke(widget)
+			} catch (Exception e) {
+				println("getProperty() No such method: " + "get" + propertyName + e.stackTrace)
+				return PropertyResult.NO_SUCH_METHOD
+			}
+			return result
+		} catch (NoSuchMethodException e){
+			return PropertyResult.NO_SUCH_METHOD
+		}
+	}
+
+	def generateActionCode(Widget widget){
+		// This is a navigation button to a new screen 
+		
+		var String eventType = "ActionEvent"
+		switch widget {
+			Label, TextArea : eventType = "MouseEvent"
+		}
+		
+		val link = getPropertyForWidget(widget, "link")
+		if (link != null && link != PropertyResult.NO_SUCH_METHOD) {
+
+			val fxml = (link as URI).trimFileExtension
+			navigatorMap.put(widget.id, fxml.toString)
+			
+			
 			// Add method for button
 			methodString = '''
 				«"\t"»/* Generated */
 					@FXML
-					def handleButtonAction«widget.id»(ActionEvent event) {				
-						loadNewFXMLForScreen (event,  "«navigatorMap.get(widget.id)»")
-						
+					def handle«eventType»«widget.id»(«eventType» event) {
+						«IF eventType == "MouseEvent"»
+						if(event.button == MouseButton.PRIMARY){	
+						«ENDIF»			
+							loadNewFXMLForScreen (event,  "«navigatorMap.get(widget.id)»")
+						«IF eventType == "MouseEvent"»
+						}
+						«ENDIF»
 					} 
 					
 			'''
@@ -557,43 +584,30 @@ class Generator {
 		} else { // This is a normal button with no link
 
 			methodString = '''
-				/* Generated */
+				«"\t"»/* Generated */
 					@FXML
-					def handleButtonAction«widget.id»(ActionEvent event) {
-						
-						val stateValues = StateController.getInstance().stateValues
-						var loginAttempt = Integer.parseInt(stateValues.get("loginAttempt"))
-						println(loginAttempt)
-						stateValues.put("loginAttempt", "" + (loginAttempt + 1))
-						
-						
-						val fileResources = appController.resourceSetHandler.resourceSet.resources
-						val resourceList = fileResources.filter[FilenameUtils.getExtension(it.URI.path) == "screen" 
-						&& FilenameUtils.getName(it.URI.path) == "«safeFileName».screen"]
-
-						var String id 
-						if (event.source instanceof Button){
-							id = (event.source as Button).id
-						} else if (event.source instanceof Label){
-							id = (event.source as Label).id
-						} else if (event.source instanceof TextField){
-							id = (event.source as TextField).id
-						} else {
-							println("Warning: event.source is of unknown type")
-							id = "0"
+					def handle«eventType»«widget.id»(«eventType» event) {
+						«IF eventType == "MouseEvent"»
+						if(event.button == MouseButton.PRIMARY){
+						«ENDIF»			
+							val resource = getResourceForScreenFile(screenName + ".screen")
+							var id = getPropertyForNode(event.source as Node, "id") 
+							if (id != null && id != PropertyResult.NO_SUCH_METHOD){
+								resource.performActionForWidgetId(id as String)
+							} 
+							resource.evaluateRules
+						«IF eventType == "MouseEvent"»
 						}
-						resourceList.performActionForWidgetId(id)
-						
-						resourceList.evaluateRules
+						«ENDIF»
 						
 					}
 			'''
 		}
+		
 
-		writer.write(methodString);
-
-	} // end Button
-
+		writer.write(methodString)
+	}
+	
 	/** CheckBox */
 	def dispatch void generateFxml(Checkbox widget) {
 
@@ -602,8 +616,10 @@ class Generator {
 			(builder += "CheckBox" ) => [
 				it += "layoutX" -> widget.x
 				it += "layoutY" -> widget.y
-				it += "text" -> escapeText(widget.text)
+				it += "text" -> escapeText(widget.text.replace("\\n", "\n"))
 				it += "selected" -> if(widget.selected) "yes" else "no"
+				it += "onAction" -> "#handleActionEvent" + widget.id
+				it += "id" -> widget.id
 			]
 
 			checkPaneDimensionsAndExpandForXY(widget.x + widget.measuredWidth, widget.y + widget.measuredHeight,
@@ -623,14 +639,18 @@ class Generator {
 			val rowSpan = row2 - row1;
 
 			(builder += "CheckBox" ) => [
-				it += "text" -> escapeText(widget.text)
+				it += "text" -> escapeText(widget.text.replace("\\n", "\n"))
 				it += "selected" -> if(widget.selected) "yes" else "no"
 				it += "GridPane.columnIndex" -> col1
 				it += "GridPane.rowIndex" -> row1
 				it += "GridPane.columnSpan" -> colSpan
 				it += "GridPane.rowSpan" -> rowSpan
+				it += "onAction" -> "#handleActionEvent" + widget.id
+				it += "id" -> widget.id
 			]
 		}
+		generateActionCode(widget)
+		
 
 	} // end Checkbox
 
@@ -695,30 +715,6 @@ class Generator {
 	/** Label */
 	def dispatch void generateFxml(Label widget) {
 
-//		// Get the decorator for this widget
-//		val decorator = decoratorMap.get(widget) as WidgetDecorator
-//		if (decorator != null) {
-//			println("--> The Label widget with id "+ decorator.widget.id + " has a decorator")
-//			
-//			// Create a test with the #hidden label widget  
-//			if (widget.id == 58 ){
-//			
-//				decorator.viewRules.forEach [
-////					println ("stateFeature: " + it.stateFeature) //.name) // denne gir ConcurrentModificationException
-////					println ("stateFeatureValue: " + it.stateFeatureValue)
-////					println ("viewProperty: " + it.viewProperty)
-////					println ("viewPropertyValue: " + it.viewPropertyValue)
-////					println ("viewPropertyType: " + it.viewPropertyType)
-////					println("--")
-//				]
-//				
-//			}
-//			
-//		} else {
-//			
-//			// There is no decorator. This should not affect anything
-//		} 
-
 
 		// If font size is null assume 12 
 		fontSize = 12;
@@ -750,10 +746,11 @@ class Generator {
 			(builder += "Label") => [
 				it += "layoutX" -> widget.x
 				it += "layoutY" -> widget.y
+				it += "onMousePressed" -> "#handleMouseEvent" + widget.id
 				if(widget.foreground != null) it += "textFill" -> widget.foreground
 				if(widget.rotation != null) it += "rotate" -> widget.rotation
 				it += "id" -> widget.id
-				it += "text" -> escapeText(widget.text);
+				it += "text" -> escapeText(widget.text.replace("\\n", "\n"))
 				(it += "font") => [
 					(it += "Font") => [
 						it += "name" -> fontBuilder.font.name
@@ -782,11 +779,12 @@ class Generator {
 				it += "GridPane.rowIndex" -> row1
 				it += "GridPane.columnSpan" -> colSpan
 				it += "GridPane.rowSpan" -> rowSpan
+				it += "onMousePressed" -> "#handleMouseEvent" + widget.id
 				if(widget.foreground != null) it += "textFill" -> widget.foreground
 				if(widget.rotation != null) it += "rotate" -> widget.rotation
 				it += "id" -> widget.id
 
-				it += "text" -> escapeText(widget.text);
+				it += "text" -> escapeText(widget.text.replace("\\n", "\n"))
 				(it += "font") => [
 					(it += "Font") => [
 						it += "name" -> fontBuilder.font.name
@@ -796,6 +794,7 @@ class Generator {
 			]
 
 		}
+		generateActionCode(widget)
 
 	} // end Label
 
@@ -807,8 +806,10 @@ class Generator {
 			(builder += "TextField") => [
 				it += "layoutX" -> widget.x
 				it += "layoutY" -> widget.y
-				it += "text" -> escapeText(widget.text)
+				it += "text" -> escapeText(widget.text.replace("\\n", "\n"))
 				it += "id" -> widget.id
+				it += "onAction" -> "#handleActionEvent" + widget.id
+			
 			]
 			checkPaneDimensionsAndExpandForXY(widget.x + widget.measuredWidth, widget.y + widget.measuredHeight,
 				if (widget.measuredHeight > widget.measuredWidth)
@@ -827,18 +828,63 @@ class Generator {
 			val rowSpan = row2 - row1;
 
 			(builder += "TextField") => [
-				it += "text" -> escapeText(widget.text)
+				it += "text" -> escapeText(widget.text.replace("\\n", "\n"))
 				it += "id" -> widget.id
 				it += "prefWidth" -> widget.measuredWidth
 				it += "GridPane.columnIndex" -> col1
 				it += "GridPane.rowIndex" -> row1
 				it += "GridPane.columnSpan" -> colSpan
 				it += "GridPane.rowSpan" -> rowSpan
+				it += "onAction" -> "#handleActionEvent" + widget.id
 			]
 
 		}
-
+		generateActionCode(widget)
 	} // end TextField
+
+/** TextArea */
+	def dispatch void generateFxml(TextArea widget) {
+
+		if (builder.getLayoutType == "AnchorPane") {
+
+			(builder += "TextArea") => [
+				it += "layoutX" -> widget.x
+				it += "layoutY" -> widget.y
+				it += "text" -> escapeText(widget.text.replace("\\n", "\n"))
+				it += "id" -> widget.id
+				it += "onMousePressed" -> "#handleMouseEvent" + widget.id
+			]
+			checkPaneDimensionsAndExpandForXY(widget.x + widget.measuredWidth, widget.y + widget.measuredHeight,
+				if (widget.measuredHeight > widget.measuredWidth)
+					widget.measuredHeight
+				else
+					widget.measuredWidth)
+
+		} else if (builder.getLayoutType == "GridPane") {
+
+			val col1 = columns.keySet.indexOf(widget.x)
+			val col2 = columns.keySet.indexOf(widget.x + widget.measuredWidth)
+			val colSpan = col2 - col1
+
+			val row1 = rows.keySet.indexOf(widget.y)
+			val row2 = rows.keySet.indexOf(widget.y + widget.measuredHeight)
+			val rowSpan = row2 - row1;
+
+			(builder += "TextArea") => [
+				it += "text" -> escapeText(widget.text.replace("\\n", "\n"))
+				it += "id" -> widget.id
+				it += "prefWidth" -> widget.measuredWidth
+				it += "prefHeight" -> widget.measuredHeight
+				it += "GridPane.columnIndex" -> col1
+				it += "GridPane.rowIndex" -> row1
+				it += "GridPane.columnSpan" -> colSpan
+				it += "GridPane.rowSpan" -> rowSpan
+				it += "onMousePressed" -> "#handleMouseEvent" + widget.id
+			]
+
+		}
+		generateActionCode(widget)
+	} // end TextArea
 
 	def dispatch void generateFxml(List widget) {
 
@@ -865,6 +911,7 @@ class Generator {
 
 					(builder += "RadioButton" ) => [ radioButton |
 						// The regex pattern
+						radioButton += "onAction" -> "#handleActionEvent" + widget.id
 						var string = "\\((\\s|o)\\) (\\w+)"
 						var pattern = Pattern.compile(string, Pattern.CASE_INSENSITIVE);
 						var matcher = pattern.matcher(item.text);
@@ -906,6 +953,7 @@ class Generator {
 						// The coordinate of the widget + the item coordinates
 						radioButton += "layoutX" -> widget.x + item.x
 						radioButton += "layoutY" -> widget.y + item.y
+						
 						checkPaneDimensionsAndExpandForXY(widget.x + item.x + widget.measuredWidth,
 							widget.y + item.y + widget.measuredHeight,
 							if (widget.measuredHeight > widget.measuredWidth)
@@ -922,12 +970,12 @@ class Generator {
 				} else if (builder.getLayoutType == "GridPane") {
 
 					(vbox += "RadioButton" ) => [ radioButton |
+						radioButton += "onAction" -> "#handleActionEvent" + widget.id
 						// The regex pattern
 						var string = "\\((\\s|o)\\) (.*)"
 						var pattern = Pattern.compile(string, Pattern.CASE_INSENSITIVE);
 						var matcher = pattern.matcher(item.text);
 						if (matcher.find()) {
-
 							// The wiki format (o) means selected
 							if (matcher.group(1).equals("o")) {
 
@@ -967,7 +1015,6 @@ class Generator {
 		]
 	} // end List, RadioButton
 
-	//   <widgets xsi:type="model:HLine" id="34" x="24" y="124" width="294" measuredWidth="294" measuredHeight="6"/>
 	def dispatch void generateFxml(HLine widget) {
 		if (builder.getLayoutType == "AnchorPane") {
 
@@ -1006,6 +1053,46 @@ class Generator {
 		}
 	}
 	
+	def dispatch void generateFxml(VLine widget) {
+		if (builder.getLayoutType == "AnchorPane") {
+
+			val id = widget.id;
+			(builder += "Separator") => [
+				it += "layoutX" -> widget.x
+				it += "layoutY" -> widget.y
+				it += "prefWidth" -> widget.measuredWidth
+				it += "orientation" -> "VERTICAL"
+				it += "id" -> id
+			]
+			checkPaneDimensionsAndExpandForXY(widget.x + widget.measuredWidth, widget.y + widget.measuredHeight,
+				if (widget.measuredHeight > widget.measuredWidth)
+					widget.measuredHeight
+				else
+					widget.measuredWidth)
+
+		} else if (builder.getLayoutType == "GridPane") {
+
+			val col1 = columns.keySet.indexOf(widget.x)
+			val col2 = columns.keySet.indexOf(widget.x + widget.measuredWidth)
+			val colSpan = col2 - col1
+
+			val row1 = rows.keySet.indexOf(widget.y)
+			val row2 = rows.keySet.indexOf(widget.y + widget.measuredHeight)
+			val rowSpan = row2 - row1;
+
+			val id = widget.id;
+			(builder += "Separator") => [
+				it += "prefWidth" -> widget.measuredWidth
+				it += "id" -> id
+				it += "orientation" -> "VERTICAL"
+				it += "GridPane.columnIndex" -> col1
+				it += "GridPane.rowIndex" -> row1
+				it += "GridPane.columnSpan" -> colSpan
+				it += "GridPane.rowSpan" -> rowSpan
+			]
+		}
+	}
+	
 	
 	/** Checks if the input coordinates are equal or larger than the pane dimensions.
 	 * If that is the case the pane is expanded by <code>(x - paneWidth) + paneWidth + padding</code> 
@@ -1035,23 +1122,22 @@ class Generator {
 		element.setAttribute(attrValue.key, String.valueOf(attrValue.value))
 	}
 
-	def dispatch HashMap<Long, String> generateNavigatorMap(Screen screen) {
+	def  HashMap<Long, String> generateNavigatorMap(Screen screen) {
 		navigatorMap = <Long, String>newHashMap
-		screen.widgets.forEach[generateNavigatorMap(it)]
-		return navigatorMap
-	}
-
-	def dispatch generateNavigatorMap(Widget widget) {
-	}
-
-	def dispatch generateNavigatorMap(Button button) {
-		if (button.link != null) {
-			val fxmlFile = button.link.trimFileExtension
-			navigatorMap.put(button.id, fxmlFile.toString)
-		}
-		return navigatorMap
-	}
+		screen.widgets.forEach[ widget |
+			val link = getPropertyForWidget(widget, "link")
+			if (link != null && link != PropertyResult.NO_SUCH_METHOD) {
 	
+				val fxml = (link as URI).trimFileExtension
+				navigatorMap.put(widget.id, fxml.toString)
+			}
+		]
+		return navigatorMap
+	}
+
+	
+
+
 
 
 	def static void main(String[] args) {
@@ -1125,6 +1211,7 @@ class Generator {
 			]
 			
 		}
+		println("Done.")
 	}
 }
 
