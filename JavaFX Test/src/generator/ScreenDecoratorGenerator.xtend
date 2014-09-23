@@ -315,6 +315,58 @@ class ScreenDecoratorGenerator {
 				decoratorModel.decorators.add(widgetContainerDecorator)
 			}
 			decoratorResource.save(null)
+		} else { 
+			// There is no decorator resource. Create it.
+			
+			val resourceSet = ResourceSetHandler.instance.resourceSet
+			val directory = Constants.PROJECT_DIR + Constants.SUB_PROJECT_NAME + "/"
+			val path = directory + screenName + ".screendecorator"
+			val resource = resourceSet.createResource(URI.createFileURI(path))
+			
+			val decoratorModel = factory.createDecoratorModel
+			
+			// Create the widget container
+			val widgetContainerDecorator = factory.createWidgetContainerDecorator
+			widgetContainerDecorator.widgetContainer = screen
+			if (ecoreModelForScreenExist(screen) == false) {
+				widgetContainerDecorator.model = getEcoreModelForScreen(screen)
+			}
+
+			val stateFeature = getStateFeatureFromNameUsingScreen(feature, screen)
+			if (stateFeature == null) {
+				println("Unable to find state feature " + feature + " for view rule. Screen: " + screen)
+				return null
+			}
+			val viewRule = factory.createViewRule
+			viewRule.viewProperty = property
+			viewRule.viewPropertyValue = propertyValue
+			viewRule.stateFeature = stateFeature
+			viewRule.stateFeatureValue = featureValue
+
+			// TODO: Støtt flere typer
+			if (propertyValue == "true" || propertyValue == "false") {
+				viewRule.viewPropertyType = EcorePackage.Literals.EBOOLEAN
+			} else {
+				viewRule.viewPropertyType = EcorePackage.Literals.ESTRING
+			}
+
+			widgetContainerDecorator.viewRules.add(viewRule)
+			decoratorModel.decorators.add(widgetContainerDecorator)
+
+		
+			val storyboardModelPath = Constants.PROJECT_DIR + Constants.SUB_PROJECT_NAME + "/" + "muniapp.ecore"
+			val storyboardDecorator = factory.createStoryboardDecorator
+			storyboardDecorator.storyboard = ResourceSetHandler.instance.storyboardResource.contents.get(0) as Storyboard
+			val file = new File(storyboardModelPath)
+			if (file.exists){
+				val modelResource = resourceSet.getResource(URI.createFileURI(storyboardModelPath), true)
+				storyboardDecorator.model = modelResource.contents.get(0).eContents.get(0) as EClass
+			}
+
+			decoratorModel.decorators.add(storyboardDecorator)
+			
+			resource.contents.add(decoratorModel)
+			resource.save(null)
 		}
 	}
 	
@@ -391,6 +443,56 @@ class ScreenDecoratorGenerator {
 				decoratorModel.decorators.add(widgetDecorator)
 			}
 			decoratorResource.save(null)
+		} else { 
+			val resourceSet = ResourceSetHandler.instance.resourceSet
+			val directory = Constants.PROJECT_DIR + Constants.SUB_PROJECT_NAME + "/"
+			val path = directory + screenName + ".screendecorator"
+			val resource = resourceSet.createResource(URI.createFileURI(path))
+			
+			val decoratorModel = factory.createDecoratorModel
+			
+			// Create the widget container
+			val widgetDecorator = factory.createWidgetDecorator
+			widgetDecorator.widget = widget
+			if (ecoreModelForWidgetExist(widget) == false) {
+				widgetDecorator.model = getEcoreModelForWidget(widget)
+			}
+
+			val stateFeature = getStateFeatureFromNameUsingWidget(feature, widget)
+			if (stateFeature == null) {
+				println("Unable to find state feature " + feature + " for view rule. Widget: " + widget)
+				return null
+			}
+			val viewRule = factory.createViewRule
+			viewRule.viewProperty = property
+			viewRule.viewPropertyValue = propertyValue
+			viewRule.stateFeature = stateFeature
+			viewRule.stateFeatureValue = featureValue
+
+			// TODO: Støtt flere typer
+			if (propertyValue == "true" || propertyValue == "false") {
+				viewRule.viewPropertyType = EcorePackage.Literals.EBOOLEAN
+			} else {
+				viewRule.viewPropertyType = EcorePackage.Literals.ESTRING
+			}
+
+			widgetDecorator.viewRules.add(viewRule)
+			decoratorModel.decorators.add(widgetDecorator)
+
+		
+			val storyboardModelPath = Constants.PROJECT_DIR + Constants.SUB_PROJECT_NAME + "/" + "muniapp.ecore"
+			val storyboardDecorator = factory.createStoryboardDecorator
+			storyboardDecorator.storyboard = ResourceSetHandler.instance.storyboardResource.contents.get(0) as Storyboard
+			val file = new File(storyboardModelPath)
+			if (file.exists){
+				val modelResource = resourceSet.getResource(URI.createFileURI(storyboardModelPath), true)
+				storyboardDecorator.model = modelResource.contents.get(0).eContents.get(0) as EClass
+			}
+
+			decoratorModel.decorators.add(storyboardDecorator)
+			
+			resource.contents.add(decoratorModel)
+			resource.save(null)
 		}
 	}
 	

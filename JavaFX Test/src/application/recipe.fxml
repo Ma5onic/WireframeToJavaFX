@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?import java.lang.*?><?import javafx.scene.control.*?><?import javafx.scene.layout.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.geometry.*?><GridPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" hgap="0" id="gridPane1" vgap="0">
+    <padding>
+        <Insets bottom="25" left="25" right="25" top="25"/>
+    </padding>
+    <children>
+        <Label GridPane.columnIndex="1" GridPane.columnSpan="1" GridPane.rowIndex="1" GridPane.rowSpan="1" id="1" onMousePressed="#handleMouseEvent1" rotate="0" text="Cake" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Separator GridPane.columnIndex="1" GridPane.columnSpan="5" GridPane.rowIndex="3" GridPane.rowSpan="1" id="2" prefWidth="217"/>
+        <TextField GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="6" GridPane.rowSpan="1" id="3" onAction="#handleActionEvent3" prefWidth="67" text="Text field"/>
+        <Button GridPane.columnIndex="4" GridPane.columnSpan="1" GridPane.rowIndex="5" GridPane.rowSpan="3" id="4" onAction="#handleActionEvent4" style="-fx-base:white;" text="OK"/>
+    </children>
+    <columnConstraints>
+        <ColumnConstraints minWidth="32"/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+        <ColumnConstraints minWidth="77"/>
+        <ColumnConstraints/>
+        <ColumnConstraints/>
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="56"/>
+        <RowConstraints/>
+        <RowConstraints minHeight="17"/>
+        <RowConstraints/>
+        <RowConstraints minHeight="25"/>
+        <RowConstraints/>
+        <RowConstraints/>
+        <RowConstraints/>
+    </rowConstraints>
+</GridPane>

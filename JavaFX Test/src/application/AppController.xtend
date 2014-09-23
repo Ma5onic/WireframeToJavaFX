@@ -28,7 +28,7 @@ import javafx.scene.control.Button
 class AppController extends Application {
 
 	/* The name of the initial fxml file */
-	String fileName =  "screen1" // "login" //
+	String fileName =  "recipe" // "login" //
 
 	/** A resource set with all loaded resources */
 	ResourceSet resourceSet

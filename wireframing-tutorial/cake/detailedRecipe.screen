@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Checkbox" id="1" x="77" y="76" text="flour" measuredWidth="49" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Checkbox" id="2" x="77" y="152" text="eggs" measuredWidth="49" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Checkbox" id="3" x="77" y="112" text="milk" measuredWidth="47" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="4" x="77" y="224" text="Back" measuredWidth="47" measuredHeight="25" link="recipe.screen">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="5" x="832" y="98" measuredWidth="169" measuredHeight="96">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Data"/>
+    <overrides>
+      <widgets ref="1" width="169" height="96" text="bool checked1&#xA;bool checked2&#xA;bool checked3&#xA;string buttonText"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Master" id="6" x="248" y="48" measuredWidth="127" measuredHeight="37">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Actions"/>
+    <overrides>
+      <widgets ref="2" width="127" height="37" text="checked1 = toggle"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Arrow" id="8" x="112" y="73" width="137" height="11" measuredWidth="137" measuredHeight="11" annotation="true" direction="bottom"/>
+  <widgets xsi:type="model:Master" id="11" x="240" y="174" measuredWidth="200" measuredHeight="81">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Styles"/>
+    <overrides>
+      <widgets ref="3" width="200" text="if checked1 is true&#xA;set text to jabba&#xA;if checked1 is false&#xA;set text to dabba&#xA;"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Arrow" id="12" x="123" y="216" width="150" height="9" measuredWidth="150" measuredHeight="9" annotation="true" direction="bottom"/>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

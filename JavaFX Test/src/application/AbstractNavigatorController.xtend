@@ -151,7 +151,6 @@ abstract class AbstractNavigatorController {
 	}
 
 	def evaluateRules(Resource resource) {
-
 		resource.contents.filter(Screen).forEach [
 				evaluateWidgetDecoratorForScreen(it)
 				evaluateWidgetContainerDecoratorForScreen(it)
