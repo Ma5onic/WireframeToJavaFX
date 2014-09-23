@@ -37,28 +37,10 @@
   <widgets xsi:type="model:Button" id="64" x="117" y="272" width="99" text="Delete task" measuredWidth="99" measuredHeight="27" background="#ff0000">
     <font size="14px" bold="false"/>
   </widgets>
-  <widgets xsi:type="model:Label" id="69" x="15" y="351" text="loggeIn =" measuredWidth="63" measuredHeight="23">
-    <font size="12px"/>
-  </widgets>
-  <widgets xsi:type="model:Label" id="70" x="150" y="351" text="${loggedIn}" measuredWidth="73" measuredHeight="23">
-    <font size="12px"/>
-  </widgets>
-  <widgets xsi:type="model:Master" id="71" x="832" y="36" measuredWidth="174" measuredHeight="81">
-    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Data"/>
-    <overrides>
-      <widgets ref="1" width="174" text="string screen3string"/>
-    </overrides>
-  </widgets>
-  <widgets xsi:type="model:Label" id="72" x="15" y="392" text="screen3string = " measuredWidth="103" measuredHeight="23">
-    <font size="12px"/>
-  </widgets>
-  <widgets xsi:type="model:Label" id="73" x="150" y="392" text="${screen3string}" measuredWidth="101" measuredHeight="23">
-    <font size="12px"/>
-  </widgets>
-  <widgets xsi:type="model:Master" id="74" x="440" y="40" measuredWidth="279" measuredHeight="50">
+  <widgets xsi:type="model:Master" id="74" x="440" y="40" height="65" measuredWidth="279" measuredHeight="65">
     <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Actions"/>
     <overrides>
-      <widgets ref="2" width="279" height="50" text="newItemString1 = ${eventName}&#xA;screen3string = ${eventName}"/>
+      <widgets ref="2" width="279" height="65" text="newItemString1 = ${eventName}&#xA;newItemString2 = all day"/>
     </overrides>
   </widgets>
   <widgets xsi:type="model:Arrow" id="75" x="313" y="32" width="136" height="33" measuredWidth="136" measuredHeight="33" annotation="true"/>

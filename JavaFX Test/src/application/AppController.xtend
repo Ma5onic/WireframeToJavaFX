@@ -19,6 +19,7 @@ import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EPackage
+import javafx.scene.control.Button
 
 /**
  * 
@@ -110,6 +111,8 @@ class AppController extends Application {
 				]
 			}
 		]
+		
+		
 
 		// The generator calls the appController setNavigatorMap() with an updated map
 		return map.get("navigatorMap")
@@ -132,6 +135,7 @@ class AppController extends Application {
 		// Used for reflection of the controller and for method invocation
 		var Class<?> class
 		var Constructor<?> constructor
+
 
 		// Load the fxml file and set the custom controller class
 		try {

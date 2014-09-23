@@ -241,11 +241,11 @@ class Generator {
 			Constants.FXML_DIRECTORY + "ScreenNavigatorController" + fileName +
 				".xtend");
 		navigatorControllerFile.createNewFile()
-		writer = new BufferedWriter(new FileWriter(navigatorControllerFile));
-		var calendar = Calendar.getInstance();
+		writer = new BufferedWriter(new FileWriter(navigatorControllerFile))
+		var calendar = Calendar.instance
 		calendar.getTime();
-		var dateFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z");
-		val dateString = dateFormat.format(calendar.getTime());
+		var dateFormat = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss Z")
+		val dateString = dateFormat.format(calendar.getTime())
 
 		// class names cannot include hyphens and other special characters
 		safeFileName = fileName.replaceAll("-", "")
@@ -533,7 +533,6 @@ class Generator {
 	/** Returns the invoked value of <code>propertyName</code> on <code>widget</code><br>
 	 * Returns <code>PropertyResult.NO_SUCH_METHOD</code> if the method does not exist. */
 	def getPropertyForWidget(Widget widget, String propertyName) {
-		
 		try {
 			val method = widget.class.getMethod("get" + propertyName.toFirstUpper)
 			var Object result = null

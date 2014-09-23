@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.resource.Resource
+import javafx.scene.control.Button
 
 /** Used to indicate if the methods <code>getPropertyForNode()</code> or 
  * <code>setPropertyForNode()</code> was successful in invoking the property.
@@ -685,6 +686,7 @@ abstract class AbstractNavigatorController {
 		}
 	}
 	
+	
 	def evaluateRulesForScreen(String screen){
 		val resource = getResourceForScreenFile(screen + ".screen")
 		resource.evaluateRules
@@ -710,7 +712,7 @@ abstract class AbstractNavigatorController {
 	
 				println("Loading stored resource...")
 				scene = sceneResource.scene
-				stage = appController.root.getScene().getWindow() as Stage;
+				stage = appController.root.scene.window as Stage
 	
 				appController.root = scene.root
 				println("Done.")
@@ -732,14 +734,14 @@ abstract class AbstractNavigatorController {
 				
 		
 				// Create the dedicated ScreenNavigatorController using reflection 
-				val safeFileName = nextScreen.replace("-","") 
+				val safeFileName = nextScreen.replace("-", "") 
 				val className = Class.forName("application.ScreenNavigatorController" + safeFileName);
 				val con = className.getConstructor(Object, HashMap);
 				val controller = con.newInstance(appController, _navigatorMap);
 				loader.setController(controller);
 		
-				root = loader.load() as Parent;
-				stage = appController.root.getScene().getWindow() as Stage
+				root = loader.load as Parent
+				stage = appController.root.scene.window as Stage
 				scene = new Scene(root)
 				appController.root = root
 				

@@ -2,7 +2,7 @@
 <screenDecorator:DecoratorModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" xmlns:screenDecorator="no.hal.screenDecorator">
   <decorators xsi:type="screenDecorator:WidgetDecorator">
     <actions xsi:type="screenDecorator:ScriptAction" script="newItemString1 = ${eventName}"/>
-    <actions xsi:type="screenDecorator:ScriptAction" script="screen3string = ${eventName}"/>
+    <actions xsi:type="screenDecorator:ScriptAction" script="newItemString2 = all day"/>
     <widget xsi:type="model:Button" href="screen3.screen#44"/>
   </decorators>
   <decorators xsi:type="screenDecorator:StoryboardDecorator">
@@ -10,7 +10,6 @@
     <storyboard href="muniapp.story#/"/>
   </decorators>
   <decorators xsi:type="screenDecorator:WidgetContainerDecorator">
-    <model href="screen3.ecore#//screen3"/>
     <widgetContainer xsi:type="model:Screen" href="screen3.screen#/"/>
   </decorators>
 </screenDecorator:DecoratorModel>

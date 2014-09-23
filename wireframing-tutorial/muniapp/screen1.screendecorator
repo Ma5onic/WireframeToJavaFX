@@ -2,7 +2,7 @@
 <screenDecorator:DecoratorModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" xmlns:screenDecorator="no.hal.screenDecorator">
   <decorators xsi:type="screenDecorator:WidgetDecorator">
     <actions xsi:type="screenDecorator:ScriptAction" script="newItemHidden = true"/>
-    <actions xsi:type="screenDecorator:ScriptAction" script="newItemString1 = Plussknappen trykket p&#xe5;"/>
+    <actions xsi:type="screenDecorator:ScriptAction" script="newItemString1 = Pushed the plus button"/>
     <widget xsi:type="model:Button" href="screen1.screen#44"/>
   </decorators>
   <decorators xsi:type="screenDecorator:StoryboardDecorator">
@@ -10,6 +10,14 @@
     <storyboard href="muniapp.story#/"/>
   </decorators>
   <decorators xsi:type="screenDecorator:WidgetContainerDecorator">
+    <viewRules stateFeatureValue="true" viewProperty="style" viewPropertyValue="-fx-background-color:RED">
+      <stateFeature href="muniapp.ecore#//muniapp/newItemHidden"/>
+      <viewPropertyType href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </viewRules>
+    <viewRules stateFeatureValue="false" viewProperty="style" viewPropertyValue="-fx-background-color:WHITE">
+      <stateFeature href="muniapp.ecore#//muniapp/newItemHidden"/>
+      <viewPropertyType href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </viewRules>
     <widgetContainer xsi:type="model:Screen" href="screen1.screen#/"/>
   </decorators>
   <decorators xsi:type="screenDecorator:WidgetDecorator">
@@ -24,7 +32,7 @@
     <widget xsi:type="model:Label" href="screen1.screen#109"/>
   </decorators>
   <decorators xsi:type="screenDecorator:WidgetDecorator">
-    <actions xsi:type="screenDecorator:ScriptAction" script="newItemHidden = bool"/>
+    <actions xsi:type="screenDecorator:ScriptAction" script="newItemHidden = toggle"/>
     <viewRules stateFeatureValue="false" viewProperty="text" viewPropertyValue="Hide">
       <stateFeature href="muniapp.ecore#//muniapp/newItemHidden"/>
       <viewPropertyType href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -34,5 +42,16 @@
       <viewPropertyType href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     </viewRules>
     <widget xsi:type="model:Button" href="screen1.screen#142"/>
+  </decorators>
+  <decorators xsi:type="screenDecorator:WidgetDecorator">
+    <viewRules stateFeatureValue="*" viewProperty="visible" viewPropertyValue="true">
+      <stateFeature href="muniapp.ecore#//muniapp/username"/>
+      <viewPropertyType href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </viewRules>
+    <viewRules stateFeatureValue="" viewProperty="visible" viewPropertyValue="false">
+      <stateFeature href="muniapp.ecore#//muniapp/username"/>
+      <viewPropertyType href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </viewRules>
+    <widget xsi:type="model:Label" href="screen1.screen#155"/>
   </decorators>
 </screenDecorator:DecoratorModel>

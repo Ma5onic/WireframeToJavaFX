@@ -5,7 +5,7 @@
       <font/>
     </widgets>
   </widgets>
-  <widgets xsi:type="model:WidgetGroup" id="2" x="208" y="56" measuredWidth="97" measuredHeight="81" name="Actions">
+  <widgets xsi:type="model:WidgetGroup" id="2" x="224" y="56" measuredWidth="97" measuredHeight="81" name="Actions">
     <widgets xsi:type="model:Note" id="2" width="97" height="81" text="Actions" measuredWidth="97" measuredHeight="81" annotation="true" background="#f05253">
       <font/>
     </widgets>
