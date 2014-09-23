@@ -353,17 +353,27 @@ class ScreenDecoratorGenerator {
 			widgetContainerDecorator.viewRules.add(viewRule)
 			decoratorModel.decorators.add(widgetContainerDecorator)
 
+			val screenModelPath = Constants.PROJECT_DIR + Constants.SUB_PROJECT_NAME + "/" + screenName + ".ecore"
+			var file = new File(screenModelPath)
+			val screenDecorator = factory.createWidgetContainerDecorator
+			if (file.exists){
+				val screenmodelResource = resourceSet.getResource(URI.createFileURI(screenModelPath), true)
+				screenDecorator.model = screenmodelResource.contents.get(0).eContents.get(0) as EClass 
+			}
+			screenDecorator.widgetContainer = screen as Screen
+		
 		
 			val storyboardModelPath = Constants.PROJECT_DIR + Constants.SUB_PROJECT_NAME + "/" + "muniapp.ecore"
 			val storyboardDecorator = factory.createStoryboardDecorator
 			storyboardDecorator.storyboard = ResourceSetHandler.instance.storyboardResource.contents.get(0) as Storyboard
-			val file = new File(storyboardModelPath)
+			file = new File(storyboardModelPath)
 			if (file.exists){
 				val modelResource = resourceSet.getResource(URI.createFileURI(storyboardModelPath), true)
 				storyboardDecorator.model = modelResource.contents.get(0).eContents.get(0) as EClass
 			}
 
 			decoratorModel.decorators.add(storyboardDecorator)
+			decoratorModel.decorators.add(screenDecorator)
 			
 			resource.contents.add(decoratorModel)
 			resource.save(null)
@@ -479,11 +489,20 @@ class ScreenDecoratorGenerator {
 			widgetDecorator.viewRules.add(viewRule)
 			decoratorModel.decorators.add(widgetDecorator)
 
+			val screenModelPath = Constants.PROJECT_DIR + Constants.SUB_PROJECT_NAME + "/" + screenName + ".ecore"
+			var file = new File(screenModelPath)
+			val screenDecorator = factory.createWidgetContainerDecorator
+			if (file.exists){
+				val screenmodelResource = resourceSet.getResource(URI.createFileURI(screenModelPath), true)
+				screenDecorator.model = screenmodelResource.contents.get(0).eContents.get(0) as EClass 
+			}
+			screenDecorator.widgetContainer = widget.eContainer as Screen
+		
 		
 			val storyboardModelPath = Constants.PROJECT_DIR + Constants.SUB_PROJECT_NAME + "/" + "muniapp.ecore"
 			val storyboardDecorator = factory.createStoryboardDecorator
 			storyboardDecorator.storyboard = ResourceSetHandler.instance.storyboardResource.contents.get(0) as Storyboard
-			val file = new File(storyboardModelPath)
+			file = new File(storyboardModelPath)
 			if (file.exists){
 				val modelResource = resourceSet.getResource(URI.createFileURI(storyboardModelPath), true)
 				storyboardDecorator.model = modelResource.contents.get(0).eContents.get(0) as EClass
