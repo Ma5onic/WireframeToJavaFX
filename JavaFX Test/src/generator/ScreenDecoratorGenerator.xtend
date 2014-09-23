@@ -509,6 +509,7 @@ class ScreenDecoratorGenerator {
 			}
 
 			decoratorModel.decorators.add(storyboardDecorator)
+			decoratorModel.decorators.add(screenDecorator)
 			
 			resource.contents.add(decoratorModel)
 			resource.save(null)
