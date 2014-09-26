@@ -17,9 +17,6 @@ import no.fhl.screenDecorator.AbstractDecorator
 import org.apache.commons.io.FilenameUtils
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.util.EcoreUtil
-import org.eclipse.emf.common.util.URI
-import org.eclipse.emf.ecore.EPackage
-import javafx.scene.control.Button
 
 /**
  * 
@@ -28,7 +25,7 @@ import javafx.scene.control.Button
 class AppController extends Application {
 
 	/* The name of the initial fxml file */
-	String fileName =  "recipe" // "login" //
+	String fileName =   "screen1" // "recipe" //
 
 	/** A resource set with all loaded resources */
 	ResourceSet resourceSet
@@ -150,7 +147,6 @@ class AppController extends Application {
 				class = Class.forName("application.ScreenNavigatorController" + safeFileName)
 				constructor = class.getConstructor(Object, HashMap)
 				screenNavigatorController = constructor.newInstance(this, navigatorMap)
-
 				loader.setLocation(location)
 				loader.setController(screenNavigatorController)
 				setRoot = loader.load() as Parent

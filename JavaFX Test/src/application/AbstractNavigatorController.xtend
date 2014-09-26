@@ -27,7 +27,6 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.resource.Resource
-import javafx.scene.control.Button
 
 /** Used to indicate if the methods <code>getPropertyForNode()</code> or 
  * <code>setPropertyForNode()</code> was successful in invoking the property.
@@ -60,11 +59,13 @@ abstract class AbstractNavigatorController {
 			it.widgets.filter[it.id == Long.parseLong(widgetId)].forEach [ widget |
 				// This is the widget we are looking for
 				val decorator = appController.decoratorMap.get(widget) as WidgetDecorator
+				println("decoratir = " + decorator)
 				if (decorator != null) { // There is a decorator for the widget
 					decorator.actions.forEach [
 						if (it instanceof EventScriptAction) {
 							setScriptFeatureForWidget(script, widget)
 						} else if (it instanceof ScriptAction) {
+							println("setting action")
 							setScriptFeatureForWidget(it.script, widget)
 						}
 					]
@@ -282,14 +283,11 @@ abstract class AbstractNavigatorController {
 			decorator = appController.decoratorMap.get(widget.eContainer) // as WidgetContainerDecorator 
 			if (decorator == null) { // no decorator for this screen, check storyboard
 				decorator = appController.decoratorMap.get(storyboard) 
-				if (decorator == null) { // no decorator for storyboard. There is no model!
-					println("Warning: There is no model at all!")
-					return false
-				} else if (decorator.model != null) { // storyboard is not null.
+				if (decorator.model != null) { // storyboard is not null.
 					setScriptFeatureForModel(script, decorator.model)
 					return true
 				} else {
-					
+					println("Warning: There is no model at all!")
 					return false
 				}
 			} else { // screen has a decorator
@@ -298,9 +296,8 @@ abstract class AbstractNavigatorController {
 					if (result == false) {
 						// Try with the app decorator
 						decorator = appController.decoratorMap.get(storyboard) // as StoryboardDecorator 
-						if (decorator == null) { // no decorator for storyboard. There is no model!
-							return false
-						} else if (decorator.model != null) { // storyboard is not null.
+						// no decorator for storyboard. There is no model!
+						if (decorator.model != null) { // storyboard is not null.
 							setScriptFeatureForModel(script, decorator.model)
 							return true
 						} else {
@@ -312,9 +309,8 @@ abstract class AbstractNavigatorController {
 				}
 				if (decorator.model == null) { // But there is no model, so check storyboard  
 					decorator = appController.decoratorMap.get(storyboard) // as StoryboardDecorator 
-					if (decorator == null) { // no decorator for storyboard. There is no model!
-						return false
-					} else if (decorator.model != null) { // storyboard is not null.
+					// no decorator for storyboard. There is no model!
+					if (decorator.model != null) { // storyboard is not null.
 						setScriptFeatureForModel(script, decorator.model)
 						return true
 					} else {

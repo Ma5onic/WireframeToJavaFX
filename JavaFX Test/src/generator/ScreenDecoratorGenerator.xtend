@@ -12,6 +12,7 @@ import java.util.HashMap
 import no.fhl.screenDecorator.DecoratorModel
 import no.fhl.screenDecorator.ScreenDecoratorFactory
 import no.fhl.screenDecorator.ScriptAction
+import no.fhl.screenDecorator.WidgetContainerDecorator
 import no.fhl.screenDecorator.WidgetDecorator
 import org.apache.commons.io.FilenameUtils
 import org.eclipse.emf.common.util.URI
@@ -24,7 +25,6 @@ import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.emf.ecore.xmi.XMLResource
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl
-import no.fhl.screenDecorator.WidgetContainerDecorator
 
 /** A singleton class that parse and generate screendecorator models */
 class ScreenDecoratorGenerator {
@@ -363,7 +363,7 @@ class ScreenDecoratorGenerator {
 			screenDecorator.widgetContainer = screen as Screen
 		
 		
-			val storyboardModelPath = Constants.PROJECT_DIR + Constants.SUB_PROJECT_NAME + "/" + "muniapp.ecore"
+			val storyboardModelPath = Constants.PROJECT_DIR + Constants.SUB_PROJECT_NAME + "/" + Constants.SUB_PROJECT_NAME + ".ecore"
 			val storyboardDecorator = factory.createStoryboardDecorator
 			storyboardDecorator.storyboard = ResourceSetHandler.instance.storyboardResource.contents.get(0) as Storyboard
 			file = new File(storyboardModelPath)
@@ -454,6 +454,7 @@ class ScreenDecoratorGenerator {
 			}
 			decoratorResource.save(null)
 		} else { 
+			// No screen decorator file
 			val resourceSet = ResourceSetHandler.instance.resourceSet
 			val directory = Constants.PROJECT_DIR + Constants.SUB_PROJECT_NAME + "/"
 			val path = directory + screenName + ".screendecorator"
@@ -499,7 +500,7 @@ class ScreenDecoratorGenerator {
 			screenDecorator.widgetContainer = widget.eContainer as Screen
 		
 		
-			val storyboardModelPath = Constants.PROJECT_DIR + Constants.SUB_PROJECT_NAME + "/" + "muniapp.ecore"
+			val storyboardModelPath = Constants.PROJECT_DIR + Constants.SUB_PROJECT_NAME + "/" + Constants.SUB_PROJECT_NAME + ".ecore"
 			val storyboardDecorator = factory.createStoryboardDecorator
 			storyboardDecorator.storyboard = ResourceSetHandler.instance.storyboardResource.contents.get(0) as Storyboard
 			file = new File(storyboardModelPath)
@@ -606,7 +607,7 @@ class ScreenDecoratorGenerator {
 			screenDecorator.widgetContainer = widget.eContainer as Screen
 		
 		
-			val storyboardModelPath = Constants.PROJECT_DIR + Constants.SUB_PROJECT_NAME + "/" + "muniapp.ecore"
+			val storyboardModelPath = Constants.PROJECT_DIR + Constants.SUB_PROJECT_NAME + "/" + Constants.SUB_PROJECT_NAME + ".ecore"
 			val storyboardDecorator = factory.createStoryboardDecorator
 			storyboardDecorator.storyboard = ResourceSetHandler.instance.storyboardResource.contents.get(0) as Storyboard
 			file = new File(storyboardModelPath)

@@ -4,6 +4,7 @@ import application.AppController
 import application.Constants
 import application.FXMLBuilder
 import application.InvalidLayoutException
+import application.PropertyResult
 import application.ResourceSetHandler
 import com.wireframesketcher.model.Arrow
 import com.wireframesketcher.model.Button
@@ -13,9 +14,12 @@ import com.wireframesketcher.model.Image
 import com.wireframesketcher.model.Label
 import com.wireframesketcher.model.List
 import com.wireframesketcher.model.Master
+import com.wireframesketcher.model.Position
 import com.wireframesketcher.model.Screen
 import com.wireframesketcher.model.State
+import com.wireframesketcher.model.TextArea
 import com.wireframesketcher.model.TextField
+import com.wireframesketcher.model.VLine
 import com.wireframesketcher.model.Widget
 import java.io.BufferedWriter
 import java.io.File
@@ -32,14 +36,10 @@ import javafx.scene.text.FontWeight
 import javafx.scene.text.Text
 import no.fhl.screenDecorator.AbstractDecorator
 import org.apache.commons.io.FilenameUtils
+import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.util.EcoreUtil
 import org.w3c.dom.Element
-import com.wireframesketcher.model.Position
-import com.wireframesketcher.model.VLine
-import com.wireframesketcher.model.TextArea
-import application.PropertyResult
-import org.eclipse.emf.common.util.URI
-import javafx.scene.Node
+import com.sun.corba.se.impl.orbutil.closure.Constant
 
 /**
  * Retrieves the EMF model data from a screen file and generates a corresponding FXML file.
@@ -1172,7 +1172,9 @@ class Generator {
 		val decoratorMap = resourceSetHandler.decoratorMap
 			
 		// Generate FXML for the screen files
-		println("- - - - - - - - - -\n- Generating FXML -\n- - - - - - - - - -")
+		println("- - - - - - - - - - - - - - - - - - - - -\n- Generating FXML for project \"" + 
+			Constants.SUB_PROJECT_NAME + "\"  -\n- - - - - - - - - - - - - - - - - - - - -"
+		)
 		val fxmlGenerator = new Generator(null, decoratorMap)
 		
 		val decoratorGenerator = ScreenDecoratorGenerator.instance
