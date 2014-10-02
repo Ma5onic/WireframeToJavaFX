@@ -1,5 +1,7 @@
 package application;
 
+import generator.LayoutStyle;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -31,17 +33,17 @@ public class FXMLBuilder {
 	Element children;
 	int paneWidth;
 	int paneHeight;
-	String layoutType;
+	LayoutStyle layoutType;
 
 	public Element getRootElement() {
 		return rootElement;
 	}
 
-	public String getLayoutType() {
+	public LayoutStyle getLayoutType() {
 		return layoutType;
 	}
 
-	public void setLayoutType(String newLayoutType) {
+	public void setLayoutType(LayoutStyle newLayoutType) {
 		layoutType = newLayoutType;
 	}
 
@@ -100,7 +102,8 @@ public class FXMLBuilder {
 	 * @param newPaneWidth
 	 *            The width of the pane
 	 **/
-	public FXMLBuilder(int newPaneHeight, int newPaneWidth, String layout)
+	@SuppressWarnings("unused")
+	public FXMLBuilder(int newPaneHeight, int newPaneWidth, LayoutStyle layout)
 			throws ParserConfigurationException {
 
 		paneHeight = newPaneHeight;
@@ -143,7 +146,7 @@ public class FXMLBuilder {
 		doc.appendChild(import6);
 		// doc.appendChild(import7);
 
-		if (layoutType.equals("AnchorPane")) {
+		if (layoutType == LayoutStyle.AnchorPane) {
 			/* Using AnchorPane with explicit coordinates */
 			rootElement = doc.createElement("AnchorPane");
 			rootElement.setAttribute("maxHeight", "-Infinity");
@@ -159,7 +162,7 @@ public class FXMLBuilder {
 //			rootElement.setAttribute("fx:controller",
 //					"application.FXMLDocumentController");
 
-		} else if (layoutType.equals("GridPane")) {
+		} else if (layoutType == LayoutStyle.GridPane) {
 
 			rootElement = doc.createElement("GridPane");
 			rootElement.setAttribute("id", "gridPane1"); // ID HER
@@ -188,7 +191,9 @@ public class FXMLBuilder {
 			}
 
 			// For debugging enable grid lines
-//		 rootElement.setAttribute("gridLinesVisible", "true");
+			if (Constants.enableDebugLines == true){
+				rootElement.setAttribute("gridLinesVisible", "true");
+			}
 		}
 
 		doc.appendChild(rootElement);

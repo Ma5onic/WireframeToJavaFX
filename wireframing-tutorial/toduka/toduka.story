@@ -6,4 +6,7 @@
   <panels x="375" y="75">
     <screen href="screen2.screen#/"/>
   </panels>
+  <panels x="675" y="75">
+    <screen href="screen3.screen#/"/>
+  </panels>
 </story:Storyboard>

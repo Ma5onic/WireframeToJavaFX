@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Label" id="1" x="80" y="24" text="Mine oppgaver" measuredWidth="164" measuredHeight="34">
+    <font size="22px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="2" x="8" y="480" width="89" text="Mine \nOppgave" measuredWidth="89" measuredHeight="40">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:VLine" id="3" x="104" y="456" height="68" measuredWidth="6" measuredHeight="68"/>
+  <widgets xsi:type="model:Button" id="4" x="120" y="480" width="105" text="Delegerte \nOppgave" measuredWidth="105" measuredHeight="40">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:VLine" id="5" x="238" y="456" height="68" measuredWidth="6" measuredHeight="68"/>
+  <widgets xsi:type="model:Checkbox" id="6" x="16" y="136" text="Kjøp øl" measuredWidth="63" measuredHeight="23" selected="true">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="7" x="288" y="28" width="25" text="+" measuredWidth="25" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Checkbox" id="8" x="16" y="184" text="Vask kjøkken" measuredWidth="99" measuredHeight="23" selected="true">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:HLine" id="9" x="8" y="57" width="329" measuredWidth="329" measuredHeight="6"/>
+  <widgets xsi:type="model:HLine" id="10" x="8" y="104" width="329" measuredWidth="329" measuredHeight="6"/>
+  <widgets xsi:type="model:Label" id="17" x="56" y="72" text="Aktive" measuredWidth="49" measuredHeight="25" link="screen1.screen">
+    <font size="14px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="18" x="224" y="72" text="Fullførte" measuredWidth="63" measuredHeight="25">
+    <font size="14px"/>
+  </widgets>
+  <widgets xsi:type="model:VLine" id="19" x="160" y="72" height="26" measuredWidth="6" measuredHeight="26"/>
+  <widgets xsi:type="model:Checkbox" id="22" x="16" y="229" text="Utkast til meny" measuredWidth="109" measuredHeight="23" selected="true">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="23" x="37" y="158" text="Peter Nilsen" measuredWidth="64" measuredHeight="20">
+    <font size="10px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="24" x="37" y="205" text="Karina Sæter" measuredWidth="68" measuredHeight="20">
+    <font size="10px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="25" x="37" y="254" text="Marianne Olsen" measuredWidth="82" measuredHeight="20">
+    <font size="10px"/>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

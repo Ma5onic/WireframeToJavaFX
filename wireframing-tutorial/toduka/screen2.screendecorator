@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ASCII"?>
+<screenDecorator:DecoratorModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" xmlns:screenDecorator="no.hal.screenDecorator">
+  <decorators xsi:type="screenDecorator:WidgetDecorator">
+    <actions xsi:type="screenDecorator:ScriptAction" script="comment = ${commentField}"/>
+    <widget xsi:type="model:Button" href="screen2.screen#12"/>
+  </decorators>
+  <decorators xsi:type="screenDecorator:StoryboardDecorator">
+    <storyboard href="toduka.story#/"/>
+  </decorators>
+  <decorators xsi:type="screenDecorator:WidgetContainerDecorator">
+    <model href="screen2.ecore#//screen2"/>
+    <widgetContainer xsi:type="model:Screen" href="screen2.screen#/"/>
+  </decorators>
+</screenDecorator:DecoratorModel>

@@ -143,7 +143,7 @@ class AppController extends Application {
 				val location = Paths.get(filePath).toUri.toURL
 
 				// Create the dedicated ScreenNavigatorController using reflection 
-				val safeFileName = fileName.replace("-", "")
+				val safeFileName = fileName.replace("-", "").replace(" ", "")
 				class = Class.forName("application.ScreenNavigatorController" + safeFileName)
 				constructor = class.getConstructor(Object, HashMap)
 				screenNavigatorController = constructor.newInstance(this, navigatorMap)

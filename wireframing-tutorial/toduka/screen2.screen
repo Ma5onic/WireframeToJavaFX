@@ -17,7 +17,7 @@
   <widgets xsi:type="model:Button" id="9" x="278" y="28" width="59" text="Rediger" measuredWidth="59" measuredHeight="25">
     <font/>
   </widgets>
-  <widgets xsi:type="model:Button" id="12" x="256" y="400" width="81" text="Legg til" measuredWidth="81" measuredHeight="25">
+  <widgets xsi:type="model:Button" id="12" x="256" y="424" width="81" text="Legg til" measuredWidth="81" measuredHeight="25">
     <font/>
   </widgets>
   <widgets xsi:type="model:Checkbox" id="14" x="16" y="184" text="Reperasjon av vaskemaskin" measuredWidth="181" measuredHeight="23">
@@ -31,15 +31,31 @@
   <widgets xsi:type="model:Label" id="18" x="16" y="128" text="Legg inn bestilling av kokkeluer til \nresturanten" measuredWidth="279" measuredHeight="44">
     <font size="16px"/>
   </widgets>
-  <widgets xsi:type="model:Label" id="19" x="16" y="256" text="Kommentar:" measuredWidth="90" measuredHeight="25">
+  <widgets xsi:type="model:Label" id="19" x="16" y="280" text="Kommentar:" measuredWidth="90" measuredHeight="25">
     <font size="14px"/>
   </widgets>
-  <widgets xsi:type="model:TextArea" id="20" x="16" y="280" width="321" height="113" measuredWidth="321" measuredHeight="113">
+  <widgets xsi:type="model:TextArea" id="20" x="16" y="304" width="321" height="113" text="=${commentField}" measuredWidth="321" measuredHeight="113">
     <font/>
   </widgets>
   <widgets xsi:type="model:Label" id="21" x="319" y="72" text="!!" measuredWidth="18" measuredHeight="29">
     <font size="18px"/>
   </widgets>
+  <widgets xsi:type="model:Master" id="22" x="429" y="76" width="124" measuredWidth="124" measuredHeight="81">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Data"/>
+    <overrides>
+      <widgets ref="1" width="124" text="string comment"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Label" id="23" x="16" y="248" width="313" text="${comment}" measuredWidth="313" measuredHeight="20">
+    <font size="10px"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="26" x="400" y="304" width="209" measuredWidth="209" measuredHeight="49">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Actions"/>
+    <overrides>
+      <widgets ref="2" width="209" height="49" text="comment = ${commentField}"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Arrow" id="27" x="319" y="345" width="111" height="91" measuredWidth="111" measuredHeight="91" annotation="true" direction="bottom"/>
   <hRuler>
     <guides position="346"/>
   </hRuler>

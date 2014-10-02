@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="ASCII"?>
-<detailedrecipe:detailedrecipe xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:detailedrecipe="File:///Users/f/git/JavaFXGenerator/wireframing-tutorial/cake/detailedrecipe.ecore" buttonText="default"/>
+<detailedrecipe:detailedrecipe xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:detailedrecipe="File:///Users/f/git/JavaFXGenerator/wireframing-tutorial/cake/detailedrecipe.ecore" xsi:schemaLocation="File:///Users/f/git/JavaFXGenerator/wireframing-tutorial/cake/detailedrecipe.ecore detailedrecipe.ecore" buttonText="default"/>

@@ -95,7 +95,8 @@ class ResourceSetHandler {
 					// Create default values for each feature
 					eClass.EStructuralFeatures.forEach[
 						if (it.EType == EcorePackage.eINSTANCE.EString){
-							instance.eSet(it, "default")
+							// Set the value to an empty string
+							instance.eSet(it, "")
 						} else if (it.EType == EcorePackage.eINSTANCE.EBoolean){
 							instance.eSet(it, false)
 						} else if (it.EType == EcorePackage.eINSTANCE.EInt){

@@ -59,13 +59,11 @@ abstract class AbstractNavigatorController {
 			it.widgets.filter[it.id == Long.parseLong(widgetId)].forEach [ widget |
 				// This is the widget we are looking for
 				val decorator = appController.decoratorMap.get(widget) as WidgetDecorator
-				println("decoratir = " + decorator)
 				if (decorator != null) { // There is a decorator for the widget
 					decorator.actions.forEach [
 						if (it instanceof EventScriptAction) {
 							setScriptFeatureForWidget(script, widget)
 						} else if (it instanceof ScriptAction) {
-							println("setting action")
 							setScriptFeatureForWidget(it.script, widget)
 						}
 					]
@@ -74,7 +72,6 @@ abstract class AbstractNavigatorController {
 			]
 		]
 	}
-	
 	
 	/** Returns the invoked value of <code>propertyName</code> on <code>node</code><br>
 	 * Returns <code>PropertyResult.NO_SUCH_METHOD</code> if the method does not exist. */
@@ -152,10 +149,15 @@ abstract class AbstractNavigatorController {
 	}
 
 	def evaluateRules(Resource resource) {
-		resource.contents.filter(Screen).forEach [
-				evaluateWidgetDecoratorForScreen(it)
-				evaluateWidgetContainerDecoratorForScreen(it)
-			]
+		if (resource == null || resource.contents == null){
+			println("Warning: Trying to evaluate rules for an empty resource! " +
+				"Did you link to a screen of another project perhaps?")			
+		} else {
+			resource.contents.filter(Screen).forEach [
+					evaluateWidgetDecoratorForScreen(it)
+					evaluateWidgetContainerDecoratorForScreen(it)
+				]
+		}
 		
 	}
 
@@ -715,11 +717,11 @@ abstract class AbstractNavigatorController {
 		} else if (sceneResource == null || (sceneResource != null && sceneResource.checksum != checksum) ) { 
 			// The file does not exist, or the the file exist but has changed. then load the updated file
 	
-				val filePath = "src/application/" + nextScreen + ".fxml";
+				val filePath = "src/application/" + nextScreen + ".fxml"
 	
 				if (!new File(filePath).exists) {
 					throw new FileNotFoundException(
-						"Could not find " + nextScreen + ".fxml " + "You need to run the generator.")
+						"Could not find " + nextScreen + ".fxml " + "Did you remember to add it to " + Constants.SUB_PROJECT_NAME + ".story?")
 				}					
 				val loader = new FXMLLoader();
 				val location = Paths.get(filePath).toUri().toURL();

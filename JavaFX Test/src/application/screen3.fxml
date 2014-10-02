@@ -1,78 +1,46 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<?import java.lang.*?><?import javafx.scene.control.*?><?import javafx.scene.layout.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.geometry.*?><GridPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" hgap="0" id="gridPane1" minHeight="534" minWidth="343" vgap="0">
-    <padding>
-        <Insets bottom="25" left="25" right="25" top="25"/>
-    </padding>
+<?import java.lang.*?><?import javafx.scene.control.*?><?import javafx.scene.layout.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.geometry.*?><AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="620" minWidth="344">
     <children>
-        <Button GridPane.columnIndex="1" GridPane.columnSpan="3" GridPane.rowIndex="3" GridPane.rowSpan="2" id="11" onAction="#handleActionEvent11" style="-fx-base:white;" text="&lt; Back"/>
-        <Label GridPane.columnIndex="7" GridPane.columnSpan="2" GridPane.rowIndex="1" GridPane.rowSpan="4" id="12" onMousePressed="#handleMouseEvent12" rotate="0" text="Muniapp" textFill="black">
+        <Label id="1" layoutX="80" layoutY="24" onMousePressed="#handleMouseEvent1" rotate="0" text="Mine oppgaver" textFill="black">
             <font>
-                <Font name="System Bold" size="18"/>
+                <Font name="System Regular" size="22"/>
             </font>
         </Label>
-        <Label GridPane.columnIndex="5" GridPane.columnSpan="5" GridPane.rowIndex="6" GridPane.rowSpan="1" id="27" onMousePressed="#handleMouseEvent27" rotate="0" text="Add new event" textFill="black">
+        <Button id="2" layoutX="8" layoutY="480" onAction="#handleActionEvent2" style="-fx-base:white;" text="Mine &#10;Oppgave"/>
+        <Separator id="3" layoutX="104" layoutY="456" orientation="VERTICAL" prefHeight="68"/>
+        <Button id="4" layoutX="120" layoutY="480" onAction="#handleActionEvent4" style="-fx-base:white;" text="Delegerte &#10;Oppgave"/>
+        <Separator id="5" layoutX="238" layoutY="456" orientation="VERTICAL" prefHeight="68"/>
+        <CheckBox id="6" layoutX="16" layoutY="136" onAction="#handleActionEvent6" selected="true" text="Kjøp øl"/>
+        <Button id="7" layoutX="288" layoutY="28" onAction="#handleActionEvent7" style="-fx-base:white;" text="+"/>
+        <CheckBox id="8" layoutX="16" layoutY="184" onAction="#handleActionEvent8" selected="true" text="Vask kjøkken"/>
+        <Separator id="9" layoutX="8" layoutY="57" prefWidth="329"/>
+        <Separator id="10" layoutX="8" layoutY="104" prefWidth="329"/>
+        <Label id="17" layoutX="56" layoutY="72" onMousePressed="#handleMouseEvent17" rotate="0" text="Aktive" textFill="black">
             <font>
-                <Font name="System Regular" size="16"/>
+                <Font name="System Regular" size="14"/>
             </font>
         </Label>
-        <Button GridPane.columnIndex="12" GridPane.columnSpan="3" GridPane.rowIndex="2" GridPane.rowSpan="2" id="44" onAction="#handleActionEvent44" style="-fx-base:white;" text="Save"/>
-        <TextField GridPane.columnIndex="8" GridPane.columnSpan="8" GridPane.rowIndex="8" GridPane.rowSpan="1" id="46" onAction="#handleActionEvent46" prefWidth="163" text="=${eventName}"/>
-        <Label GridPane.columnIndex="1" GridPane.columnSpan="4" GridPane.rowIndex="8" GridPane.rowSpan="1" id="47" onMousePressed="#handleMouseEvent47" rotate="0" text="Event name:" textFill="black">
+        <Label id="18" layoutX="224" layoutY="72" onMousePressed="#handleMouseEvent18" rotate="0" text="Fullførte" textFill="black">
             <font>
-                <Font name="System Regular" size="12"/>
+                <Font name="System Regular" size="14"/>
             </font>
         </Label>
-        <Label GridPane.columnIndex="1" GridPane.columnSpan="2" GridPane.rowIndex="12" GridPane.rowSpan="1" id="48" onMousePressed="#handleMouseEvent48" rotate="0" text="Time:" textFill="black">
+        <Separator id="19" layoutX="160" layoutY="72" orientation="VERTICAL" prefHeight="26"/>
+        <CheckBox id="22" layoutX="16" layoutY="229" onAction="#handleActionEvent22" selected="true" text="Utkast til meny"/>
+        <Label id="23" layoutX="37" layoutY="158" onMousePressed="#handleMouseEvent23" rotate="0" text="Peter Nilsen" textFill="black">
             <font>
-                <Font name="System Regular" size="12"/>
+                <Font name="System Regular" size="10"/>
             </font>
         </Label>
-        <Label GridPane.columnIndex="1" GridPane.columnSpan="1" GridPane.rowIndex="10" GridPane.rowSpan="1" id="52" onMousePressed="#handleMouseEvent52" rotate="0" text="Date:" textFill="black">
+        <Label id="24" layoutX="37" layoutY="205" onMousePressed="#handleMouseEvent24" rotate="0" text="Karina Sæter" textFill="black">
             <font>
-                <Font name="System Regular" size="12"/>
+                <Font name="System Regular" size="10"/>
             </font>
         </Label>
-        <Separator GridPane.columnIndex="1" GridPane.columnSpan="15" GridPane.rowIndex="14" GridPane.rowSpan="1" id="56" prefWidth="294"/>
-        <TextField GridPane.columnIndex="11" GridPane.columnSpan="2" GridPane.rowIndex="12" GridPane.rowSpan="1" id="57" onAction="#handleActionEvent57" prefWidth="33" text="11"/>
-        <TextField GridPane.columnIndex="14" GridPane.columnSpan="2" GridPane.rowIndex="12" GridPane.rowSpan="1" id="58" onAction="#handleActionEvent58" prefWidth="33" text="03"/>
-        <TextField GridPane.columnIndex="10" GridPane.columnSpan="6" GridPane.rowIndex="10" GridPane.rowSpan="1" id="62" onAction="#handleActionEvent62" prefWidth="96" text="11/06/14"/>
-        <Button GridPane.columnIndex="6" GridPane.columnSpan="3" GridPane.rowIndex="16" GridPane.rowSpan="1" id="64" onAction="#handleActionEvent64" style="-fx-base:#ff0000;" text="Delete task"/>
+        <Label id="25" layoutX="37" layoutY="254" onMousePressed="#handleMouseEvent25" rotate="0" text="Marianne Olsen" textFill="black">
+            <font>
+                <Font name="System Regular" size="10"/>
+            </font>
+        </Label>
     </children>
-    <columnConstraints>
-        <ColumnConstraints minWidth="25"/>
-        <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints/>
-        <ColumnConstraints minWidth="12"/>
-        <ColumnConstraints/>
-        <ColumnConstraints/>
-    </columnConstraints>
-    <rowConstraints>
-        <RowConstraints minHeight="7"/>
-        <RowConstraints/>
-        <RowConstraints/>
-        <RowConstraints/>
-        <RowConstraints/>
-        <RowConstraints minHeight="28"/>
-        <RowConstraints/>
-        <RowConstraints minHeight="30"/>
-        <RowConstraints/>
-        <RowConstraints minHeight="9"/>
-        <RowConstraints/>
-        <RowConstraints minHeight="8"/>
-        <RowConstraints/>
-        <RowConstraints minHeight="34"/>
-        <RowConstraints/>
-        <RowConstraints minHeight="26"/>
-        <RowConstraints/>
-    </rowConstraints>
-</GridPane>
+</AnchorPane>

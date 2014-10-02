@@ -1,16 +1,8 @@
 <?xml version="1.0" encoding="ASCII"?>
 <screenDecorator:DecoratorModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" xmlns:screenDecorator="no.hal.screenDecorator">
   <decorators xsi:type="screenDecorator:WidgetDecorator">
-    <actions xsi:type="screenDecorator:ScriptAction" script="value = inc"/>
-    <viewRules stateFeatureValue="3" viewProperty="disable" viewPropertyValue="true">
-      <stateFeature href="screen1.ecore#//screen1/value"/>
-      <viewPropertyType href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </viewRules>
-    <viewRules stateFeatureValue="0" viewProperty="disable" viewPropertyValue="false">
-      <stateFeature href="screen1.ecore#//screen1/value"/>
-      <viewPropertyType href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
-    </viewRules>
-    <widget xsi:type="model:Label" href="screen1.screen#20"/>
+    <actions xsi:type="screenDecorator:ScriptAction" script="checked = toggle"/>
+    <widget xsi:type="model:Checkbox" href="screen1.screen#14"/>
   </decorators>
   <decorators xsi:type="screenDecorator:StoryboardDecorator">
     <storyboard href="toduka.story#/"/>
@@ -18,14 +10,6 @@
   <decorators xsi:type="screenDecorator:WidgetContainerDecorator">
     <model href="screen1.ecore#//screen1"/>
     <widgetContainer xsi:type="model:Screen" href="screen1.screen#/"/>
-  </decorators>
-  <decorators xsi:type="screenDecorator:WidgetDecorator">
-    <actions xsi:type="screenDecorator:ScriptAction" script="value = 0"/>
-    <widget xsi:type="model:Button" href="screen1.screen#27"/>
-  </decorators>
-  <decorators xsi:type="screenDecorator:WidgetDecorator">
-    <actions xsi:type="screenDecorator:ScriptAction" script="checked = toggle"/>
-    <widget xsi:type="model:Checkbox" href="screen1.screen#8"/>
   </decorators>
   <decorators xsi:type="screenDecorator:WidgetDecorator">
     <viewRules stateFeatureValue="false" viewProperty="disable" viewPropertyValue="true">

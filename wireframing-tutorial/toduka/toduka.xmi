@@ -1,2 +1,5 @@
 <?xml version="1.0" encoding="ASCII"?>
-<screen1:screen1 xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:screen1="File:///Users/f/git/JavaFXGenerator/wireframing-tutorial/toduka/screen1.ecore" checked="true"/>
+<xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:screen1="File:///Users/f/git/JavaFXGenerator/wireframing-tutorial/toduka/screen1.ecore" xmlns:screen2="File:///Users/f/git/JavaFXGenerator/wireframing-tutorial/toduka/screen2.ecore">
+  <screen1:screen1 checked="true"/>
+  <screen2:screen2 comment="Hie p&#xe5; deg"/>
+</xmi:XMI>

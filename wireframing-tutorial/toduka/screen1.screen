@@ -3,27 +3,21 @@
   <widgets xsi:type="model:Label" id="2" x="80" y="24" text="Mine oppgaver" measuredWidth="164" measuredHeight="34">
     <font size="22px"/>
   </widgets>
-  <widgets xsi:type="model:Button" id="4" x="8" y="480" width="89" text="Mine \nOppgave" measuredWidth="89" measuredHeight="40">
+  <widgets xsi:type="model:Button" id="4" x="11" y="480" width="89" text="Mine \nOppgave" measuredWidth="89" measuredHeight="40">
     <font/>
   </widgets>
-  <widgets xsi:type="model:VLine" id="5" x="104" y="456" height="68" measuredWidth="6" measuredHeight="68"/>
-  <widgets xsi:type="model:Button" id="6" x="120" y="480" width="105" text="Delegerte \nOppgave" measuredWidth="105" measuredHeight="40">
+  <widgets xsi:type="model:VLine" id="5" x="109" y="456" height="68" measuredWidth="6" measuredHeight="68"/>
+  <widgets xsi:type="model:Button" id="6" x="125" y="480" width="105" text="Delegerte \nOppgave" measuredWidth="105" measuredHeight="40">
     <font/>
   </widgets>
-  <widgets xsi:type="model:VLine" id="7" x="238" y="456" height="68" measuredWidth="6" measuredHeight="68"/>
+  <widgets xsi:type="model:VLine" id="7" x="243" y="456" height="68" measuredWidth="6" measuredHeight="68"/>
   <widgets xsi:type="model:Checkbox" id="8" x="16" y="136" measuredWidth="21" measuredHeight="23">
     <font/>
   </widgets>
   <widgets xsi:type="model:Button" id="9" x="288" y="28" width="25" text="+" measuredWidth="25" measuredHeight="25">
     <font/>
   </widgets>
-  <widgets xsi:type="model:Button" id="12" x="16" y="72" width="137" text="Aktive" measuredWidth="137" measuredHeight="25">
-    <font/>
-  </widgets>
-  <widgets xsi:type="model:Button" id="13" x="160" y="72" width="169" text="Fullførte" measuredWidth="169" measuredHeight="25">
-    <font/>
-  </widgets>
-  <widgets xsi:type="model:Checkbox" id="14" x="16" y="184" text="Reperasjon av vaskemaskin" measuredWidth="181" measuredHeight="23">
+  <widgets xsi:type="model:Checkbox" id="14" x="16" y="184" measuredWidth="21" measuredHeight="23">
     <font/>
   </widgets>
   <widgets xsi:type="model:HLine" id="15" x="8" y="57" width="329" measuredWidth="329" measuredHeight="6"/>
@@ -31,59 +25,36 @@
   <widgets xsi:type="model:Label" id="18" x="48" y="135" text="Bestille kokkeluer" measuredWidth="126" measuredHeight="25" link="screen2.screen">
     <font size="14px"/>
   </widgets>
-  <widgets xsi:type="model:Master" id="19" x="960" y="28" measuredWidth="97" measuredHeight="81">
+  <widgets xsi:type="model:Master" id="19" x="440" y="28" measuredWidth="97" measuredHeight="81">
     <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Data"/>
     <overrides>
       <widgets ref="1" text="int value&#xA;bool checked"/>
     </overrides>
   </widgets>
-  <widgets xsi:type="model:Label" id="20" x="224" y="264" text="increment" measuredWidth="65" measuredHeight="23">
-    <font size="12px"/>
-  </widgets>
-  <widgets xsi:type="model:Master" id="21" x="432" y="256" width="137" measuredWidth="137" measuredHeight="47">
-    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Actions"/>
-    <overrides>
-      <widgets ref="2" width="137" height="47" text="value = inc"/>
-    </overrides>
-  </widgets>
-  <widgets xsi:type="model:Arrow" id="22" x="272" y="272" width="161" height="8" measuredWidth="161" measuredHeight="8" annotation="true" foreground="#cccccc"/>
-  <widgets xsi:type="model:Label" id="24" x="224" y="304" text="${value}" measuredWidth="52" measuredHeight="23">
-    <font size="12px"/>
-  </widgets>
-  <widgets xsi:type="model:Master" id="25" x="424" y="126" width="169" measuredWidth="169" measuredHeight="81">
-    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Styles"/>
-    <overrides>
-      <widgets ref="3" width="169" text="if value is 3&#xA;set disable to true&#xA;if value is 0&#xA;set disable to false"/>
-    </overrides>
-  </widgets>
-  <widgets xsi:type="model:Arrow" id="26" x="238" y="171" width="195" height="101" measuredWidth="195" measuredHeight="101" annotation="true" foreground="#cccccc" direction="bottom"/>
-  <widgets xsi:type="model:Button" id="27" x="275" y="302" width="53" text="Reset" measuredWidth="53" measuredHeight="25">
-    <font/>
-  </widgets>
-  <widgets xsi:type="model:Master" id="28" x="444" y="320" height="33" measuredWidth="83" measuredHeight="33">
-    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Actions"/>
-    <overrides>
-      <widgets ref="2" width="83" height="33" text="value = 0"/>
-    </overrides>
-  </widgets>
-  <widgets xsi:type="model:Arrow" id="29" x="328" y="320" width="117" height="15" measuredWidth="117" measuredHeight="15" annotation="true" foreground="#cccccc"/>
   <widgets xsi:type="model:Master" id="32" x="36" y="224" width="125" measuredWidth="125" measuredHeight="34">
     <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Actions"/>
     <overrides>
       <widgets ref="2" width="125" height="34" text="checked = toggle"/>
     </overrides>
   </widgets>
-  <widgets xsi:type="model:Arrow" id="33" x="24" y="144" width="13" height="81" measuredWidth="13" measuredHeight="81" annotation="true" foreground="#cccccc"/>
-  <widgets xsi:type="model:Label" id="34" x="224" y="136" text="${checked}" measuredWidth="70" measuredHeight="23">
-    <font size="12px"/>
-  </widgets>
-  <widgets xsi:type="model:Master" id="35" x="424" y="8" width="169" measuredWidth="169" measuredHeight="81">
+  <widgets xsi:type="model:Arrow" id="33" x="24" y="192" width="13" height="33" measuredWidth="13" measuredHeight="33" annotation="true" foreground="#cccccc"/>
+  <widgets xsi:type="model:Master" id="35" x="416" y="168" measuredWidth="169" measuredHeight="81">
     <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Styles"/>
     <overrides>
       <widgets ref="3" width="169" text="if checked is false&#xA;set disable to true&#xA;if checked is true&#xA;set disable to false"/>
     </overrides>
   </widgets>
-  <widgets xsi:type="model:Arrow" id="36" x="128" y="56" width="305" height="89" measuredWidth="305" measuredHeight="89" annotation="true" foreground="#cccccc" direction="bottom"/>
+  <widgets xsi:type="model:Arrow" id="36" x="128" y="145" width="289" height="32" measuredWidth="289" measuredHeight="32" annotation="true" foreground="#cccccc"/>
+  <widgets xsi:type="model:Label" id="37" x="56" y="72" text="Aktive" measuredWidth="49" measuredHeight="25">
+    <font size="14px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="38" x="224" y="72" text="Fullførte" measuredWidth="63" measuredHeight="25" link="screen3.screen">
+    <font size="14px"/>
+  </widgets>
+  <widgets xsi:type="model:VLine" id="39" x="160" y="72" height="26" measuredWidth="6" measuredHeight="26"/>
+  <widgets xsi:type="model:Label" id="41" x="48" y="183" text="Reperasjon av vaskemaskin" measuredWidth="193" measuredHeight="25">
+    <font size="14px"/>
+  </widgets>
   <hRuler>
     <guides position="346"/>
   </hRuler>
