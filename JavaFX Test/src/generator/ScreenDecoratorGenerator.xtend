@@ -152,7 +152,6 @@ class ScreenDecoratorGenerator {
 			}
 			// For each pair, parse the values.
 			for (scriptPair : scriptPairList) {
-				
 				val ifString = scriptPair.key.split(" is ")
 				feature = ifString.get(0).split(" ", 4).get(1).trim
 				featureValue = ifString.get(1).trim
@@ -284,7 +283,6 @@ class ScreenDecoratorGenerator {
 								viewRule.viewPropertyType = EcorePackage.Literals.ESTRING
 							}
 							widgetContainerDecorator.viewRules.add(viewRule)
-
 						}
 					}
 				}
@@ -313,11 +311,11 @@ class ScreenDecoratorGenerator {
 
 				widgetContainerDecorator.viewRules.add(viewRule)
 				decoratorModel.decorators.add(widgetContainerDecorator)
+				
 			}
 			decoratorResource.save(null)
 		} else { 
 			// There is no decorator resource. Create it.
-			
 			val resourceSet = ResourceSetHandler.instance.resourceSet
 			val directory = Constants.PROJECT_DIR + Constants.SUB_PROJECT_NAME + "/"
 			val path = directory + screenName + ".screendecorator"
@@ -328,7 +326,7 @@ class ScreenDecoratorGenerator {
 			// Create the widget container
 			val widgetContainerDecorator = factory.createWidgetContainerDecorator
 			widgetContainerDecorator.widgetContainer = screen
-			if (ecoreModelForScreenExist(screen) == false) {
+			if (ecoreModelForScreenExist(screen) == true) {
 				widgetContainerDecorator.model = getEcoreModelForScreen(screen)
 			}
 
@@ -349,34 +347,25 @@ class ScreenDecoratorGenerator {
 			} else {
 				viewRule.viewPropertyType = EcorePackage.Literals.ESTRING
 			}
-
 			widgetContainerDecorator.viewRules.add(viewRule)
 			decoratorModel.decorators.add(widgetContainerDecorator)
 
-			val screenModelPath = Constants.PROJECT_DIR + Constants.SUB_PROJECT_NAME + "/" + screenName + ".ecore"
-			var file = new File(screenModelPath)
-			val screenDecorator = factory.createWidgetContainerDecorator
-			if (file.exists){
-				val screenmodelResource = resourceSet.getResource(URI.createFileURI(screenModelPath), true)
-				screenDecorator.model = screenmodelResource.contents.get(0).eContents.get(0) as EClass 
-			}
-			screenDecorator.widgetContainer = screen as Screen
-		
 		
 			val storyboardModelPath = Constants.PROJECT_DIR + Constants.SUB_PROJECT_NAME + "/" + Constants.SUB_PROJECT_NAME + ".ecore"
 			val storyboardDecorator = factory.createStoryboardDecorator
 			storyboardDecorator.storyboard = ResourceSetHandler.instance.storyboardResource.contents.get(0) as Storyboard
-			file = new File(storyboardModelPath)
+			val file = new File(storyboardModelPath)
 			if (file.exists){
 				val modelResource = resourceSet.getResource(URI.createFileURI(storyboardModelPath), true)
 				storyboardDecorator.model = modelResource.contents.get(0).eContents.get(0) as EClass
 			}
 
 			decoratorModel.decorators.add(storyboardDecorator)
-			decoratorModel.decorators.add(screenDecorator)
 			
 			resource.contents.add(decoratorModel)
+			
 			resource.save(null)
+			
 		}
 	}
 	

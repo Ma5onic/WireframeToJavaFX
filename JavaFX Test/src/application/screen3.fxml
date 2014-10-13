@@ -6,12 +6,12 @@
                 <Font name="System Regular" size="22"/>
             </font>
         </Label>
-        <Button id="2" layoutX="8" layoutY="480" onAction="#handleActionEvent2" style="-fx-base:white;" text="Mine &#10;Oppgave"/>
-        <Separator id="3" layoutX="104" layoutY="456" orientation="VERTICAL" prefHeight="68"/>
-        <Button id="4" layoutX="120" layoutY="480" onAction="#handleActionEvent4" style="-fx-base:white;" text="Delegerte &#10;Oppgave"/>
-        <Separator id="5" layoutX="238" layoutY="456" orientation="VERTICAL" prefHeight="68"/>
+        <Button disable="true" id="2" layoutX="12" layoutY="480" onAction="#handleActionEvent2" style="-fx-base:white;" text="Mine &#10;Oppgave"/>
+        <Separator id="3" layoutX="108" layoutY="456" orientation="VERTICAL" prefHeight="68"/>
+        <Button id="4" layoutX="124" layoutY="480" onAction="#handleActionEvent4" style="-fx-base:white;" text="Delegerte &#10;Oppgave"/>
+        <Separator id="5" layoutX="242" layoutY="456" orientation="VERTICAL" prefHeight="68"/>
         <CheckBox id="6" layoutX="16" layoutY="136" onAction="#handleActionEvent6" selected="true" text="Kjøp øl"/>
-        <Button id="7" layoutX="288" layoutY="28" onAction="#handleActionEvent7" style="-fx-base:white;" text="+"/>
+        <Button id="7" layoutX="312" layoutY="28" onAction="#handleActionEvent7" style="-fx-base:white;" text="+"/>
         <CheckBox id="8" layoutX="16" layoutY="184" onAction="#handleActionEvent8" selected="true" text="Vask kjøkken"/>
         <Separator id="9" layoutX="8" layoutY="57" prefWidth="329"/>
         <Separator id="10" layoutX="8" layoutY="104" prefWidth="329"/>
@@ -22,7 +22,7 @@
         </Label>
         <Label id="18" layoutX="224" layoutY="72" onMousePressed="#handleMouseEvent18" rotate="0" text="Fullførte" textFill="black">
             <font>
-                <Font name="System Regular" size="14"/>
+                <Font name="System Bold" size="14"/>
             </font>
         </Label>
         <Separator id="19" layoutX="160" layoutY="72" orientation="VERTICAL" prefHeight="26"/>

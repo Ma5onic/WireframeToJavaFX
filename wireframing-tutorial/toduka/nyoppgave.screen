@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Label" id="1" x="113" y="24" text="Ny oppgave" measuredWidth="132" measuredHeight="34">
+    <font size="22px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="2" x="12" y="480" width="89" text="Mine \nOppgave" measuredWidth="89" measuredHeight="40" link="mineOppgaver.screen">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:VLine" id="3" x="108" y="456" height="68" measuredWidth="6" measuredHeight="68"/>
+  <widgets xsi:type="model:Button" id="4" x="124" y="480" width="105" text="Delegerte \nOppgave" measuredWidth="105" measuredHeight="40" link="delegerteOppgaver.screen">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:VLine" id="5" x="242" y="456" height="68" measuredWidth="6" measuredHeight="68"/>
+  <widgets xsi:type="model:Button" id="7" x="280" y="28" width="55" text="Ferdig" measuredWidth="55" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:HLine" id="9" x="8" y="57" width="329" measuredWidth="329" measuredHeight="6"/>
+  <widgets xsi:type="model:HLine" id="10" x="8" y="104" width="329" measuredWidth="329" measuredHeight="6"/>
+  <widgets xsi:type="model:TextField" id="20" x="12" y="72" width="325" text="Tittel" measuredWidth="325" measuredHeight="26">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="21" x="12" y="120" width="217" text="Frist" measuredWidth="217" measuredHeight="26">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="22" x="247" y="120" text="!" measuredWidth="12" measuredHeight="26">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="24" x="280" y="120" text="!!" measuredWidth="17" measuredHeight="26">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="25" x="312" y="120" text="!!!" measuredWidth="22" measuredHeight="26">
+    <font size="16px"/>
+  </widgets>
+  <widgets xsi:type="model:TextArea" id="26" x="16" y="184" width="318" height="145" measuredWidth="318" measuredHeight="145">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="27" x="16" y="404" text="Delegér" measuredWidth="59" measuredHeight="25">
+    <font size="14px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="28" x="12" y="28" width="55" text="&lt;" measuredWidth="55" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="29" x="225" y="404" text="Velg person >" measuredWidth="109" measuredHeight="25">
+    <font size="14px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="30" x="16" y="160" text="Beskrivelse:" measuredWidth="86" measuredHeight="25">
+    <font size="14px"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="31" x="384" y="44" measuredWidth="169" measuredHeight="81">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Styles"/>
+    <overrides>
+      <widgets ref="3" width="169" text="if checked is true&#xA;set ${hide} to true"/>
+    </overrides>
+  </widgets>
+  <hRuler/>
+  <vRuler/>
+  <font size="12px"/>
+</model:Screen>

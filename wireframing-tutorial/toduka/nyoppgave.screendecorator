@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ASCII"?>
+<screenDecorator:DecoratorModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" xmlns:screenDecorator="no.hal.screenDecorator">
+  <decorators xsi:type="screenDecorator:WidgetContainerDecorator">
+    <viewRules stateFeatureValue="true" viewProperty="${hide}" viewPropertyValue="true">
+      <stateFeature href="toduka.ecore#//toduka/checked"/>
+      <viewPropertyType href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </viewRules>
+    <widgetContainer xsi:type="model:Screen" href="nyoppgave.screen#/"/>
+  </decorators>
+  <decorators xsi:type="screenDecorator:StoryboardDecorator">
+    <model href="toduka.ecore#//toduka"/>
+    <storyboard href="toduka.story#/"/>
+  </decorators>
+</screenDecorator:DecoratorModel>

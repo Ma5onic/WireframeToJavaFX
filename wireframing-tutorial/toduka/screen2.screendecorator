@@ -5,10 +5,26 @@
     <widget xsi:type="model:Button" href="screen2.screen#12"/>
   </decorators>
   <decorators xsi:type="screenDecorator:StoryboardDecorator">
+    <model href="toduka.ecore#//toduka"/>
     <storyboard href="toduka.story#/"/>
   </decorators>
   <decorators xsi:type="screenDecorator:WidgetContainerDecorator">
     <model href="screen2.ecore#//screen2"/>
     <widgetContainer xsi:type="model:Screen" href="screen2.screen#/"/>
+  </decorators>
+  <decorators xsi:type="screenDecorator:WidgetDecorator">
+    <viewRules stateFeatureValue="true" viewProperty="text" viewPropertyValue="Redig&#xe9;r">
+      <stateFeature href="screen2.ecore#//screen2/isEdit"/>
+      <viewPropertyType href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </viewRules>
+    <viewRules stateFeatureValue="false" viewProperty="text" viewPropertyValue="Cancel">
+      <stateFeature href="screen2.ecore#//screen2/isEdit"/>
+      <viewPropertyType href="http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    </viewRules>
+    <widget xsi:type="model:Button" href="screen2.screen#9"/>
+  </decorators>
+  <decorators xsi:type="screenDecorator:WidgetDecorator">
+    <actions xsi:type="screenDecorator:ScriptAction" script="isEdit = true"/>
+    <widget xsi:type="model:Button" href="screen2.screen#4"/>
   </decorators>
 </screenDecorator:DecoratorModel>

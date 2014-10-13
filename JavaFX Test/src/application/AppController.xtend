@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil
 class AppController extends Application {
 
 	/* The name of the initial fxml file */
-	String fileName =   "screen1" // "recipe" //
+	String fileName =   "mineOppgaver" // "recipe" //
 
 	/** A resource set with all loaded resources */
 	ResourceSet resourceSet

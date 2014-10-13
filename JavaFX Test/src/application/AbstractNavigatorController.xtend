@@ -163,30 +163,39 @@ abstract class AbstractNavigatorController {
 
 	def evaluateWidgetContainerDecoratorForScreen(Screen screen){
 		val decorator = appController.decoratorMap.get(screen) as WidgetContainerDecorator
+		
 		if (decorator != null) {
-
 			// There is a decorator for the screen
 			decorator.viewRules.forEach [
-				val value = resolveValueForFeature(it.stateFeature.name, screen)
-				// If this rule is relevant, or its value is wildcard
-				if (value == it.stateFeatureValue || it.stateFeatureValue == "*") {
-
-					// Wildcard value means it should be performed regardless of the stateFeatureValue
-					// It can be used together with another specific value.
-					// E.g if textFeature = "password", set style="green".
-					// Adding textFeature = "*", set style = "" before the rule will reset the style 
-
-					val node = appController.root.lookup("#gridPane1" )
-					if (node != null) {
-
-						val result = setPropertyForNode(node, it.viewProperty, it.viewPropertyType,
-							it.viewPropertyValue)
-						if (result == PropertyResult.NO_SUCH_METHOD) {
-							println(
-								"No such method: " + "set" + it.viewProperty.toFirstUpper + " for " + node)
-						} else if (result == PropertyResult.SUCCESS) {
-							println(
-								"Found the method: " + "set" + it.viewProperty.toFirstUpper + " for " + node)
+				// Indicates a variable, not a property. Try to set variable to propertyValue
+				if (it.viewProperty.startsWith("${") && viewProperty.endsWith("}")){
+					val value = resolveValueForFeature(it.stateFeature.name, screen)
+					if (value == it.stateFeatureValue) {
+						val feature = it.viewProperty.substring(2, it.viewProperty.length - 1)
+						setValueForFeature(feature, it.viewPropertyValue, screen)
+					}
+				} else {
+					val value = resolveValueForFeature(it.stateFeature.name, screen)
+					// If this rule is relevant, or its value is wildcard
+					if (value == it.stateFeatureValue || it.stateFeatureValue == "*") {
+	
+						// Wildcard value means it should be performed regardless of the stateFeatureValue
+						// It can be used together with another specific value.
+						// E.g if textFeature = "password", set style="green".
+						// Adding textFeature = "*", set style = "" before the rule will reset the style 
+	
+						val node = appController.root.lookup("#gridPane1" )
+						if (node != null) {
+	
+							val result = setPropertyForNode(node, it.viewProperty, it.viewPropertyType,
+								it.viewPropertyValue)
+							if (result == PropertyResult.NO_SUCH_METHOD) {
+								println(
+									"No such method: " + "set" + it.viewProperty.toFirstUpper + " for " + node)
+							} else if (result == PropertyResult.SUCCESS) {
+								println(
+									"Calling method: " + "set" + it.viewProperty.toFirstUpper + "(" + it.viewPropertyValue + ")" + " for " + node )
+							}
 						}
 					}
 				}
@@ -228,7 +237,7 @@ abstract class AbstractNavigatorController {
 									"No such method: " + "set" + it.viewProperty.toFirstUpper + " for " + node)
 							} else if (result == PropertyResult.SUCCESS) {
 								println(
-									"Found the method: " + "set" + it.viewProperty.toFirstUpper + " for " + node)
+								"Calling method: " + "set" + it.viewProperty.toFirstUpper + "(" + it.viewPropertyValue + ")" + " for " + node )
 							}
 						}
 					}
@@ -414,6 +423,7 @@ abstract class AbstractNavigatorController {
 				return true
 			}
 			// Failed to set value. (The model was incorrect)
+			println("failed")
 			return false
 		}
 		// No XMI resource loaded. This is an error.
@@ -494,6 +504,38 @@ abstract class AbstractNavigatorController {
 		// This is not a feature inside the scope. Return the unresolved string
 		return string
 	}
+
+	 def setValueForFeature(String feature, String value, Screen screen) {
+ 		var model = getModelForScreen(screen, null)
+		if (value == null) {
+			println("resolveValueForFeature: String is null")
+			return null
+		}
+
+		val resource = getXMIResource
+		if (resource == null) {
+			println("Resource is null")
+			return value
+		}
+
+		// Check the whole scope starting with the widget->screen->storyboard
+		do {
+			val returnValue = setScriptFeatureForModel(feature + " = " + value, model)
+			
+			if (returnValue == true) { 
+				return true
+			}
+
+			// The strings are equal so we check one level up the scope
+			model = getModelForScreen(screen, model)
+
+		// If model is null, then there are no more models in the scope to check
+		} while (model != null)
+
+		// This is not a feature inside the scope. Return the unresolved string
+		return false
+	 }
+
 
 	/** Returns the EObject whoes EClass matches model */
 	def getEObjectForModelWithResource(EClass model, Resource resource) {

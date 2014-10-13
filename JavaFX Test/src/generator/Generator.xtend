@@ -39,7 +39,7 @@ import org.apache.commons.io.FilenameUtils
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.util.EcoreUtil
 import org.w3c.dom.Element
-import com.sun.corba.se.impl.orbutil.closure.Constant
+import com.wireframesketcher.model.RadioButton
 
 /**
  * Retrieves the EMF model data from a screen file and generates a corresponding FXML file.
@@ -288,8 +288,6 @@ class Generator {
 			'''
 
 		writer.write(startString);
-
-
 		
 		generateWithoutSave(screen, fileName)
 
@@ -414,6 +412,8 @@ class Generator {
 						pairWidget = null
 						pairMaster = null
 					}
+					// TODO: Add support fromseveral arrows from one master
+					// easiest to edit ScreenDecoratorGenerator.generateDecoratorStyle(dataStrings, master, masterMap)
 				}
 			}
 		}
@@ -664,6 +664,52 @@ class Generator {
 		
 
 	} // end Checkbox
+	
+	/** single RadioButton */
+	def dispatch void generateFxml(RadioButton widget) {
+
+		if (builder.layoutType == LayoutStyle.AnchorPane) {
+
+			(builder += "RadioButton" ) => [
+				it += "layoutX" -> widget.x
+				it += "layoutY" -> widget.y
+				it += "text" -> escapeText(widget.text.replace("\\n", "\n"))
+				it += "selected" -> if(widget.selected) "true" else "false"
+				it += "onAction" -> "#handleActionEvent" + widget.id
+				it += "id" -> widget.id
+			]
+
+			checkPaneDimensionsAndExpandForXY(widget.x + widget.measuredWidth, widget.y + widget.measuredHeight,
+				if (widget.measuredHeight > widget.measuredWidth)
+					widget.measuredHeight
+				else
+					widget.measuredWidth)
+
+		} else if (builder.layoutType == LayoutStyle.GridPane) {
+
+			val col1 = columns.keySet.indexOf(widget.x)
+			val col2 = columns.keySet.indexOf(widget.x + widget.measuredWidth)
+			val colSpan = col2 - col1
+
+			val row1 = rows.keySet.indexOf(widget.y)
+			val row2 = rows.keySet.indexOf(widget.y + widget.measuredHeight)
+			val rowSpan = row2 - row1;
+
+			(builder += "CheckBox" ) => [
+				it += "text" -> escapeText(widget.text.replace("\\n", "\n"))
+				it += "selected" -> if(widget.selected) "true" else "false"
+				it += "GridPane.columnIndex" -> col1
+				it += "GridPane.rowIndex" -> row1
+				it += "GridPane.columnSpan" -> colSpan
+				it += "GridPane.rowSpan" -> rowSpan
+				it += "onAction" -> "#handleActionEvent" + widget.id
+				it += "id" -> widget.id
+			]
+		}
+		generateActionCode(widget)
+		
+
+	} // end single RadioButton
 
 	def dispatch void generateFxml(Image widget) {
 
@@ -906,18 +952,27 @@ class Generator {
 
 		// TODO Tolke radiobutton fra andre "List" items
 		// List Items
+		
 		(builder += "VBox" ) => [ vbox |
-			val col1 = columns.keySet.indexOf(widget.x)
-			val col2 = columns.keySet.indexOf(widget.x + widget.measuredWidth)
-			val colSpan = col2 - col1
-			val row1 = rows.keySet.indexOf(widget.y)
-			val row2 = rows.keySet.indexOf(widget.y + widget.measuredHeight)
-			val rowSpan = row2 - row1;
-			vbox += "GridPane.columnIndex" -> col1
-			vbox += "GridPane.rowIndex" -> row1
-			vbox += "GridPane.columnSpan" -> colSpan
-			vbox += "GridPane.rowSpan" -> rowSpan;
-			widget.items.forEach [ item |
+			
+			if (builder.layoutType == LayoutStyle.AnchorPane){
+				vbox += "layoutX" -> widget.x
+				vbox += "layoutY" -> widget.y
+			} else if (builder.layoutType == LayoutStyle.GridPane) {
+				val col1 = columns.keySet.indexOf(widget.x)
+				val col2 = columns.keySet.indexOf(widget.x + widget.measuredWidth)
+				val colSpan = col2 - col1
+				val row1 = rows.keySet.indexOf(widget.y)
+				val row2 = rows.keySet.indexOf(widget.y + widget.measuredHeight)
+				val rowSpan = row2 - row1;
+				vbox += "GridPane.columnIndex" -> col1
+				vbox += "GridPane.rowIndex" -> row1
+				vbox += "GridPane.columnSpan" -> colSpan
+				vbox += "GridPane.rowSpan" -> rowSpan
+			}
+			for (i : 0 ..< widget.items.size) {
+				val item = widget.items.get(i)
+
 				/* 
 				 * 
 				 * A	N	C	H	O	R		L	A	Y	O	U	T
@@ -928,7 +983,7 @@ class Generator {
 					(builder += "RadioButton" ) => [ radioButton |
 						// The regex pattern
 						radioButton += "onAction" -> "#handleActionEvent" + widget.id
-						var string = "\\((\\s|o)\\) (\\w+)"
+						var string = "\\((\\s|o)\\) (.*)"
 						var pattern = Pattern.compile(string, Pattern.CASE_INSENSITIVE);
 						var matcher = pattern.matcher(item.text);
 						if (matcher.find()) {
@@ -958,18 +1013,17 @@ class Generator {
 
 							(radioButton += "toggleGroup") => [
 								(it += "ToggleGroup" ) => [
-									it += "id" -> widget.id
+									it += "fx:id" -> "toggleGroup" + widget.id
 								]
 							]
 						} else {
 
 							// The toggle group has been created, so we append the group id
-							radioButton += "toggleGroup" -> "$" + widget.id
+							radioButton += "toggleGroup" -> "$toggleGroup" + widget.id
 						}
 						// The coordinate of the widget + the item coordinates
 						radioButton += "layoutX" -> widget.x + item.x
 						radioButton += "layoutY" -> widget.y + item.y
-						
 						checkPaneDimensionsAndExpandForXY(widget.x + item.x + widget.measuredWidth,
 							widget.y + item.y + widget.measuredHeight,
 							if (widget.measuredHeight > widget.measuredWidth)
@@ -992,6 +1046,7 @@ class Generator {
 						var pattern = Pattern.compile(string, Pattern.CASE_INSENSITIVE);
 						var matcher = pattern.matcher(item.text);
 						if (matcher.find()) {
+
 							// The wiki format (o) means selected
 							if (matcher.group(1).equals("o")) {
 
@@ -1016,19 +1071,23 @@ class Generator {
 						if (widget.id != radioButtonId) {
 							(radioButton += "toggleGroup") => [
 								(it += "ToggleGroup" ) => [
-									it += "id" -> widget.id
+									it += "fx:id" -> "toggleGroup" + widget.id
 								]
 							]
 						} else {
 
 							// The toggle group has been created, so we append the group id
-							radioButton += "toggleGroup" -> "$" + widget.id
+							radioButton += "toggleGroup" -> "$toggleGroup" + widget.id
 						}
 					]
 
 				}
-			]
+				radioButtonId = widget.id
+
+			}
+			
 		]
+		generateActionCode(widget)
 	} // end List, RadioButton
 
 	def dispatch void generateFxml(HLine widget) {
@@ -1217,12 +1276,12 @@ class Generator {
 				// Ignore screen files in other folders (like assets)
 				if (path.startsWith(screenFileLocation)) {
 					val name = FilenameUtils.getBaseName(path)
-					println("Generating Data model for " + name)
 
 					fxmlGenerator.buildMasterMapForScreen(it)
 					it.widgets.filter(Master).forEach [
 						val modelType = decoratorGenerator.getMasterType(it)
 						if (modelType == DecoratorModelType.DATA) {
+							println("Generating Data model for " + name)
 							decoratorGenerator.generateForMasterUsingMasterMap(it, fxmlGenerator.masterMap)
 						}
 					]

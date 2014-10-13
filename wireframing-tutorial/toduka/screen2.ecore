@@ -3,5 +3,6 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="screen2" nsURI="toduka.screen2" nsPrefix="screen2">
   <eClassifiers xsi:type="ecore:EClass" name="screen2">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="comment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isEdit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
 </ecore:EPackage>
