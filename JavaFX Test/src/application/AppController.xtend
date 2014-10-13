@@ -17,6 +17,7 @@ import no.fhl.screenDecorator.AbstractDecorator
 import org.apache.commons.io.FilenameUtils
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.emf.ecore.util.EcoreUtil
+import com.wireframesketcher.model.story.Storyboard
 
 /**
  * 
@@ -25,7 +26,7 @@ import org.eclipse.emf.ecore.util.EcoreUtil
 class AppController extends Application {
 
 	/* The name of the initial fxml file */
-	String fileName =   "mineOppgaver" // "recipe" //
+	//String fileName =   "mineOppgaver" // "recipe" //
 
 	/** A resource set with all loaded resources */
 	ResourceSet resourceSet
@@ -133,7 +134,21 @@ class AppController extends Application {
 		var Class<?> class
 		var Constructor<?> constructor
 
+		// Load and/or create the XMI instance files
+		initXMIFiles
 
+		// Resolve all proxies
+		EcoreUtil.resolveAll(resourceSetHandler.resourceSet)
+
+		// Get the first screen file in storyboard, and load the corresponding fxml file.
+		// The order can be changed in *.story using the Storyboard Editor. 
+		val storyboard = (resourceSetHandler.storyboardResource.contents.get(0) as Storyboard)
+		val screenFileResource = storyboard.panels.get(0).screen.eResource
+		val fileName = FilenameUtils.getBaseName(screenFileResource.URI.path) 
+
+		println("Loading " + fileName + ".fxml" + " as the initial file. If this is not the first file " +  
+			"change the order in " + Constants.SUB_PROJECT_NAME + ".story using the Storyboard Editor.")
+		
 		// Load the fxml file and set the custom controller class
 		try {
 			var filePath = "src/application/" + fileName + ".fxml"
@@ -163,6 +178,7 @@ class AppController extends Application {
 
 		scene = new Scene(getRoot)
 
+	
 		// Save the scene in the map along with the screen file checksum
 		val fxmlFile = new File(Constants.FXML_DIRECTORY + fileName + ".fxml")
 		if (!fxmlFile.exists) {
@@ -172,12 +188,6 @@ class AppController extends Application {
 		val checksum = MD5Checksum.checkSum(fxmlFile.absolutePath)
 		val fxmlSceneResource = new FXMLSceneResource(fileName, scene, checksum, navigatorMap)
 		fxmlMap?.put(fileName, fxmlSceneResource)
-
-		// Load and/or create the XMI instance files
-		initXMIFiles
-
-		// Resolve all proxies
-		EcoreUtil.resolveAll(resourceSetHandler.resourceSet)
 
 		// Use reflection and invoke the evaluteRules method for this controller
 		val fileResources = resourceSetHandler.resourceSet.resources

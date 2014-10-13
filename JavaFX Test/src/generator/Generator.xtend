@@ -156,26 +156,6 @@ class Generator {
 		columns = <Integer, Pair<Boolean, Boolean>>newTreeMap([i1, i2|i1 - i2], 0 -> null)
 		rows = <Integer, Pair<Boolean, Boolean>>newTreeMap([i1, i2|i1 - i2], 0 -> null)
 
-		/* The horizontal and vertical ruler guides can be used to 
-		 * force a larger layout than what is deduced from the widget 
-		 * positions. There can be several guides, so the ones at the
-		 * edges are used. */
-		var maxHorizontal = 0
-		var maxVertical = 0
-		for (hGuide : screen.HRuler.guides) {
-
-			// Get the max positions 
-			if(hGuide.position > maxHorizontal) maxHorizontal = hGuide.position
-
-		}
-		for (vGuide : screen.VRuler.guides) {
-
-			// Get the max positions 
-			if(vGuide.position > maxVertical) maxVertical = vGuide.position
-		}
-		builder.setPaneWidth(maxHorizontal)
-		builder.setPaneHeight(maxVertical)
-
 		for (widget : screen.widgets) {
 			if (!(widget instanceof Arrow) && !(widget instanceof Master)){
 				addNew(columns, widget.x, true -> false)
@@ -428,6 +408,27 @@ class Generator {
 	def void generateWithoutSave(Screen screen, String fileName) {
 
 		initBuilder(screen) 
+		
+		/* The horizontal and vertical ruler guides can be used to 
+		 * force a larger layout than what is deduced from the widget 
+		 * positions. There can be several guides, so the ones at the
+		 * edges are used. */
+		var maxHorizontal = 0
+		var maxVertical = 0
+		for (hGuide : screen.HRuler.guides) {
+
+			// Get the max positions 
+			if(hGuide.position > maxHorizontal) maxHorizontal = hGuide.position
+
+		}
+		for (vGuide : screen.VRuler.guides) {
+
+			// Get the max positions 
+			if(vGuide.position > maxVertical) maxVertical = vGuide.position
+		}
+		builder.setPaneWidth(maxHorizontal)
+		builder.setPaneHeight(maxVertical)
+		
 		if (layoutStyle == LayoutStyle.GridPane){
 			generateGrid(screen, fileName)
 		}

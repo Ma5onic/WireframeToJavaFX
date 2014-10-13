@@ -1,45 +1,109 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<?import java.lang.*?><?import javafx.scene.control.*?><?import javafx.scene.layout.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.geometry.*?><AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="620" minWidth="367">
+<?import java.lang.*?><?import javafx.scene.control.*?><?import javafx.scene.layout.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.geometry.*?><AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="534" minWidth="343">
     <children>
-        <Label id="2" layoutX="72" layoutY="24" onMousePressed="#handleMouseEvent2" rotate="0" text="Bestille kokkeluer" textFill="black">
+        <Label id="68" layoutX="125" layoutY="7" onMousePressed="#handleMouseEvent68" rotate="0" text="Muniapp" textFill="black">
             <font>
-                <Font name="System Regular" size="22"/>
+                <Font name="System Bold" size="18"/>
             </font>
         </Label>
-        <Button id="4" layoutX="12" layoutY="480" onAction="#handleActionEvent4" style="-fx-base:white;" text="Mine &#10;Oppgave"/>
-        <Separator id="5" layoutX="108" layoutY="456" orientation="VERTICAL" prefHeight="68"/>
-        <Button id="6" layoutX="124" layoutY="480" onAction="#handleActionEvent6" style="-fx-base:white;" text="Delegerte &#10;Oppgave"/>
-        <Separator id="7" layoutX="242" layoutY="456" orientation="VERTICAL" prefHeight="68"/>
-        <CheckBox id="8" layoutX="16" layoutY="206" onAction="#handleActionEvent8" selected="false" text="Bestille kokkeluer"/>
-        <Button id="9" layoutX="278" layoutY="28" onAction="#handleActionEvent9" style="-fx-base:white;" text="Rediger"/>
-        <Button id="12" layoutX="256" layoutY="424" onAction="#handleActionEvent12" style="-fx-base:white;" text="Legg til"/>
-        <CheckBox id="14" layoutX="16" layoutY="184" onAction="#handleActionEvent14" selected="false" text="Reperasjon av vaskemaskin"/>
-        <Separator id="15" layoutX="8" layoutY="57" prefWidth="329"/>
-        <Separator id="16" layoutX="8" layoutY="104" prefWidth="329"/>
-        <Label id="17" layoutX="16" layoutY="72" onMousePressed="#handleMouseEvent17" rotate="0" text="Frist 9 okt" textFill="black">
+        <Button id="69" layoutX="16" layoutY="480" onAction="#handleActionEvent69" style="-fx-base:white;" text="Day"/>
+        <Label id="70" layoutX="24" layoutY="88" onMousePressed="#handleMouseEvent70" rotate="0" text="This week" textFill="black">
             <font>
                 <Font name="System Regular" size="18"/>
             </font>
         </Label>
-        <Label id="18" layoutX="16" layoutY="128" onMousePressed="#handleMouseEvent18" rotate="0" text="Legg inn bestilling av kokkeluer til &#10;resturanten" textFill="black">
-            <font>
-                <Font name="System Regular" size="16"/>
-            </font>
-        </Label>
-        <Label id="19" layoutX="16" layoutY="280" onMousePressed="#handleMouseEvent19" rotate="0" text="Kommentar:" textFill="black">
-            <font>
-                <Font name="System Regular" size="14"/>
-            </font>
-        </Label>
-        <TextArea id="20" layoutX="16" layoutY="304" onMousePressed="#handleMouseEvent20" prefHeight="113" prefWidth="321" text="=${commentField}"/>
-        <Label id="21" layoutX="319" layoutY="72" onMousePressed="#handleMouseEvent21" rotate="0" text="!!" textFill="black">
+        <Button id="71" layoutX="74" layoutY="480" onAction="#handleActionEvent71" style="-fx-base:white;" text="Week"/>
+        <Separator id="72" layoutX="24" layoutY="124" prefWidth="294"/>
+        <Separator id="73" layoutX="24" layoutY="304" prefWidth="294"/>
+        <Label id="74" layoutX="24" layoutY="264" onMousePressed="#handleMouseEvent74" rotate="0" text="Next week" textFill="black">
             <font>
                 <Font name="System Regular" size="18"/>
             </font>
         </Label>
-        <Label id="23" layoutX="16" layoutY="248" onMousePressed="#handleMouseEvent23" rotate="0" text="\${comment}" textFill="black">
+        <Label id="75" layoutX="24" layoutY="144" onMousePressed="#handleMouseEvent75" rotate="0" text="Meeting with John" textFill="black">
             <font>
-                <Font name="System Regular" size="10"/>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label id="76" layoutX="24" layoutY="166" onMousePressed="#handleMouseEvent76" rotate="0" text="Water plants" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label id="77" layoutX="24" layoutY="188" onMousePressed="#handleMouseEvent77" rotate="0" text="Order parts for the laptop" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label id="78" layoutX="24" layoutY="210" onMousePressed="#handleMouseEvent78" rotate="0" text="Dinner with Jane" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Button id="79" layoutX="286" layoutY="8" onAction="#handleActionEvent79" style="-fx-base:white;" text="+"/>
+        <Label id="80" layoutX="164" layoutY="91" onMousePressed="#handleMouseEvent80" rotate="0" text="24" textFill="black">
+            <font>
+                <Font name="System Italic" size="12"/>
+            </font>
+        </Label>
+        <Label id="81" layoutX="164" layoutY="267" onMousePressed="#handleMouseEvent81" rotate="0" text="25" textFill="black">
+            <font>
+                <Font name="System Italic" size="12"/>
+            </font>
+        </Label>
+        <Label id="82" layoutX="134" layoutY="35" onMousePressed="#handleMouseEvent82" rotate="0" text="June 2014" textFill="black">
+            <font>
+                <Font name="System Italic" size="12"/>
+            </font>
+        </Label>
+        <Label id="83" layoutX="240" layoutY="91" onMousePressed="#handleMouseEvent83" rotate="0" text="9 Jun 2014" textFill="black">
+            <font>
+                <Font name="System Italic" size="12"/>
+            </font>
+        </Label>
+        <Label id="84" layoutX="240" layoutY="267" onMousePressed="#handleMouseEvent84" rotate="0" text="16 Jun 2014" textFill="black">
+            <font>
+                <Font name="System Italic" size="12"/>
+            </font>
+        </Label>
+        <Label id="85" layoutX="229" layoutY="144" onMousePressed="#handleMouseEvent85" rotate="0" text="10:10 - 12:00" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label id="86" layoutX="274" layoutY="166" onMousePressed="#handleMouseEvent86" rotate="0" text="all day" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label id="87" layoutX="274" layoutY="188" onMousePressed="#handleMouseEvent87" rotate="0" text="all day" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label id="88" layoutX="274" layoutY="210" onMousePressed="#handleMouseEvent88" rotate="0" text="20:00" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label id="90" layoutX="24" layoutY="320" onMousePressed="#handleMouseEvent90" rotate="0" text="Movies after work" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label id="91" layoutX="271" layoutY="320" onMousePressed="#handleMouseEvent91" rotate="0" text="all day" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label id="94" layoutX="16" layoutY="384" onMousePressed="#handleMouseEvent94" rotate="0" text="loggedIn = " textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
+            </font>
+        </Label>
+        <Label id="95" layoutX="152" layoutY="384" onMousePressed="#handleMouseEvent95" rotate="0" text="\${loggedIn}" textFill="black">
+            <font>
+                <Font name="System Regular" size="12"/>
             </font>
         </Label>
     </children>

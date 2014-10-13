@@ -1,46 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<?import java.lang.*?><?import javafx.scene.control.*?><?import javafx.scene.layout.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.geometry.*?><AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="620" minWidth="344">
+<?import java.lang.*?><?import javafx.scene.control.*?><?import javafx.scene.layout.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.geometry.*?><AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="534" minWidth="343">
     <children>
-        <Label id="1" layoutX="80" layoutY="24" onMousePressed="#handleMouseEvent1" rotate="0" text="Mine oppgaver" textFill="black">
+        <Button id="11" layoutX="25" layoutY="9" onAction="#handleActionEvent11" style="-fx-base:white;" text="&lt; Back"/>
+        <Label id="12" layoutX="129" layoutY="7" onMousePressed="#handleMouseEvent12" rotate="0" text="Muniapp" textFill="black">
             <font>
-                <Font name="System Regular" size="22"/>
+                <Font name="System Bold" size="18"/>
             </font>
         </Label>
-        <Button disable="true" id="2" layoutX="12" layoutY="480" onAction="#handleActionEvent2" style="-fx-base:white;" text="Mine &#10;Oppgave"/>
-        <Separator id="3" layoutX="108" layoutY="456" orientation="VERTICAL" prefHeight="68"/>
-        <Button id="4" layoutX="124" layoutY="480" onAction="#handleActionEvent4" style="-fx-base:white;" text="Delegerte &#10;Oppgave"/>
-        <Separator id="5" layoutX="242" layoutY="456" orientation="VERTICAL" prefHeight="68"/>
-        <CheckBox id="6" layoutX="16" layoutY="136" onAction="#handleActionEvent6" selected="true" text="Kjøp øl"/>
-        <Button id="7" layoutX="312" layoutY="28" onAction="#handleActionEvent7" style="-fx-base:white;" text="+"/>
-        <CheckBox id="8" layoutX="16" layoutY="184" onAction="#handleActionEvent8" selected="true" text="Vask kjøkken"/>
-        <Separator id="9" layoutX="8" layoutY="57" prefWidth="329"/>
-        <Separator id="10" layoutX="8" layoutY="104" prefWidth="329"/>
-        <Label id="17" layoutX="56" layoutY="72" onMousePressed="#handleMouseEvent17" rotate="0" text="Aktive" textFill="black">
+        <Label id="27" layoutX="102" layoutY="64" onMousePressed="#handleMouseEvent27" rotate="0" text="Add new event" textFill="black">
             <font>
-                <Font name="System Regular" size="14"/>
+                <Font name="System Regular" size="16"/>
             </font>
         </Label>
-        <Label id="18" layoutX="224" layoutY="72" onMousePressed="#handleMouseEvent18" rotate="0" text="Fullførte" textFill="black">
+        <Button id="44" layoutX="263" layoutY="8" onAction="#handleActionEvent44" style="-fx-base:white;" text="Save"/>
+        <TextField id="46" layoutX="156" layoutY="120" onAction="#handleActionEvent46" prefWidth="163" text="=${eventName}"/>
+        <Label id="47" layoutX="25" layoutY="120" onMousePressed="#handleMouseEvent47" rotate="0" text="Event name:" textFill="black">
             <font>
-                <Font name="System Bold" size="14"/>
+                <Font name="System Regular" size="12"/>
             </font>
         </Label>
-        <Separator id="19" layoutX="160" layoutY="72" orientation="VERTICAL" prefHeight="26"/>
-        <CheckBox id="22" layoutX="16" layoutY="229" onAction="#handleActionEvent22" selected="true" text="Utkast til meny"/>
-        <Label id="23" layoutX="37" layoutY="158" onMousePressed="#handleMouseEvent23" rotate="0" text="Peter Nilsen" textFill="black">
+        <Label id="48" layoutX="25" layoutY="183" onMousePressed="#handleMouseEvent48" rotate="0" text="Time:" textFill="black">
             <font>
-                <Font name="System Regular" size="10"/>
+                <Font name="System Regular" size="12"/>
             </font>
         </Label>
-        <Label id="24" layoutX="37" layoutY="205" onMousePressed="#handleMouseEvent24" rotate="0" text="Karina Sæter" textFill="black">
+        <Label id="52" layoutX="25" layoutY="152" onMousePressed="#handleMouseEvent52" rotate="0" text="Date:" textFill="black">
             <font>
-                <Font name="System Regular" size="10"/>
+                <Font name="System Regular" size="12"/>
             </font>
         </Label>
-        <Label id="25" layoutX="37" layoutY="254" onMousePressed="#handleMouseEvent25" rotate="0" text="Marianne Olsen" textFill="black">
-            <font>
-                <Font name="System Regular" size="10"/>
-            </font>
-        </Label>
+        <Separator id="56" layoutX="25" layoutY="240" prefWidth="294"/>
+        <TextField id="57" layoutX="241" layoutY="183" onAction="#handleActionEvent57" prefWidth="33" text="11"/>
+        <TextField id="58" layoutX="286" layoutY="183" onAction="#handleActionEvent58" prefWidth="33" text="03"/>
+        <TextField id="62" layoutX="223" layoutY="152" onAction="#handleActionEvent62" prefWidth="96" text="11/06/14"/>
+        <Button id="64" layoutX="117" layoutY="272" onAction="#handleActionEvent64" style="-fx-base:#ff0000;" text="Delete task"/>
     </children>
 </AnchorPane>

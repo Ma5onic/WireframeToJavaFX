@@ -108,7 +108,6 @@ public class FXMLBuilder {
 
 		paneHeight = newPaneHeight;
 		paneWidth = newPaneWidth;
-		// Layout type defaults to AnchorPane
 		layoutType = layout;
 
 		DocumentBuilderFactory docFactory = DocumentBuilderFactory
@@ -165,7 +164,7 @@ public class FXMLBuilder {
 		} else if (layoutType == LayoutStyle.GridPane) {
 
 			rootElement = doc.createElement("GridPane");
-			rootElement.setAttribute("id", "gridPane1"); // ID HER
+			rootElement.setAttribute("id", "gridPane1"); 
 			// rootElement.setAttribute("alignment", "center");
 			rootElement.setAttribute("hgap", "0");
 			rootElement.setAttribute("vgap", "0");

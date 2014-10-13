@@ -8,6 +8,8 @@ import java.security.NoSuchAlgorithmException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import sun.applet.Main;
+
 /**
  * Java program to generate MD5 checksum for files in Java. This Java example
  * uses core Java security package to generate MD5
@@ -47,7 +49,5 @@ public class MD5Checksum {
        return checksum;
     }
   
-   
-
 }
 
