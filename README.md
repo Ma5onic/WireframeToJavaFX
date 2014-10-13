@@ -10,3 +10,21 @@ Dependencies:
 Xtend, JavaFX, Apache Commons IO
 
 Run Generator.xtend followed by AppController.xtend.
+
+
+Note!
+
+This is a prototype and proof of concept.
+
+Only the following JavaFX types are supported:
+
+- Label
+- Button
+- Checkbox
+- Radiobutton
+- Image
+- TextField
+- TextArea
+- Seperator (horizontal and vertical)
+
+Widgets representing other types are simply ignored.
