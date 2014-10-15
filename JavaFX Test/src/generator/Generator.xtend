@@ -492,7 +492,7 @@ class Generator {
 			
 			// Add method for button
 			methodString = '''
-				«"\t"»/* Generated */
+				«"\t"»/* Generated - "«widget.text»"*/
 					@FXML
 					def handle«eventType»«widget.id»(«eventType» event) {
 						«IF eventType == "MouseEvent"»
@@ -509,7 +509,7 @@ class Generator {
 		} else { // This is a normal button with no link
 
 			methodString = '''
-				«"\t"»/* Generated */
+				«"\t"»/* Generated - "«widget.text»"*/
 					@FXML
 					def handle«eventType»«widget.id»(«eventType» event) {
 						«IF eventType == "MouseEvent"»
@@ -579,6 +579,8 @@ class Generator {
 				it += "layoutY" -> widget.y
 				it += "style" -> "-fx-base:" + widget.background + ";"
 				it += "id" -> widget.id
+				it += "alignment" -> if (widget.textAlignment.toString.toUpperCase == "CENTER") "CENTER" else "CENTER_" + widget.textAlignment.toString.toUpperCase
+				it += "textAlignment" -> widget.textAlignment.toString.toUpperCase
 				if(widget.state == State.DISABLED) it += "disable" -> "true"
 				it += "onAction" -> "#handleActionEvent" + widget.id
 			]
@@ -603,6 +605,8 @@ class Generator {
 			(builder += "Button" ) => [
 				it += "text" -> escapeText(widget.text.replace("\\n", "\n"))
 				it += "id" -> widget.id
+				it += "alignment" -> if (widget.textAlignment.toString.toUpperCase == "CENTER") "CENTER" else "CENTER_" + widget.textAlignment.toString.toUpperCase
+				it += "textAlignment" -> widget.textAlignment.toString.toUpperCase
 				if(widget.state == State.DISABLED) it += "disable" -> "true"
 				it += "onAction" -> "#handleActionEvent" + widget.id
 				it += "style" -> "-fx-base:" + widget.background + ";" //+ "-fx-font: 22 helvetica;"
@@ -809,6 +813,8 @@ class Generator {
 				it += "onMousePressed" -> "#handleMouseEvent" + widget.id
 				if(widget.foreground != null) it += "textFill" -> widget.foreground
 				if(widget.rotation != null) it += "rotate" -> widget.rotation
+				it += "alignment" -> if (widget.textAlignment.toString.toUpperCase == "CENTER") "CENTER" else "CENTER_" + widget.textAlignment.toString.toUpperCase
+				it += "textAlignment" -> widget.textAlignment.toString.toUpperCase
 				it += "id" -> widget.id
 				it += "text" -> escapeText(widget.text.replace("\\n", "\n"))
 				(it += "font") => [
@@ -843,7 +849,8 @@ class Generator {
 				if(widget.foreground != null) it += "textFill" -> widget.foreground
 				if(widget.rotation != null) it += "rotate" -> widget.rotation
 				it += "id" -> widget.id
-
+				it += "alignment" -> if (widget.textAlignment.toString.toUpperCase == "CENTER") "CENTER" else "CENTER_" + widget.textAlignment.toString.toUpperCase
+				it += "textAlignment" -> widget.textAlignment.toString.toUpperCase
 				it += "text" -> escapeText(widget.text.replace("\\n", "\n"))
 				(it += "font") => [
 					(it += "Font") => [
@@ -869,6 +876,7 @@ class Generator {
 				it += "prefWidth" -> widget.measuredWidth
 				it += "text" -> escapeText(widget.text.replace("\\n", "\n"))
 				it += "id" -> widget.id
+				it += "alignment" -> if (widget.textAlignment.toString.toUpperCase == "CENTER") "CENTER" else "CENTER_" + widget.textAlignment.toString.toUpperCase
 				it += "onAction" -> "#handleActionEvent" + widget.id
 			
 			]
@@ -891,6 +899,7 @@ class Generator {
 			(builder += "TextField") => [
 				it += "text" -> escapeText(widget.text.replace("\\n", "\n"))
 				it += "id" -> widget.id
+				it += "alignment" -> if (widget.textAlignment.toString.toUpperCase == "CENTER") "CENTER" else "CENTER_" + widget.textAlignment.toString.toUpperCase
 				it += "prefWidth" -> widget.measuredWidth
 				it += "GridPane.columnIndex" -> col1
 				it += "GridPane.rowIndex" -> row1

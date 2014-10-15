@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Label" id="1" x="125" y="7" text="Exampleapp" measuredWidth="119" measuredHeight="29">
+    <font size="18px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="3" x="24" y="88" text="Hello, " measuredWidth="63" measuredHeight="29">
+    <font size="18px"/>
+  </widgets>
+  <widgets xsi:type="model:HLine" id="6" x="24" y="120" width="294" measuredWidth="294" measuredHeight="6"/>
+  <widgets xsi:type="model:Label" id="8" x="24" y="144" text="Your password is:" measuredWidth="110" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="15" x="134" y="35" text="October 2014" measuredWidth="87" measuredHeight="23">
+    <font size="12px" italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="18" x="208" y="144" width="112" text="${password}" measuredWidth="112" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="27" x="383" y="240" height="83" measuredWidth="194" measuredHeight="83">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Actions"/>
+    <overrides>
+      <widgets ref="2" width="194" height="68" text="password = ${passwordField}&#xA;hasSaved = true"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Arrow" id="29" x="308" y="264" width="76" height="16" measuredWidth="76" measuredHeight="16" annotation="true" foreground="#cccccc"/>
+  <widgets xsi:type="model:Master" id="34" x="368" y="360" measuredWidth="178" measuredHeight="81">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Styles"/>
+    <overrides>
+      <widgets ref="3" width="178" text="if hasSaved is true&#xA;set visible to true&#xA;if hasSaved is false&#xA;set visible to false&#xA; &#xA;"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Button" id="42" x="24" y="11" text="Log out" measuredWidth="60" measuredHeight="22" link="login.screen">
+    <font size="10px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="43" x="85" y="88" text="${username}" measuredWidth="115" measuredHeight="29">
+    <font size="18px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="49" x="24" y="472" text="Logged in as:" measuredWidth="85" measuredHeight="23">
+    <font size="12px" italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="50" x="108" y="472" text="${username}" measuredWidth="79" measuredHeight="23">
+    <font size="12px" italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Arrow" id="51" x="176" y="264" width="193" height="113" measuredWidth="193" measuredHeight="113" annotation="true" foreground="#cccccc"/>
+  <widgets xsi:type="model:Master" id="54" x="383" y="11" height="86" measuredWidth="137" measuredHeight="86">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Data"/>
+    <overrides>
+      <widgets ref="1" width="137" height="86" text="bool hasSaved"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Master" id="61" x="536" y="11" measuredWidth="173" measuredHeight="53">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Styles"/>
+    <overrides>
+      <widgets ref="3" width="173" height="53" text="if hasSaved is true&#xA;set ${hasSaved} to false"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Label" id="63" x="24" y="172" text="New password:" measuredWidth="94" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="64" x="144" y="172" width="166" text="=${passwordField}" measuredWidth="166" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="65" x="258" y="248" text="Save" measuredWidth="51" measuredHeight="27">
+    <font size="14px" bold="false"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="66" x="144" y="250" text="Saved!" measuredWidth="44" measuredHeight="23" foreground="#6aa84f">
+    <font size="12px"/>
+  </widgets>
+  <hRuler>
+    <guides position="346"/>
+  </hRuler>
+  <vRuler>
+    <guides position="516"/>
+  </vRuler>
+  <font size="12px"/>
+</model:Screen>

@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EStructuralFeature
 import org.eclipse.emf.ecore.EcorePackage
 import org.eclipse.emf.ecore.resource.Resource
+import java.util.regex.Pattern
 
 /** Used to indicate if the methods <code>getPropertyForNode()</code> or 
  * <code>setPropertyForNode()</code> was successful in invoking the property.
@@ -202,15 +203,42 @@ abstract class AbstractNavigatorController {
 			]
 		} 
 	}
+		
 	def evaluateWidgetDecoratorForScreen(Screen screen) {
 		screen.widgets.forEach [ widget |
 			// If the widget has text in the format =${value}
 			// then blank it out
-			if (widget.text.startsWith("=${") && widget.text.endsWith("}")) {
+			var String feature = null
+			if (widget.text.startsWith("=${")) {
+				// This regex matches testField in =${identifier} 
+				// and the opional text note in =${identifier}${identifier2} or =${identifier}  ${identifier2}  
+				// White spaces before ${identifier2} are stored and prepended to the resulting string
+				var regex = "=\\$\\{([A-z][A-z0-9-]*)\\}(\\$\\{[A-z][A-z0-9-]*\\})?"
+				var pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE)
+				var matcher = pattern.matcher(widget.text)
+				var String outputIdentifier = null
+				var String resolvedText = null
+				if (matcher.find()) {
+					// =${identifier}${identifier2} 
+					outputIdentifier = matcher.group(2)
+					if (outputIdentifier != null) {
+						var whitespaces = outputIdentifier.substring(0, outputIdentifier.indexOf("$"))
+						feature = outputIdentifier.substring(outputIdentifier.indexOf("$"),
+							outputIdentifier.length)
+
+						// Prepend the whitespaces (includes newlines etc)
+						resolvedText = whitespaces + resolveValueForFeature(feature, widget)
+
+					} else {
+						// This is in the format =${identifier}
+						// We don't want to populate the field
+						resolvedText = ""
+					}
+				}
 				val node = appController.root.lookup("#" + widget.id)
 				val propertyName = "text"
 				if (node != null) {
-					setPropertyForNode(node, propertyName, EcorePackage.eINSTANCE.EString, "")
+					setPropertyForNode(node, propertyName, EcorePackage.eINSTANCE.EString, resolvedText)
 				}
 			}
 			val decorator = appController.decoratorMap.get(widget) as WidgetDecorator
@@ -338,8 +366,19 @@ abstract class AbstractNavigatorController {
 		for (resource : resourceList) {
 			for (screen : resource.contents.filter(Screen)) {
 				for (widget : screen.widgets) {
-					if (widget.text == "=" + value) {
-						return widget.id
+
+					// =${identifier}${identifier2} or =${identifier}
+					var regex = "=(\\$\\{[A-z][A-z0-9-]*\\})(\\s+?\\$\\{[A-z][A-z0-9-]*\\})?"
+					var pattern = Pattern.compile(regex, Pattern.CASE_INSENSITIVE)
+					var matcher = pattern.matcher(widget.text)
+					var String identifier = null
+					if (matcher.find()) {
+						identifier = matcher.group(1)
+						println("identifier = " + identifier)
+						println("value = " + value)
+						if (identifier == value) {
+							return widget.id
+						} 
 					}
 				}
 			}
@@ -369,7 +408,7 @@ abstract class AbstractNavigatorController {
 				val fileResources = appController.resourceSetHandler.resourceSet.resources
 				var resourceList = fileResources.filter[FilenameUtils.getName(it.URI.path) == screenName + ".screen"]
 
-				// If there is widget with text property =${value}  
+				// If there is a widget with text property =${value}  
 				val id = getIdForInputProperty(resourceList, scriptValue)
 
 				// If there is a javafx object which should be resolved
@@ -423,7 +462,6 @@ abstract class AbstractNavigatorController {
 				return true
 			}
 			// Failed to set value. (The model was incorrect)
-			println("failed")
 			return false
 		}
 		// No XMI resource loaded. This is an error.
@@ -532,7 +570,8 @@ abstract class AbstractNavigatorController {
 		// If model is null, then there are no more models in the scope to check
 		} while (model != null)
 
-		// This is not a feature inside the scope. Return the unresolved string
+		// This is not a feature inside the scope. 
+		println("Failed to set feature. No such feathre '" + feature + "' found in the scope for the screen.")
 		return false
 	 }
 

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="ASCII"?>
+<screenDecorator:DecoratorModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore" xmlns:screenDecorator="no.hal.screenDecorator">
+  <decorators xsi:type="screenDecorator:WidgetDecorator">
+    <viewRules stateFeatureValue="true" viewProperty="visible" viewPropertyValue="true">
+      <stateFeature href="screen1.ecore#//screen1/hasSaved"/>
+      <viewPropertyType href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </viewRules>
+    <viewRules stateFeatureValue="false" viewProperty="visible" viewPropertyValue="false">
+      <stateFeature href="screen1.ecore#//screen1/hasSaved"/>
+      <viewPropertyType href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </viewRules>
+    <widget xsi:type="model:Label" href="screen1.screen#195"/>
+  </decorators>
+  <decorators xsi:type="screenDecorator:StoryboardDecorator">
+    <model href="exampleapp.ecore#//exampleapp"/>
+    <storyboard href="exampleapp.story#/"/>
+  </decorators>
+  <decorators xsi:type="screenDecorator:WidgetContainerDecorator">
+    <model href="screen1.ecore#//screen1"/>
+    <viewRules stateFeatureValue="true" viewProperty="${hasSaved}" viewPropertyValue="false">
+      <stateFeature href="screen1.ecore#//screen1/hasSaved"/>
+      <viewPropertyType href="http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    </viewRules>
+    <widgetContainer xsi:type="model:Screen" href="screen1.screen#/"/>
+  </decorators>
+  <decorators xsi:type="screenDecorator:WidgetDecorator">
+    <actions xsi:type="screenDecorator:ScriptAction" script="password = ${passwordField}"/>
+    <actions xsi:type="screenDecorator:ScriptAction" script="username = ${usernameField}"/>
+    <actions xsi:type="screenDecorator:ScriptAction" script="hasSaved = true"/>
+    <widget xsi:type="model:Button" href="screen1.screen#194"/>
+  </decorators>
+  <decorators xsi:type="screenDecorator:WidgetDecorator">
+    <actions xsi:type="screenDecorator:ScriptAction" script="note = ${noteArea}"/>
+    <widget xsi:type="model:Button" href="screen1.screen#199"/>
+  </decorators>
+</screenDecorator:DecoratorModel>

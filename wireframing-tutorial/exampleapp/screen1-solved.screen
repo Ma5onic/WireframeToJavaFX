@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<model:Screen xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:model="http://wireframesketcher.com/1.0/model.ecore">
+  <widgets xsi:type="model:Label" id="75" x="125" y="7" text="Exampleapp" measuredWidth="119" measuredHeight="29">
+    <font size="18px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="76" x="24" y="88" text="Hello, " measuredWidth="63" measuredHeight="29">
+    <font size="18px"/>
+  </widgets>
+  <widgets xsi:type="model:HLine" id="77" x="24" y="120" width="294" measuredWidth="294" measuredHeight="6"/>
+  <widgets xsi:type="model:Label" id="78" x="24" y="144" text="Your password is:" measuredWidth="110" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="79" x="24" y="176" text="New username:" measuredWidth="96" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="80" x="134" y="35" text="October 2014" measuredWidth="87" measuredHeight="23">
+    <font size="12px" italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="81" x="220" y="144" width="89" text="${password}" measuredWidth="89" measuredHeight="23" textAlignment="Right">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Arrow" id="82" x="308" y="16" width="76" height="235" measuredWidth="76" measuredHeight="235" annotation="true" foreground="#cccccc" direction="bottom"/>
+  <widgets xsi:type="model:Master" id="83" x="383" y="264" measuredWidth="178" measuredHeight="81">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Styles"/>
+    <overrides>
+      <widgets ref="3" width="178" text="if hasSaved is true&#xA;set visible to true&#xA;if hasSaved is false&#xA;set visible to false&#xA; &#xA;"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Button" id="84" x="24" y="11" text="Log out" measuredWidth="60" measuredHeight="22" link="login.screen">
+    <font size="10px" bold="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="85" x="85" y="88" text="${username}" measuredWidth="115" measuredHeight="29">
+    <font size="18px"/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="86" x="125" y="176" width="193" text="=${usernameField}${username}" measuredWidth="193" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="87" x="24" y="472" text="Logged in as:" measuredWidth="85" measuredHeight="23">
+    <font size="12px" italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="88" x="108" y="472" text="${username}" measuredWidth="79" measuredHeight="23">
+    <font size="12px" italic="true"/>
+  </widgets>
+  <widgets xsi:type="model:Arrow" id="89" x="220" y="264" width="164" height="43" measuredWidth="164" measuredHeight="43" annotation="true" foreground="#cccccc"/>
+  <widgets xsi:type="model:Master" id="90" x="624" y="7" measuredWidth="137" measuredHeight="101">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Data"/>
+    <overrides>
+      <widgets ref="1" width="137" height="101" text="bool hasSaved&#xA;String note"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Note" id="91" x="566" y="248" width="249" height="138" text="If the value of _hasSaved_ is *true*&#xA;then set the runtime property _visible_ to *true*. And vice versa.&#xA;&#xA;In other words during runtime the JavaFX representation of the widget will be hidden if _hasSaved_ is *false* and visible if it is *true*" measuredWidth="249" measuredHeight="138" annotation="true">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Note" id="92" x="383" y="65" width="178" height="142" text="Pressing the Save button sets _password_ to whatever the value of the text field is during runtime. *Note:* that the name of the identifier has nothing to do with the variables declared on the blue data boxes." measuredWidth="178" measuredHeight="142" annotation="true">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Note" id="93" x="624" y="114" width="161" height="74" text="Declares one boolean variable _hasSaved_ which is only accessable from this screen." measuredWidth="161" measuredHeight="74" annotation="true">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="94" x="814" y="9" measuredWidth="173" measuredHeight="53">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Styles"/>
+    <overrides>
+      <widgets ref="3" width="173" height="53" text="if hasSaved is true&#xA;set ${hasSaved} to false"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Note" id="95" x="816" y="78" width="173" height="78" text="Can be used to set values each time this screen is opened. _Note the absence of arrows_" measuredWidth="173" measuredHeight="78" annotation="true">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="96" x="24" y="212" text="New password:" measuredWidth="94" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:TextField" id="97" x="125" y="212" width="193" text="=${passwordField}" measuredWidth="193" measuredHeight="23">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="98" x="258" y="248" text="Save" measuredWidth="51" measuredHeight="27">
+    <font size="14px" bold="false"/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="99" x="208" y="250" text="Saved!" measuredWidth="44" measuredHeight="23" textAlignment="Right" foreground="#6aa84f">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="100" x="383" y="7" measuredWidth="204" measuredHeight="57">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Actions"/>
+    <overrides>
+      <widgets ref="2" width="204" height="57" text="password = ${passwordField}&#xA;username = ${usernameField}&#xA;hasSaved = true"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:TextArea" id="101" x="24" y="336" width="294" height="57" text="=${noteArea}${note}" measuredWidth="294" measuredHeight="57">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Label" id="102" x="24" y="314" text="My secret note" measuredWidth="92" measuredHeight="23">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="103" x="220" y="424" width="98" text="Save secret" measuredWidth="98" measuredHeight="27">
+    <font size="14px" bold="false"/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="104" x="368" y="438" measuredWidth="177" measuredHeight="35">
+    <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Actions"/>
+    <overrides>
+      <widgets ref="2" width="177" height="35" text="note = ${noteArea}"/>
+    </overrides>
+  </widgets>
+  <widgets xsi:type="model:Arrow" id="105" x="309" y="450" width="60" height="15" measuredWidth="60" measuredHeight="15" annotation="true" foreground="#cccccc"/>
+  <widgets xsi:type="model:Note" id="106" x="549" y="422" width="178" height="72" text="Pressing _Save secret_ sets the variable _note_ to the text inside the text area at runtime." measuredWidth="178" measuredHeight="72" annotation="true">
+    <font/>
+  </widgets>
+  <hRuler>
+    <guides position="346"/>
+  </hRuler>
+  <vRuler>
+    <guides position="516"/>
+  </vRuler>
+  <font size="12px"/>
+</model:Screen>

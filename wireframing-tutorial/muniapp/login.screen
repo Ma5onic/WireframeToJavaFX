@@ -28,7 +28,7 @@
       <widgets ref="2" width="225" height="89" text="username = ${name}&#xA;password = ${secret}"/>
     </overrides>
   </widgets>
-  <widgets xsi:type="model:Arrow" id="29" x="183" y="117" width="242" height="123" measuredWidth="242" measuredHeight="123" annotation="true" direction="bottom"/>
+  <widgets xsi:type="model:Arrow" id="29" x="183" y="112" width="234" height="128" measuredWidth="234" measuredHeight="128" annotation="true" direction="bottom"/>
   <hRuler>
     <guides position="344"/>
   </hRuler>

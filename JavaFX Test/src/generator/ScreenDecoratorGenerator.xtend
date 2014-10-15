@@ -110,7 +110,8 @@ class ScreenDecoratorGenerator {
 					createScriptAction(widget, feature + " = " + value)
 				}
 			}
-		}
+		} 
+		
 	}
 
 	/**  Generates styles (view rules) for the master. Supports several styles. */

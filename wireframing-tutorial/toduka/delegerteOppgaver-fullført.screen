@@ -60,6 +60,8 @@
     <font size="15px"/>
   </widgets>
   <hRuler/>
-  <vRuler/>
+  <vRuler>
+    <guides position="541"/>
+  </vRuler>
   <font size="12px"/>
 </model:Screen>
