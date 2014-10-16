@@ -185,7 +185,7 @@ abstract class AbstractNavigatorController {
 						// E.g if textFeature = "password", set style="green".
 						// Adding textFeature = "*", set style = "" before the rule will reset the style 
 	
-						val node = appController.root.lookup("#gridPane1" )
+						val node = appController.root.lookup("#screenPane" )
 						if (node != null) {
 	
 							val result = setPropertyForNode(node, it.viewProperty, it.viewPropertyType,

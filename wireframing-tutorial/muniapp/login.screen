@@ -10,25 +10,25 @@
     <font size="18px"/>
   </widgets>
   <widgets xsi:type="model:HLine" id="5" x="24" y="124" width="294" measuredWidth="294" measuredHeight="6"/>
-  <widgets xsi:type="model:Label" id="8" x="24" y="144" text="Username" measuredWidth="64" measuredHeight="23">
+  <widgets xsi:type="model:Label" id="8" x="24" y="144" text="Username:" measuredWidth="68" measuredHeight="23" textAlignment="Right">
     <font size="12px"/>
   </widgets>
-  <widgets xsi:type="model:Label" id="9" x="24" y="176" text="Password" measuredWidth="61" measuredHeight="23">
+  <widgets xsi:type="model:Label" id="9" x="24" y="176" text="Password:" measuredWidth="65" measuredHeight="23" textAlignment="Right">
     <font size="12px"/>
   </widgets>
-  <widgets xsi:type="model:TextField" id="25" x="96" y="176" width="222" text="=${secret}" measuredWidth="222" measuredHeight="23">
+  <widgets xsi:type="model:TextField" id="25" x="96" y="176" width="222" text="=${secretInput}" measuredWidth="222" measuredHeight="23">
     <font/>
   </widgets>
-  <widgets xsi:type="model:TextField" id="26" x="96" y="144" width="222" text="=${name}" measuredWidth="222" measuredHeight="23">
+  <widgets xsi:type="model:TextField" id="26" x="96" y="144" width="222" text="=${nameInput}" measuredWidth="222" measuredHeight="23">
     <font/>
   </widgets>
-  <widgets xsi:type="model:Master" id="28" x="416" y="41" measuredWidth="225" measuredHeight="89">
+  <widgets xsi:type="model:Master" id="28" x="400" y="198" measuredWidth="225" measuredHeight="89">
     <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Actions"/>
     <overrides>
-      <widgets ref="2" width="225" height="89" text="username = ${name}&#xA;password = ${secret}"/>
+      <widgets ref="2" width="225" height="89" text="username = ${nameInput}&#xA;password = ${secretInput}"/>
     </overrides>
   </widgets>
-  <widgets xsi:type="model:Arrow" id="29" x="183" y="112" width="234" height="128" measuredWidth="234" measuredHeight="128" annotation="true" direction="bottom"/>
+  <widgets xsi:type="model:Arrow" id="29" x="198" y="224" width="203" height="17" measuredWidth="203" measuredHeight="17" annotation="true" foreground="#cccccc" direction="bottom"/>
   <hRuler>
     <guides position="344"/>
   </hRuler>

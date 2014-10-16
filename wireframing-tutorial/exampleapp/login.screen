@@ -32,7 +32,7 @@
   <widgets xsi:type="model:Master" id="12" x="400" y="24" measuredWidth="137" measuredHeight="101">
     <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Data"/>
     <overrides>
-      <widgets ref="1" width="137" height="101" text="app&#xA;String username&#xA;String password&#xA;"/>
+      <widgets ref="1" width="137" height="101" text="app&#xA;String username&#xA;String password&#xA;int value"/>
     </overrides>
   </widgets>
   <hRuler>

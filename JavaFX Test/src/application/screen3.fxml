@@ -1,38 +1,38 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<?import java.lang.*?><?import javafx.scene.control.*?><?import javafx.scene.layout.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.geometry.*?><AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="534" minWidth="343">
+<?import java.lang.*?><?import javafx.scene.control.*?><?import javafx.scene.layout.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.geometry.*?><AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" id="screenPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="534" minWidth="343">
     <children>
-        <Button id="11" layoutX="25" layoutY="9" onAction="#handleActionEvent11" style="-fx-base:white;" text="&lt; Back"/>
-        <Label id="12" layoutX="129" layoutY="7" onMousePressed="#handleMouseEvent12" rotate="0" text="Muniapp" textFill="black">
+        <Button alignment="CENTER" id="11" layoutX="25" layoutY="9" onAction="#handleActionEvent11" style="-fx-base:white;" text="&lt; Back" textAlignment="CENTER"/>
+        <Label alignment="CENTER_LEFT" id="12" layoutX="129" layoutY="7" onMousePressed="#handleMouseEvent12" rotate="0" text="Muniapp" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Bold" size="18"/>
             </font>
         </Label>
-        <Label id="27" layoutX="102" layoutY="64" onMousePressed="#handleMouseEvent27" rotate="0" text="Add new event" textFill="black">
+        <Label alignment="CENTER_LEFT" id="27" layoutX="102" layoutY="64" onMousePressed="#handleMouseEvent27" rotate="0" text="Add new event" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Regular" size="16"/>
             </font>
         </Label>
-        <Button id="44" layoutX="263" layoutY="8" onAction="#handleActionEvent44" style="-fx-base:white;" text="Save"/>
-        <TextField id="46" layoutX="156" layoutY="120" onAction="#handleActionEvent46" prefWidth="163" text="=${eventName}"/>
-        <Label id="47" layoutX="25" layoutY="120" onMousePressed="#handleMouseEvent47" rotate="0" text="Event name:" textFill="black">
+        <Button alignment="CENTER" id="44" layoutX="263" layoutY="8" onAction="#handleActionEvent44" style="-fx-base:white;" text="Save" textAlignment="CENTER"/>
+        <TextField alignment="CENTER_LEFT" id="46" layoutX="156" layoutY="120" onAction="#handleActionEvent46" prefWidth="163" text="=${eventName}"/>
+        <Label alignment="CENTER_LEFT" id="47" layoutX="25" layoutY="120" onMousePressed="#handleMouseEvent47" rotate="0" text="Event name:" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Regular" size="12"/>
             </font>
         </Label>
-        <Label id="48" layoutX="25" layoutY="183" onMousePressed="#handleMouseEvent48" rotate="0" text="Time:" textFill="black">
+        <Label alignment="CENTER_LEFT" id="48" layoutX="25" layoutY="183" onMousePressed="#handleMouseEvent48" rotate="0" text="Time:" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Regular" size="12"/>
             </font>
         </Label>
-        <Label id="52" layoutX="25" layoutY="152" onMousePressed="#handleMouseEvent52" rotate="0" text="Date:" textFill="black">
+        <Label alignment="CENTER_LEFT" id="52" layoutX="25" layoutY="152" onMousePressed="#handleMouseEvent52" rotate="0" text="Date:" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Regular" size="12"/>
             </font>
         </Label>
         <Separator id="56" layoutX="25" layoutY="240" prefWidth="294"/>
-        <TextField id="57" layoutX="241" layoutY="183" onAction="#handleActionEvent57" prefWidth="33" text="11"/>
-        <TextField id="58" layoutX="286" layoutY="183" onAction="#handleActionEvent58" prefWidth="33" text="03"/>
-        <TextField id="62" layoutX="223" layoutY="152" onAction="#handleActionEvent62" prefWidth="96" text="11/06/14"/>
-        <Button id="64" layoutX="117" layoutY="272" onAction="#handleActionEvent64" style="-fx-base:#ff0000;" text="Delete task"/>
+        <TextField alignment="CENTER_LEFT" id="57" layoutX="241" layoutY="183" onAction="#handleActionEvent57" prefWidth="33" text="11"/>
+        <TextField alignment="CENTER_LEFT" id="58" layoutX="286" layoutY="183" onAction="#handleActionEvent58" prefWidth="33" text="03"/>
+        <TextField alignment="CENTER_LEFT" id="62" layoutX="223" layoutY="152" onAction="#handleActionEvent62" prefWidth="96" text="11/06/14"/>
+        <Button alignment="CENTER" id="64" layoutX="117" layoutY="272" onAction="#handleActionEvent64" style="-fx-base:#ff0000;" text="Delete task" textAlignment="CENTER"/>
     </children>
 </AnchorPane>

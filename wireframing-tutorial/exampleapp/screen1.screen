@@ -10,17 +10,14 @@
   <widgets xsi:type="model:Label" id="174" x="24" y="144" text="Your password is:" measuredWidth="110" measuredHeight="23">
     <font size="12px"/>
   </widgets>
-  <widgets xsi:type="model:Label" id="175" x="24" y="176" text="New username:" measuredWidth="96" measuredHeight="23">
-    <font size="12px"/>
-  </widgets>
   <widgets xsi:type="model:Label" id="176" x="134" y="35" text="October 2014" measuredWidth="87" measuredHeight="23">
     <font size="12px" italic="true"/>
   </widgets>
   <widgets xsi:type="model:Label" id="177" x="220" y="144" width="89" text="${password}" measuredWidth="89" measuredHeight="23" textAlignment="Right">
     <font size="12px"/>
   </widgets>
-  <widgets xsi:type="model:Arrow" id="178" x="308" y="189" width="76" height="62" measuredWidth="76" measuredHeight="62" annotation="true" foreground="#cccccc" direction="bottom"/>
-  <widgets xsi:type="model:Master" id="179" x="383" y="264" measuredWidth="178" measuredHeight="81">
+  <widgets xsi:type="model:Arrow" id="178" x="328" y="248" width="41" height="25" measuredWidth="41" measuredHeight="25" annotation="true" foreground="#cccccc" direction="bottom"/>
+  <widgets xsi:type="model:Master" id="179" x="368" y="312" measuredWidth="178" measuredHeight="81">
     <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Styles"/>
     <overrides>
       <widgets ref="3" width="178" text="if hasSaved is true&#xA;set visible to true&#xA;if hasSaved is false&#xA;set visible to false&#xA; &#xA;"/>
@@ -32,62 +29,71 @@
   <widgets xsi:type="model:Label" id="181" x="85" y="88" text="${username}" measuredWidth="115" measuredHeight="29">
     <font size="18px"/>
   </widgets>
-  <widgets xsi:type="model:TextField" id="182" x="125" y="176" width="193" text="=${usernameField}${username}" measuredWidth="193" measuredHeight="23">
-    <font/>
-  </widgets>
   <widgets xsi:type="model:Label" id="183" x="24" y="472" text="Logged in as:" measuredWidth="85" measuredHeight="23">
     <font size="12px" italic="true"/>
   </widgets>
   <widgets xsi:type="model:Label" id="184" x="108" y="472" text="${username}" measuredWidth="79" measuredHeight="23">
     <font size="12px" italic="true"/>
   </widgets>
-  <widgets xsi:type="model:Arrow" id="185" x="220" y="264" width="164" height="43" measuredWidth="164" measuredHeight="43" annotation="true" foreground="#cccccc"/>
-  <widgets xsi:type="model:Master" id="186" x="840" y="24" measuredWidth="137" measuredHeight="101">
+  <widgets xsi:type="model:Arrow" id="185" x="243" y="320" width="126" height="33" measuredWidth="126" measuredHeight="33" annotation="true" foreground="#cccccc"/>
+  <widgets xsi:type="model:Master" id="186" x="400" y="24" measuredWidth="137" measuredHeight="101">
     <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Data"/>
     <overrides>
-      <widgets ref="1" width="137" height="101" text="bool hasSaved&#xA;String note"/>
+      <widgets ref="1" width="137" height="101" text="bool hasSaved&#xA;String note&#xA;String text"/>
     </overrides>
   </widgets>
-  <widgets xsi:type="model:Master" id="190" x="808" y="137" measuredWidth="173" measuredHeight="53">
+  <widgets xsi:type="model:Master" id="190" x="555" y="32" measuredWidth="173" measuredHeight="53">
     <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Styles"/>
     <overrides>
       <widgets ref="3" width="173" height="53" text="if hasSaved is true&#xA;set ${hasSaved} to false"/>
     </overrides>
   </widgets>
-  <widgets xsi:type="model:Label" id="192" x="24" y="212" text="New password:" measuredWidth="94" measuredHeight="23">
+  <widgets xsi:type="model:Label" id="192" x="24" y="267" text="New password:" measuredWidth="94" measuredHeight="23">
     <font size="12px"/>
   </widgets>
-  <widgets xsi:type="model:TextField" id="193" x="125" y="212" width="193" text="=${passwordField}" measuredWidth="193" measuredHeight="23">
+  <widgets xsi:type="model:TextField" id="193" x="125" y="267" width="193" text="=${passwordField}${password}" measuredWidth="193" measuredHeight="23">
     <font/>
   </widgets>
-  <widgets xsi:type="model:Button" id="194" x="258" y="248" text="Save" measuredWidth="51" measuredHeight="27">
+  <widgets xsi:type="model:Button" id="194" x="258" y="303" text="Save" measuredWidth="51" measuredHeight="27">
     <font size="14px" bold="false"/>
   </widgets>
-  <widgets xsi:type="model:Label" id="195" x="208" y="250" text="Saved!" measuredWidth="44" measuredHeight="23" textAlignment="Right" foreground="#6aa84f">
+  <widgets xsi:type="model:Label" id="195" x="208" y="305" text="Saved!" measuredWidth="44" measuredHeight="23" textAlignment="Right" foreground="#6aa84f">
     <font size="12px"/>
   </widgets>
-  <widgets xsi:type="model:Master" id="196" x="383" y="159" measuredWidth="204" measuredHeight="57">
+  <widgets xsi:type="model:Master" id="196" x="368" y="224" measuredWidth="204" measuredHeight="57">
     <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Actions"/>
     <overrides>
       <widgets ref="2" width="204" height="57" text="password = ${passwordField}&#xA;username = ${usernameField}&#xA;hasSaved = true"/>
     </overrides>
   </widgets>
-  <widgets xsi:type="model:TextArea" id="197" x="24" y="336" width="294" height="57" text="=${noteArea}${note}" measuredWidth="294" measuredHeight="57">
+  <widgets xsi:type="model:TextField" id="197" x="125" y="231" width="193" text="=${usernameField}${username}" measuredWidth="193" measuredHeight="23">
     <font/>
   </widgets>
-  <widgets xsi:type="model:Label" id="198" x="24" y="314" text="My secret note" measuredWidth="92" measuredHeight="23">
+  <widgets xsi:type="model:Label" id="198" x="24" y="231" text="New username" measuredWidth="92" measuredHeight="23">
     <font size="12px"/>
   </widgets>
-  <widgets xsi:type="model:Button" id="199" x="220" y="424" width="98" text="Save secret" measuredWidth="98" measuredHeight="27">
-    <font size="14px" bold="false"/>
+  <widgets xsi:type="model:Label" id="199" x="32" y="184" text="Your username is:" measuredWidth="112" measuredHeight="23">
+    <font size="12px"/>
   </widgets>
-  <widgets xsi:type="model:Master" id="200" x="368" y="438" measuredWidth="177" measuredHeight="35">
+  <widgets xsi:type="model:Label" id="200" x="228" y="184" width="89" text="${username}" measuredWidth="89" measuredHeight="23" textAlignment="Right">
+    <font size="12px"/>
+  </widgets>
+  <widgets xsi:type="model:TextArea" id="201" x="16" y="376" width="228" height="74" text="=${textField}${text}" measuredWidth="228" measuredHeight="74">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Button" id="202" x="264" y="416" text="OK" measuredWidth="38" measuredHeight="25">
+    <font/>
+  </widgets>
+  <widgets xsi:type="model:Master" id="203" x="352" y="408" measuredWidth="204" measuredHeight="57">
     <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Actions"/>
     <overrides>
-      <widgets ref="2" width="177" height="35" text="note = ${noteArea}"/>
+      <widgets ref="2" width="204" height="57" text="text = ${textField}"/>
     </overrides>
   </widgets>
-  <widgets xsi:type="model:Arrow" id="201" x="309" y="450" width="60" height="15" measuredWidth="60" measuredHeight="15" annotation="true" foreground="#cccccc"/>
+  <widgets xsi:type="model:Arrow" id="204" x="301" y="432" width="52" height="8" measuredWidth="52" measuredHeight="8" annotation="true" foreground="#cccccc" direction="bottom"/>
+  <widgets xsi:type="model:Label" id="205" x="24" y="325" width="89" text="${text}" measuredWidth="89" measuredHeight="23" textAlignment="Right">
+    <font size="12px"/>
+  </widgets>
   <hRuler>
     <guides position="346"/>
   </hRuler>

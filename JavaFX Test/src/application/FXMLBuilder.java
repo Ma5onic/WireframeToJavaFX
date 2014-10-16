@@ -148,6 +148,7 @@ public class FXMLBuilder {
 		if (layoutType == LayoutStyle.AnchorPane) {
 			/* Using AnchorPane with explicit coordinates */
 			rootElement = doc.createElement("AnchorPane");
+			rootElement.setAttribute("id", "screenPane"); 
 			rootElement.setAttribute("maxHeight", "-Infinity");
 			rootElement.setAttribute("maxWidth", "-Infinity");
 			rootElement.setAttribute("minHeight", "-Infinity");
@@ -164,7 +165,7 @@ public class FXMLBuilder {
 		} else if (layoutType == LayoutStyle.GridPane) {
 
 			rootElement = doc.createElement("GridPane");
-			rootElement.setAttribute("id", "gridPane1"); 
+			rootElement.setAttribute("id", "screenPane"); 
 			// rootElement.setAttribute("alignment", "center");
 			rootElement.setAttribute("hgap", "0");
 			rootElement.setAttribute("vgap", "0");

@@ -124,7 +124,7 @@
     </overrides>
   </widgets>
   <widgets xsi:type="model:Arrow" id="160" x="184" y="488" width="193" height="9" measuredWidth="193" measuredHeight="9" annotation="true" foreground="#cccccc"/>
-  <widgets xsi:type="model:Master" id="161" x="688" y="171" measuredWidth="265" measuredHeight="81">
+  <widgets xsi:type="model:Master" id="161" x="688" y="264" measuredWidth="265" measuredHeight="81">
     <screen xsi:type="model:WidgetGroup" href="../assets/JavaFX%20Generator/Models.screen#Styles"/>
     <overrides>
       <widgets ref="3" width="265" text="if newItemHidden is true&#xA;set style to -fx-background-color:RED&#xA;if newItemHidden is false&#xA;set style to -fx-background-color:WHITE"/>

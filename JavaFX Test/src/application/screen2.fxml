@@ -1,107 +1,107 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<?import java.lang.*?><?import javafx.scene.control.*?><?import javafx.scene.layout.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.geometry.*?><AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="534" minWidth="343">
+<?import java.lang.*?><?import javafx.scene.control.*?><?import javafx.scene.layout.*?><?import javafx.scene.text.*?><?import javafx.scene.image.*?><?import javafx.geometry.*?><AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" id="screenPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="534" minWidth="343">
     <children>
-        <Label id="68" layoutX="125" layoutY="7" onMousePressed="#handleMouseEvent68" rotate="0" text="Muniapp" textFill="black">
+        <Label alignment="CENTER_LEFT" id="68" layoutX="125" layoutY="7" onMousePressed="#handleMouseEvent68" rotate="0" text="Muniapp" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Bold" size="18"/>
             </font>
         </Label>
-        <Button id="69" layoutX="16" layoutY="480" onAction="#handleActionEvent69" style="-fx-base:white;" text="Day"/>
-        <Label id="70" layoutX="24" layoutY="88" onMousePressed="#handleMouseEvent70" rotate="0" text="This week" textFill="black">
+        <Button alignment="CENTER" id="69" layoutX="16" layoutY="480" onAction="#handleActionEvent69" style="-fx-base:white;" text="Day" textAlignment="CENTER"/>
+        <Label alignment="CENTER_LEFT" id="70" layoutX="24" layoutY="88" onMousePressed="#handleMouseEvent70" rotate="0" text="This week" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Regular" size="18"/>
             </font>
         </Label>
-        <Button id="71" layoutX="74" layoutY="480" onAction="#handleActionEvent71" style="-fx-base:white;" text="Week"/>
+        <Button alignment="CENTER" id="71" layoutX="74" layoutY="480" onAction="#handleActionEvent71" style="-fx-base:white;" text="Week" textAlignment="CENTER"/>
         <Separator id="72" layoutX="24" layoutY="124" prefWidth="294"/>
         <Separator id="73" layoutX="24" layoutY="304" prefWidth="294"/>
-        <Label id="74" layoutX="24" layoutY="264" onMousePressed="#handleMouseEvent74" rotate="0" text="Next week" textFill="black">
+        <Label alignment="CENTER_LEFT" id="74" layoutX="24" layoutY="264" onMousePressed="#handleMouseEvent74" rotate="0" text="Next week" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Regular" size="18"/>
             </font>
         </Label>
-        <Label id="75" layoutX="24" layoutY="144" onMousePressed="#handleMouseEvent75" rotate="0" text="Meeting with John" textFill="black">
+        <Label alignment="CENTER_LEFT" id="75" layoutX="24" layoutY="144" onMousePressed="#handleMouseEvent75" rotate="0" text="Meeting with John" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Regular" size="12"/>
             </font>
         </Label>
-        <Label id="76" layoutX="24" layoutY="166" onMousePressed="#handleMouseEvent76" rotate="0" text="Water plants" textFill="black">
+        <Label alignment="CENTER_LEFT" id="76" layoutX="24" layoutY="166" onMousePressed="#handleMouseEvent76" rotate="0" text="Water plants" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Regular" size="12"/>
             </font>
         </Label>
-        <Label id="77" layoutX="24" layoutY="188" onMousePressed="#handleMouseEvent77" rotate="0" text="Order parts for the laptop" textFill="black">
+        <Label alignment="CENTER_LEFT" id="77" layoutX="24" layoutY="188" onMousePressed="#handleMouseEvent77" rotate="0" text="Order parts for the laptop" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Regular" size="12"/>
             </font>
         </Label>
-        <Label id="78" layoutX="24" layoutY="210" onMousePressed="#handleMouseEvent78" rotate="0" text="Dinner with Jane" textFill="black">
+        <Label alignment="CENTER_LEFT" id="78" layoutX="24" layoutY="210" onMousePressed="#handleMouseEvent78" rotate="0" text="Dinner with Jane" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Regular" size="12"/>
             </font>
         </Label>
-        <Button id="79" layoutX="286" layoutY="8" onAction="#handleActionEvent79" style="-fx-base:white;" text="+"/>
-        <Label id="80" layoutX="164" layoutY="91" onMousePressed="#handleMouseEvent80" rotate="0" text="24" textFill="black">
+        <Button alignment="CENTER" id="79" layoutX="286" layoutY="8" onAction="#handleActionEvent79" style="-fx-base:white;" text="+" textAlignment="CENTER"/>
+        <Label alignment="CENTER_LEFT" id="80" layoutX="164" layoutY="91" onMousePressed="#handleMouseEvent80" rotate="0" text="24" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Italic" size="12"/>
             </font>
         </Label>
-        <Label id="81" layoutX="164" layoutY="267" onMousePressed="#handleMouseEvent81" rotate="0" text="25" textFill="black">
+        <Label alignment="CENTER_LEFT" id="81" layoutX="164" layoutY="267" onMousePressed="#handleMouseEvent81" rotate="0" text="25" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Italic" size="12"/>
             </font>
         </Label>
-        <Label id="82" layoutX="134" layoutY="35" onMousePressed="#handleMouseEvent82" rotate="0" text="June 2014" textFill="black">
+        <Label alignment="CENTER_LEFT" id="82" layoutX="134" layoutY="35" onMousePressed="#handleMouseEvent82" rotate="0" text="June 2014" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Italic" size="12"/>
             </font>
         </Label>
-        <Label id="83" layoutX="240" layoutY="91" onMousePressed="#handleMouseEvent83" rotate="0" text="9 Jun 2014" textFill="black">
+        <Label alignment="CENTER_LEFT" id="83" layoutX="240" layoutY="91" onMousePressed="#handleMouseEvent83" rotate="0" text="9 Jun 2014" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Italic" size="12"/>
             </font>
         </Label>
-        <Label id="84" layoutX="240" layoutY="267" onMousePressed="#handleMouseEvent84" rotate="0" text="16 Jun 2014" textFill="black">
+        <Label alignment="CENTER_LEFT" id="84" layoutX="240" layoutY="267" onMousePressed="#handleMouseEvent84" rotate="0" text="16 Jun 2014" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Italic" size="12"/>
             </font>
         </Label>
-        <Label id="85" layoutX="229" layoutY="144" onMousePressed="#handleMouseEvent85" rotate="0" text="10:10 - 12:00" textFill="black">
+        <Label alignment="CENTER_LEFT" id="85" layoutX="229" layoutY="144" onMousePressed="#handleMouseEvent85" rotate="0" text="10:10 - 12:00" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Regular" size="12"/>
             </font>
         </Label>
-        <Label id="86" layoutX="274" layoutY="166" onMousePressed="#handleMouseEvent86" rotate="0" text="all day" textFill="black">
+        <Label alignment="CENTER_LEFT" id="86" layoutX="274" layoutY="166" onMousePressed="#handleMouseEvent86" rotate="0" text="all day" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Regular" size="12"/>
             </font>
         </Label>
-        <Label id="87" layoutX="274" layoutY="188" onMousePressed="#handleMouseEvent87" rotate="0" text="all day" textFill="black">
+        <Label alignment="CENTER_LEFT" id="87" layoutX="274" layoutY="188" onMousePressed="#handleMouseEvent87" rotate="0" text="all day" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Regular" size="12"/>
             </font>
         </Label>
-        <Label id="88" layoutX="274" layoutY="210" onMousePressed="#handleMouseEvent88" rotate="0" text="20:00" textFill="black">
+        <Label alignment="CENTER_LEFT" id="88" layoutX="274" layoutY="210" onMousePressed="#handleMouseEvent88" rotate="0" text="20:00" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Regular" size="12"/>
             </font>
         </Label>
-        <Label id="90" layoutX="24" layoutY="320" onMousePressed="#handleMouseEvent90" rotate="0" text="Movies after work" textFill="black">
+        <Label alignment="CENTER_LEFT" id="90" layoutX="24" layoutY="320" onMousePressed="#handleMouseEvent90" rotate="0" text="Movies after work" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Regular" size="12"/>
             </font>
         </Label>
-        <Label id="91" layoutX="271" layoutY="320" onMousePressed="#handleMouseEvent91" rotate="0" text="all day" textFill="black">
+        <Label alignment="CENTER_LEFT" id="91" layoutX="271" layoutY="320" onMousePressed="#handleMouseEvent91" rotate="0" text="all day" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Regular" size="12"/>
             </font>
         </Label>
-        <Label id="94" layoutX="16" layoutY="384" onMousePressed="#handleMouseEvent94" rotate="0" text="loggedIn = " textFill="black">
+        <Label alignment="CENTER_LEFT" id="94" layoutX="16" layoutY="384" onMousePressed="#handleMouseEvent94" rotate="0" text="loggedIn = " textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Regular" size="12"/>
             </font>
         </Label>
-        <Label id="95" layoutX="152" layoutY="384" onMousePressed="#handleMouseEvent95" rotate="0" text="\${loggedIn}" textFill="black">
+        <Label alignment="CENTER_LEFT" id="95" layoutX="152" layoutY="384" onMousePressed="#handleMouseEvent95" rotate="0" text="\${loggedIn}" textAlignment="LEFT" textFill="black">
             <font>
                 <Font name="System Regular" size="12"/>
             </font>
